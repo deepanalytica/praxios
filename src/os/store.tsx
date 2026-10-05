@@ -29,16 +29,33 @@ function validState(value:unknown):value is PraxiosState{
   return Array.isArray(v.sessions)&&Array.isArray(v.nodes)&&Array.isArray(v.events)&&Array.isArray(v.workflows)&&Array.isArray(v.resources);
 }
 function loadInitial():PraxiosState{
-  if(typeof window==="undefined")return buildSeedState();
+  const seed=buildSeedState();
+  seed.ceoBrief=buildCeoBrief(seed);
+  if(typeof window==="undefined")return seed;
   try{
     const raw=window.localStorage.getItem(STORAGE_KEY);
     if(raw){
       const parsed=JSON.parse(raw);
-      if(validState(parsed))return parsed;
+      if(validState(parsed)){
+        const merged:PraxiosState={
+          ...parsed,
+          sessions:[...parsed.sessions],
+          nodes:[...parsed.nodes],
+          edges:[...(parsed.edges||[])],
+          events:[...parsed.events],
+          workflows:parsed.workflows.length?parsed.workflows:seed.workflows,
+          resources:parsed.resources.length?parsed.resources:seed.resources,
+          ceoBrief:parsed.ceoBrief,
+        };
+        for(const session of seed.sessions)if(!merged.sessions.some(s=>s.id===session.id))merged.sessions.push(session);
+        for(const node of seed.nodes)if(!merged.nodes.some(n=>n.id===node.id))merged.nodes.push(node);
+        for(const edge of seed.edges)if(!merged.edges.some(e=>e.id===edge.id))merged.edges.push(edge);
+        for(const evt of seed.events)if(!merged.events.some(e=>e.id===evt.id))merged.events.push(evt);
+        merged.ceoBrief=buildCeoBrief(merged);
+        return merged;
+      }
     }
   }catch{}
-  const seed=buildSeedState();
-  seed.ceoBrief=buildCeoBrief(seed);
   return seed;
 }
 function event(type:string,title:string,detail:string,actor:string,project?:string):SystemEvent{
