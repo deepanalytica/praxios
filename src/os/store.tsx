@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext, useMemo, useState } from "react";
+import { createContext, type ReactNode, useContext, useState } from "react";
 import initialData from "../../data/praxios-state.json";
 import type { HarvestEnvelope, PraxiosState, Task } from "./types";
 
@@ -163,7 +163,7 @@ export function PraxiosProvider({ children }: { children: ReactNode }) {
     setState(next);
   };
 
-  const value = useMemo<PraxiosContextValue>(() => ({
+  const value: PraxiosContextValue = {
     state,
     harvest: (envelope) => persist(mergeHarvest(state, envelope)),
     toggleTask: (taskId) => {
@@ -182,7 +182,7 @@ export function PraxiosProvider({ children }: { children: ReactNode }) {
       persist(parsed);
     },
     resetState: () => persist(initialData as PraxiosState),
-  }), [state]);
+  };
 
   return <PraxiosContext.Provider value={value}>{children}</PraxiosContext.Provider>;
 }
