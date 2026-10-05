@@ -21,4 +21,13 @@ describe("AI CEO decision engine",()=>{
     const after=buildCeoBrief(state).systemHealth;
     expect(after).toBeLessThan(before);
   });
+  it("prioriza deals cercanos al cierre",()=>{
+    const state=buildSeedState();
+    state.deals.unshift({
+      id:"D-CLOSE",account:"Cliente prioritario",offer:"Implementación",project:"Visual Art AI",
+      stage:"Negotiation",value:800000,probability:80,nextAction:"Cerrar",createdAt:new Date().toISOString(),
+    });
+    const brief=buildCeoBrief(state);
+    expect(brief.priorities[0].title).toContain("Cliente prioritario");
+  });
 });
