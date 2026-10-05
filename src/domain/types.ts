@@ -1,0 +1,10 @@
+export type ProjectState="TEST"|"BUILD"|"SCALE"|"HOLD"|"KILL";
+export type RiskLevel="LOW"|"MEDIUM"|"HIGH";
+export type AgentStatus="ACTIVE"|"WATCHING"|"IDLE";
+export type DecisionVote="APPROVE"|"CHALLENGE"|"BLOCK";
+export interface ExecutiveMetric{label:string;value:string;detail:string;trend:"up"|"down"|"flat"}
+export interface Project{id:string;name:string;summary:string;state:ProjectState;score:number;revenue30d:number;pipeline:number;margin:number;timeToCashDays:number;founderHoursWeek:number;confidence:number;tags:string[];nextDecision:string}
+export interface Agent{id:string;name:string;role:string;objective:string;status:AgentStatus;kpi:string;lastRun:string;modelClass:"reasoning"|"research"|"fast"|"deterministic"}
+export interface Decision{id:string;title:string;project:string;status:ProjectState;proposedBy:string;thesis:string;evidence:string[];budget:number;confidence:number;risk:RiskLevel;votes:Array<{agent:string;vote:DecisionVote}>;killCriteria:string;scaleCriteria:string}
+export interface Experiment{id:string;title:string;project:string;status:"RUNNING"|"PROMISING"|"FAILED"|"QUEUED";hypothesis:string;spend:number;revenue:number;visitors:number;conversions:number;nextAction:string}
+export interface Deal{id:string;company:string;offer:string;stage:"Lead"|"Qualified"|"Discovery"|"Proposal"|"Negotiation"|"Won"|"Lost";value:number;probability:number;owner:string}
