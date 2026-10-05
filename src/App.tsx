@@ -123,7 +123,7 @@ function AppShell({ onExit }: { onExit: () => void }) {
       </aside>
       <main>
         <header>
-          <div><span className="dot" />Currículum Nacional · Chile</div>
+          <div><span className="dot" />Catálogo curricular · Chile <span className="demo-badge">MODO DEMO</span></div>
           <div className="top-actions">
             <button className="icon-button" aria-label="Notificaciones"><Bell size={16} /></button>
             <button className="avatar">AR</button>
@@ -175,7 +175,7 @@ function TeacherHome({ onPrepare, onStudio }: { onPrepare: () => void; onStudio:
 
       <div className="metricgrid">
         <Metric label="CLASES ESTA SEMANA" value="8" note="3 con material Educabot" />
-        <Metric label="TIEMPO POR PREPARAR" value="18 min" note="mediana de la demo" />
+        <Metric label="META DE PREPARACIÓN" value="<20 min" note="objetivo de diseño, aún por validar" />
         <Metric label="ALERTAS ABIERTAS" value="2" note="dependencias antes del próximo OA" />
         <Metric label="MATERIALES GUARDADOS" value="24" note="6 reutilizables" />
       </div>
