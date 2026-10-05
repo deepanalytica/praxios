@@ -99,7 +99,6 @@ export function PraxiosProvider({children}:{children:ReactNode}){
         const match=next.nodes.find(n=>n.kind===item.kind&&normalize(n.title)===normalize(item.title));
         if(match){
           duplicateCount+=1;
-          next.edges.push({id:id("EDGE"),from:`${bundle.sessionId}-${index}`,to:match.id,type:"same_as",createdAt:new Date().toISOString()});
           return;
         }
         const nodeId=`${bundle.sessionId}-${index}`;
@@ -117,6 +116,11 @@ export function PraxiosProvider({children}:{children:ReactNode}){
           createdAt:bundle.createdAt,
           sourceSessionId:bundle.sessionId,
         });
+        for(const relatedId of item.relatesTo||[]){
+          if(next.nodes.some(node=>node.id===relatedId)){
+            next.edges.push({id:id("EDGE"),from:nodeId,to:relatedId,type:"relates_to",createdAt:new Date().toISOString()});
+          }
+        }
       });
       const session:SessionRecord={
         id:bundle.sessionId,source:bundle.source,title:bundle.title,project:bundle.project,
