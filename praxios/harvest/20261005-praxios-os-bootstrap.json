@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "sessionId": "SES-20261005-PRAXIOS-OS-BOOTSTRAP",
+  "source": "chatgpt",
+  "title": "Definición y construcción inicial de PRAXIOS OS",
+  "project": "PRAXIOS Core",
+  "createdAt": "2026-10-05T16:00:00.000Z",
+  "summary": "PRAXIOS evoluciona desde Value Factory hacia un control plane persistente que cosecha sesiones, gobierna modelos y convierte conocimiento en decisiones y ejecución.",
+  "items": [
+    {
+      "kind": "decision",
+      "title": "PRAXIOS será el control plane persistente del ecosistema",
+      "summary": "Los modelos serán trabajadores reemplazables; memoria, decisiones y estado institucional permanecen en PRAXIOS.",
+      "project": "PRAXIOS Core",
+      "confidence": 100,
+      "tags": ["architecture","governance"]
+    },
+    {
+      "kind": "decision",
+      "title": "Toda sesión material debe terminar en harvest",
+      "summary": "ChatGPT, Claude Code, Codex, Gemini y otros modelos deben devolver conocimiento estructurado al State Graph.",
+      "project": "PRAXIOS Core",
+      "confidence": 100,
+      "tags": ["memory","session-protocol"]
+    },
+    {
+      "kind": "opportunity",
+      "title": "Usar PRAXIOS como ventaja operativa para monetizar activos existentes",
+      "summary": "El sistema puede detectar oportunidades, asignar recursos y acelerar venta, contenido, producto y prospección entre proyectos.",
+      "project": "PRAXIOS Core",
+      "confidence": 88,
+      "tags": ["monetization","portfolio"]
+    },
+    {
+      "kind": "risk",
+      "title": "Persistencia local no cubre múltiples dispositivos ni agentes externos por sí sola",
+      "summary": "La V1 necesita un ledger versionado y posteriormente una capa de persistencia remota para continuidad total.",
+      "project": "PRAXIOS Core",
+      "confidence": 95,
+      "severity": "high",
+      "tags": ["persistence","architecture"]
+    },
+    {
+      "kind": "task",
+      "title": "Validar operación diaria antes de añadir infraestructura pesada",
+      "summary": "Operar Session Gateway, State Graph, CEO cycle y pipelines con casos reales para definir el backend mínimo.",
+      "project": "PRAXIOS Core",
+      "confidence": 95,
+      "tags": ["validation","next-step"]
+    }
+  ]
+}
