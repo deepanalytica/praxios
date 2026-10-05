@@ -5,15 +5,15 @@ const makeId=(prefix:string)=>`${prefix}-${Date.now().toString(36)}-${Math.rando
 const kinds:KnowledgeKind[]=["idea","decision","task","risk","opportunity","evidence","goal","resource","finding"];
 
 const prefixMap:Array<[RegExp,KnowledgeKind]>=[
-  [/^(idea|idea nueva|hip[oó]tesis)\s*[:\-]/i,"idea"],
-  [/^(decisi[oó]n|decidimos|decision)\s*[:\-]/i,"decision"],
-  [/^(tarea|acci[oó]n|next action|todo)\s*[:\-]/i,"task"],
-  [/^(riesgo|risk|bloqueo)\s*[:\-]/i,"risk"],
-  [/^(oportunidad|opportunity|negocio)\s*[:\-]/i,"opportunity"],
-  [/^(evidencia|evidence|dato|resultado)\s*[:\-]/i,"evidence"],
-  [/^(objetivo|goal|meta)\s*[:\-]/i,"goal"],
-  [/^(recurso|resource|activo)\s*[:\-]/i,"resource"],
-  [/^(hallazgo|finding|aprendizaje|insight)\s*[:\-]/i,"finding"],
+  [/^(idea|idea nueva|hip[oó]tesis)\s*[:-]/i,"idea"],
+  [/^(decisi[oó]n|decidimos|decision)\s*[:-]/i,"decision"],
+  [/^(tarea|acci[oó]n|next action|todo)\s*[:-]/i,"task"],
+  [/^(riesgo|risk|bloqueo)\s*[:-]/i,"risk"],
+  [/^(oportunidad|opportunity|negocio)\s*[:-]/i,"opportunity"],
+  [/^(evidencia|evidence|dato|resultado)\s*[:-]/i,"evidence"],
+  [/^(objetivo|goal|meta)\s*[:-]/i,"goal"],
+  [/^(recurso|resource|activo)\s*[:-]/i,"resource"],
+  [/^(hallazgo|finding|aprendizaje|insight)\s*[:-]/i,"finding"],
 ];
 
 function normalizeItem(item:Partial<HarvestItem>,project?:string):HarvestItem{
