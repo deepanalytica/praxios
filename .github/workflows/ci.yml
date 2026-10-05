@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - develop/value-factory-v1
+      - develop/praxios-os-v1
   pull_request:
     branches:
       - main

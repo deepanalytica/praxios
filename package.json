@@ -1,15 +1,16 @@
 {
-  "name": "praxios-value-factory",
+  "name": "praxios-os",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "lint": "biome lint src tests",
+    "dev": "npm run sync:harvest && vite",
+    "lint": "biome lint --max-diagnostics=100 src tests",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "build": "npm run typecheck && vite build",
-    "preview": "vite preview"
+    "build": "npm run sync:harvest && npm run typecheck && vite build",
+    "preview": "vite preview",
+    "sync:harvest": "node scripts/compile-harvest.mjs"
   },
   "dependencies": {
     "react": "^19.1.1",

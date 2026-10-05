@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop/value-factory-v1
+      - develop/praxios-os-v1
       - main
   workflow_dispatch:
 
@@ -48,7 +49,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "deploy: PRAXIOS Value Factory UI"
+          git commit -m "deploy: PRAXIOS OS UI"
           git branch -M gh-pages
           git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push --force origin gh-pages
