@@ -76,21 +76,42 @@ function normalizePack(candidate: Partial<ClassPack>, input: ClassRequest): Clas
   };
 }
 
+function curriculumContext(input: ClassRequest) {
+  const q = (input.prompt + " " + input.subject).toLowerCase();
+  if (/tect|sismo|placa|terrem/.test(q)) {
+    return {
+      oaCode: "CN07 OA 09",
+      oaLabel: "Tectónica de placas, patrones de actividad geológica e interacción entre placas.",
+      source: "Catálogo curricular curado del prototipo"
+    };
+  }
+  if (/fracci|equival/.test(q)) {
+    return {
+      oaCode: "MA05 OA 07",
+      oaLabel: "Fracciones propias, representación, equivalencia y comparación.",
+      source: "Catálogo curricular curado del prototipo"
+    };
+  }
+  return null;
+}
+
 async function classPack(request: Request, env: Env): Promise<Response> {
   const input = await request.json() as ClassRequest;
   if (!input.prompt?.trim()) {
     return Response.json({ error: "prompt_required" }, { status: 400 });
   }
 
+  const curriculum = curriculumContext(input);
+
   if (!env.AI) {
-    return Response.json({ pack: fallbackPack(input), mode: "deterministic-fallback" });
+    return Response.json({ pack: fallbackPack(input), mode: "deterministic-fallback", curriculum });
   }
 
   const system = [
     "Eres el motor de planificación de Educabot, un sistema de apoyo docente.",
     "No eres un chatbot generalista: debes devolver un paquete de clase estructurado y revisable.",
     "Diseña con esta secuencia: nombrar, observar, encontrar el invariante, conjeturar explícitamente, verificar donde sea posible, unificar, simplificar sin perder verdad, conservar el proceso y declarar la frontera.",
-    "Nunca inventes un código de objetivo de aprendizaje. Si el OA exacto no está en el contexto, usa OA PENDIENTE.",
+    "Nunca inventes un código de objetivo de aprendizaje. Usa únicamente el OA incluido en curriculumContext. Si no existe, usa OA PENDIENTE.",
     "Nunca marques como VERIFICADO un claim generado por ti. Usa CORROBORADO, CONJETURA_DECLARADA o SILENCIO.",
     "El profesor conserva la decisión final.",
     "Prioriza actividades donde el alumno observe, explique, reconstruya y transfiera; evita sustituir el trabajo cognitivo.",
@@ -103,14 +124,27 @@ async function classPack(request: Request, env: Env): Promise<Response> {
       {
         messages: [
           { role: "system", content: system },
-          { role: "user", content: JSON.stringify(input) }
+          { role: "user", content: JSON.stringify({ input, curriculumContext: curriculum }) }
         ],
         temperature: 0.35,
         max_tokens: 2600
       }
     );
     const parsed = parseJson(raw) as Partial<ClassPack>;
-    return Response.json({ pack: normalizePack(parsed, input), mode: "ai-assisted" });
+    const normalized = normalizePack(parsed, input);
+    if (curriculum) {
+      normalized.oaCode = curriculum.oaCode;
+      normalized.oaLabel = curriculum.oaLabel;
+      normalized.trust = [
+        {
+          state: "VERIFICADO",
+          text: "Alineación curricular",
+          detail: curriculum.source
+        },
+        ...normalized.trust.filter((item) => item.text !== "Alineación curricular")
+      ];
+    }
+    return Response.json({ pack: normalized, mode: "ai-assisted", curriculum });
   } catch (error) {
     return Response.json({
       pack: fallbackPack(input),
