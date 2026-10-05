@@ -4,7 +4,7 @@ import{authorityMatrix}from"../os/harness";
 import{metaHarnessRules,sessionCloseProtocol,sessionStartProtocol}from"../os/protocol";
 import{routingMatrix}from"../os/router";
 import{usePraxios}from"../os/store";
-import type{HarvestBundle,KnowledgeKind,SessionSource}from"../os/types";
+import type{DealStage,HarvestBundle,KnowledgeKind,SessionSource}from"../os/types";
 import{money,Score,SectionHeader,StatusBadge}from"./Ui";
 
 const kindLabel:Record<KnowledgeKind,string>={
@@ -249,6 +249,79 @@ export function ActionQueuePage(){
           </div>
         </article>)}
       </div>
+    </section>
+  </>;
+}
+
+export function RevenueEnginePage(){
+  const{state,addDeal,updateDealStage}=usePraxios();
+  const[account,setAccount]=useState("");
+  const[offer,setOffer]=useState("");
+  const[project,setProject]=useState("Visual Art AI");
+  const[value,setValue]=useState("150000");
+  const stages=["Lead","Qualified","Discovery","Proposal","Negotiation","Won","Lost"] as const;
+  const total=state.deals.filter(d=>d.stage!=="Lost").reduce((sum,d)=>sum+d.value,0);
+  const weighted=state.deals.reduce((sum,d)=>sum+d.value*(d.probability/100),0);
+  const won=state.deals.filter(d=>d.stage==="Won").reduce((sum,d)=>sum+d.value,0);
+  const createDeal=()=>{
+    const numeric=Number(value);
+    if(!account.trim()||!offer.trim()||!Number.isFinite(numeric)||numeric<=0)return;
+    addDeal({account,offer,project,value:numeric});
+    setAccount("");setOffer("");
+  };
+  return <>
+    <SectionHeader eyebrow="REVENUE ENGINE" title="Oportunidades que no llegan al pipeline no son negocio."
+      description="Crea leads, muévelos por etapas y mide valor ponderado. PRAXIOS registra cada cambio como evento."/>
+    <section className="revenue-metrics">
+      <article><span>Pipeline bruto</span><strong>{money(total)}</strong></article>
+      <article><span>Pipeline ponderado</span><strong>{money(Math.round(weighted))}</strong></article>
+      <article><span>Won</span><strong>{money(won)}</strong></article>
+      <article><span>Deals activos</span><strong>{state.deals.filter(d=>d.stage!=="Won"&&d.stage!=="Lost").length}</strong></article>
+    </section>
+    <section className="panel deal-capture">
+      <div className="deal-capture-grid">
+        <label><span>Cuenta / cliente</span><input value={account} onChange={e=>setAccount(e.target.value)} placeholder="Ej: Clínica Dental Talca"/></label>
+        <label><span>Oferta</span><input value={offer} onChange={e=>setOffer(e.target.value)} placeholder="Ej: Auditoría + implementación"/></label>
+        <label><span>Proyecto</span><select value={project} onChange={e=>setProject(e.target.value)}>{projects.filter(p=>p.id!=="praxios-core").map(p=><option key={p.id} value={p.name}>{p.name}</option>)}</select></label>
+        <label><span>Valor CLP</span><input type="number" min="0" value={value} onChange={e=>setValue(e.target.value)}/></label>
+        <button type="button" className="primary-button" onClick={createDeal}>Crear deal</button>
+      </div>
+    </section>
+    <section className="revenue-board">{stages.map(stage=><div className="revenue-column" key={stage}>
+      <div className="revenue-column-head"><span>{stage}</span><strong>{state.deals.filter(d=>d.stage===stage).length}</strong></div>
+      {state.deals.filter(d=>d.stage===stage).map(deal=><article className="revenue-deal" key={deal.id}>
+        <span className="deal-project">{deal.project}</span><h3>{deal.account}</h3><p>{deal.offer}</p><strong className="deal-amount">{money(deal.value)}</strong>
+        <div className="deal-probability"><span>probability</span><strong>{deal.probability}%</strong></div>
+        <p className="deal-next">{deal.nextAction}</p>
+        <select aria-label={`Cambiar etapa de ${deal.account}`} value={deal.stage} onChange={e=>updateDealStage(deal.id,e.target.value as DealStage)}>{stages.map(s=><option key={s} value={s}>{s}</option>)}</select>
+      </article>)}
+    </div>)}</section>
+  </>;
+}
+
+export function FinanceOSPage(){
+  const{state}=usePraxios();
+  const projectRevenue=projects.reduce((sum,p)=>sum+p.revenue30d,0);
+  const gross=state.deals.filter(d=>d.stage!=="Lost").reduce((sum,d)=>sum+d.value,0);
+  const weighted=state.deals.reduce((sum,d)=>sum+d.value*(d.probability/100),0);
+  const won=state.deals.filter(d=>d.stage==="Won").reduce((sum,d)=>sum+d.value,0);
+  const goal=1000000;
+  const progress=Math.min(100,Math.round((won/goal)*100));
+  const byProject=projects.filter(p=>p.id!=="praxios-core").map(project=>{
+    const deals=state.deals.filter(d=>d.project===project.name&&d.stage!=="Lost");
+    return{name:project.name,gross:deals.reduce((sum,d)=>sum+d.value,0),weighted:deals.reduce((sum,d)=>sum+d.value*(d.probability/100),0),score:project.score};
+  }).sort((a,b)=>b.weighted-a.weighted);
+  return <>
+    <SectionHeader eyebrow="FINANCE / MONEY MAP" title="El dinero decide qué merece más capacidad."
+      description="Caja validada, revenue, pipeline y probabilidad se separan para evitar confundir actividad con valor."/>
+    <section className="finance-os-grid">
+      <article className="panel"><span className="mini-label">REVENUE 30D — BASE</span><strong>{money(projectRevenue)}</strong><p>Seed inicial del portfolio; reemplazar por contabilidad/eventos reales en la siguiente capa.</p></article>
+      <article className="panel"><span className="mini-label">PIPELINE BRUTO</span><strong>{money(gross)}</strong><p>Suma de deals no perdidos.</p></article>
+      <article className="panel"><span className="mini-label">PIPELINE PONDERADO</span><strong>{money(Math.round(weighted))}</strong><p>Ajustado por etapa/probabilidad.</p></article>
+      <article className="panel"><span className="mini-label">CASH MISSION — WON</span><strong>{money(won)}</strong><div className="goal-progress"><i style={{width:`${progress}%`}}/></div><small>{progress}% de $1.000.000</small></article>
+    </section>
+    <section className="panel finance-map"><div className="panel-heading"><div><div className="panel-kicker">CAPITAL ALLOCATION SIGNAL</div><h2>Pipeline comercial por proyecto</h2></div><span className="microcopy">Ponderado × prioridad de portfolio</span></div>
+      {byProject.map(row=><div className="finance-map-row" key={row.name}><div><strong>{row.name}</strong><span>score {row.score}</span></div><div><span>gross</span><strong>{money(row.gross)}</strong></div><div><span>weighted</span><strong>{money(Math.round(row.weighted))}</strong></div><div className="finance-signal"><i style={{width:`${Math.min(100,row.score)}%`}}/></div></div>)}
     </section>
   </>;
 }
