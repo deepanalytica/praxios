@@ -160,7 +160,7 @@ export function PraxiosProvider({children}:{children:ReactNode}){
         const nextStep=steps.find(s=>s.status==="queued");
         if(nextStep)nextStep.status="running";
         const completed=steps.every(s=>s.status==="done");
-        return{...w,status:completed?"completed":"running" as const,lastRun:new Date().toISOString(),steps};
+        return{...w,status:completed?("completed" as const):("running" as const),lastRun:new Date().toISOString(),steps};
       });
       return{...previous,workflows,events:[event("workflow.run",target?.name||workflowId,"Pipeline avanzado una etapa.","Workflow Engine",target?.project),...previous.events]};
     });
