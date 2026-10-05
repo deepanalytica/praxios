@@ -1,6 +1,5 @@
 import{useState}from"react";
-import{Finance,Pipeline}from"./components/Pages";
-import{ActionQueuePage,AgentOfficeOS,DecisionCenter,OpportunityRadar,OSCommandCenter,PortfolioOS,ResourcesPage,SessionGateway,StateGraphPage,SystemPage,WorkflowsPage}from"./components/OSPages";
+import{ActionQueuePage,AgentOfficeOS,DecisionCenter,FinanceOSPage,OpportunityRadar,OSCommandCenter,PortfolioOS,ResourcesPage,RevenueEnginePage,SessionGateway,StateGraphPage,SystemPage,WorkflowsPage}from"./components/OSPages";
 import{PraxiosProvider}from"./os/store";
 
 type View="command"|"harvest"|"graph"|"decisions"|"opportunities"|"actions"|"workflows"|"portfolio"|"agents"|"revenue"|"finance"|"resources"|"system";
@@ -30,8 +29,8 @@ function Screen({view}:{view:View}){
     case"workflows":return <WorkflowsPage/>;
     case"portfolio":return <PortfolioOS/>;
     case"agents":return <AgentOfficeOS/>;
-    case"revenue":return <Pipeline/>;
-    case"finance":return <Finance/>;
+    case"revenue":return <RevenueEnginePage/>;
+    case"finance":return <FinanceOSPage/>;
     case"resources":return <ResourcesPage/>;
     case"system":return <SystemPage/>;
     default:return <OSCommandCenter/>;
