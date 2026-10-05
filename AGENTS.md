@@ -4,11 +4,13 @@ Este repositorio no se opera como un proyecto de software aislado. Es parte de P
 
 ## Antes de trabajar
 
-1. Lee `praxios/state/STATE_BRIEF.md`.
-2. Lee `docs/CONSTITUTION.md`.
-3. Identifica proyecto, misión, decisión vigente y restricciones.
-4. Reutiliza capacidades existentes antes de proponer un proyecto nuevo.
-5. Distingue hechos, evidencia, hipótesis y decisiones.
+1. Ejecuta `npm run sync:harvest` para compilar el ledger reciente.
+2. Lee `praxios/state/STATE_BRIEF.md`.
+3. Lee `praxios/state/HARVEST_BRIEF.md` generado localmente.
+4. Lee `docs/CONSTITUTION.md`.
+5. Identifica proyecto, misión, decisión vigente y restricciones.
+6. Reutiliza capacidades existentes antes de proponer un proyecto nuevo.
+7. Distingue hechos, evidencia, hipótesis y decisiones.
 
 ## Durante el trabajo
 
