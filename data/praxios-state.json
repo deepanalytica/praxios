@@ -1,0 +1,73 @@
+{
+  "version": "0.2.0",
+  "mission": {
+    "title": "Convertir capacidad en valor económico y decisiones mejores",
+    "target": "Generar caja validada, reducir dispersión y aumentar apalancamiento del founder",
+    "northStar": "cash_generated_per_founder_hour"
+  },
+  "metrics": {
+    "cash": 1840000,
+    "revenue30d": 3460000,
+    "weightedPipeline": 3120000,
+    "mrr": 620000,
+    "burn": 410000
+  },
+  "projects": [
+    {"id":"visual-art-ai","name":"Visual Art AI","state":"SCALE","score":84,"priority":1,"objective":"Cerrar y estandarizar servicios de visibilidad en Google e IA","nextAction":"Cerrar 5 clientes con diagnóstico como puerta de entrada"},
+    {"id":"deep-living","name":"Deep Living","state":"SCALE","score":81,"priority":2,"objective":"Captar propietarios y monetizar corretaje","nextAction":"Activar embudo de tasación preliminar"},
+    {"id":"msj","name":"MSJ","state":"BUILD","score":73,"priority":3,"objective":"Validar asistente multicanal como SaaS","nextAction":"Conseguir 3 pilotos pagados"},
+    {"id":"clinia","name":"Clinia","state":"TEST","score":66,"priority":5,"objective":"Validar vertical clínica","nextAction":"Entrevistar y pre-vender antes de ampliar producto"},
+    {"id":"deep-geo","name":"Deep Geo","state":"HOLD","score":61,"priority":6,"objective":"Convertir capacidades GIS en contratos de alto ticket","nextAction":"Priorizar propuestas comerciales sobre nuevas features"},
+    {"id":"educabot","name":"Educabot","state":"TEST","score":59,"priority":7,"objective":"Validar demanda docente antes del SaaS","nextAction":"Pre-vender toolkit docente"},
+    {"id":"digital-products","name":"Digital Product & IP Factory","state":"TEST","score":72,"priority":4,"objective":"Validar microproductos y distribución","nextAction":"Ejecutar 3 tests de preventa"},
+    {"id":"praxios-core","name":"PRAXIOS OS","state":"BUILD","score":88,"priority":0,"objective":"Gobernar modelos, memoria, decisiones y ejecución","nextAction":"Operar el sistema diariamente y cosechar cada sesión"}
+  ],
+  "entities": [
+    {"id":"goal-cash","kind":"goal","title":"Generar caja validada","summary":"Priorizar acciones con impacto económico verificable","status":"ACTIVE","confidence":95,"tags":["cash","portfolio"]},
+    {"id":"problem-discontinuity","kind":"problem","title":"Discontinuidad entre sesiones","summary":"El conocimiento y las decisiones se pierden cuando cada chat termina como texto aislado","status":"ACTIVE","confidence":98,"tags":["memory","sessions"]},
+    {"id":"capability-llm-seo","kind":"capability","title":"LLM SEO / visibilidad IA","summary":"Capacidad comercial y técnica de Visual Art AI","status":"ACTIVE","confidence":90,"tags":["visual-art-ai"]},
+    {"id":"capability-gis","kind":"capability","title":"GIS + SAR/InSAR","summary":"Capacidad técnica reutilizable en Deep Geo y minería","status":"ACTIVE","confidence":88,"tags":["deep-geo","mining"]}
+  ],
+  "relations": [
+    {"id":"rel-1","from":"problem-discontinuity","to":"praxios-core","type":"SOLVED_BY"},
+    {"id":"rel-2","from":"capability-llm-seo","to":"visual-art-ai","type":"ENABLES"},
+    {"id":"rel-3","from":"capability-gis","to":"deep-geo","type":"ENABLES"}
+  ],
+  "sessions": [],
+  "decisions": [
+    {"id":"DEC-0001","title":"Usar PRAXIOS como control plane y no como otro chatbot","projectId":"praxios-core","status":"ACTIVE","confidence":96,"rationale":"Los modelos deben ser reemplazables; el estado institucional debe persistir","createdAt":"2026-10-05T13:00:00-03:00","reviewAt":"2026-11-05","killCriteria":"Si no reduce discontinuidad ni mejora decisiones tras 30 días de uso","scaleCriteria":"Uso diario + sesiones cosechadas + decisiones trazables"},
+    {"id":"DEC-0002","title":"Máximo tres apuestas estratégicas de ejecución intensa","projectId":"praxios-core","status":"ACTIVE","confidence":82,"rationale":"Evitar dispersión y costo de cambio entre proyectos","createdAt":"2026-10-05T13:05:00-03:00","reviewAt":"2026-10-19","killCriteria":"Si una oportunidad extraordinaria justifica excepción explícita","scaleCriteria":"Mayor caja por hora del founder"}
+  ],
+  "opportunities": [
+    {"id":"OPP-001","title":"Diagnóstico de presencia IA como oferta de entrada","projectId":"visual-art-ai","score":86,"status":"TEST","timeToCashDays":3,"estimatedValue":600000,"confidence":84,"nextAction":"Contactar prospectos con oferta estandarizada"},
+    {"id":"OPP-002","title":"Tasación preliminar como captación inmobiliaria","projectId":"deep-living","score":81,"status":"TEST","timeToCashDays":10,"estimatedValue":950000,"confidence":76,"nextAction":"Publicar landing y contactar propietarios"},
+    {"id":"OPP-003","title":"Toolkit docente antes de construir Educabot completo","projectId":"educabot","score":67,"status":"TEST","timeToCashDays":14,"estimatedValue":300000,"confidence":60,"nextAction":"Pre-vender a profesores"}
+  ],
+  "evidence": [
+    {"id":"EVD-001","title":"Clientes llegaron a web desde búsquedas asistidas por IA","projectId":"visual-art-ai","source":"customer-signal","claim":"La visibilidad en buscadores de IA puede convertirse en demanda comercial","strength":"MEDIUM","createdAt":"2026-10-05T13:00:00-03:00"},
+    {"id":"EVD-002","title":"Value Factory compila con CI verde","projectId":"praxios-core","source":"github-actions","claim":"La interfaz base es técnicamente desplegable","strength":"HIGH","createdAt":"2026-10-05T13:00:00-03:00"}
+  ],
+  "tasks": [
+    {"id":"TSK-001","title":"Operar PRAXIOS diariamente","projectId":"praxios-core","status":"DOING","priority":"CRITICAL","owner":"Owner","dueAt":"2026-10-05","source":"system"},
+    {"id":"TSK-002","title":"Cerrar oferta Visual Art AI","projectId":"visual-art-ai","status":"TODO","priority":"HIGH","owner":"CRO","dueAt":"2026-10-06","source":"decision"},
+    {"id":"TSK-003","title":"Conseguir 3 pilotos pagados de MSJ","projectId":"msj","status":"TODO","priority":"HIGH","owner":"CRO","dueAt":"2026-10-12","source":"decision"}
+  ],
+  "agents": [
+    {"id":"ceo","name":"AI CEO","role":"Capital Allocator","status":"ACTIVE","authority":"RECOMMEND","objective":"Maximizar caja, margen, velocidad y valor estratégico"},
+    {"id":"cfo","name":"CFO","role":"Finance","status":"ACTIVE","authority":"ANALYZE","objective":"Calcular economía, runway, margen y retorno"},
+    {"id":"cro","name":"CRO","role":"Revenue","status":"ACTIVE","authority":"EXECUTE_LOW_RISK","objective":"Convertir pipeline en ventas cobradas"},
+    {"id":"market","name":"Market Intelligence","role":"Research","status":"ACTIVE","authority":"RESEARCH","objective":"Encontrar demanda y oportunidades pagables"},
+    {"id":"risk","name":"Risk / QA","role":"Challenge","status":"ACTIVE","authority":"BLOCK_HIGH_RISK","objective":"Detectar evidencia insuficiente y riesgos materiales"},
+    {"id":"builder","name":"Builder","role":"Engineering","status":"ACTIVE","authority":"EXECUTE_CODE","objective":"Construir sólo lo que desbloquea valor"}
+  ],
+  "agentJobs": [],
+  "activity": [
+    {"id":"ACT-001","type":"system","message":"PRAXIOS OS state initialized","createdAt":"2026-10-05T13:00:00-03:00"},
+    {"id":"ACT-002","type":"decision","message":"Control plane architecture accepted","createdAt":"2026-10-05T13:05:00-03:00"}
+  ],
+  "resources": {
+    "capabilities":["IA generativa","UI/UX","desarrollo web","automatización","GIS","SAR/InSAR","marketing","LLM SEO","video","branding","analytics","real estate"],
+    "assets":["deepanalytica.cl","visualartai.cl","educabot.cl","repositorios GitHub","casos de clientes","datasets geoespaciales"],
+    "constraints":["tiempo del founder","capital limitado","dispersión entre proyectos","ciclos comerciales largos en minería y sector público"]
+  }
+}
