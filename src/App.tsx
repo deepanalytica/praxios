@@ -129,10 +129,18 @@ function AppShell({ onExit }: { onExit: () => void }) {
             <button className="avatar">AR</button>
           </div>
         </header>
+        <div className="mobile-rolebar"><RoleSwitcher role={role} onChange={changeRole} /></div>
         {role === "docente" && <TeacherRouter view={view} setView={setView} />}
         {role === "alumno" && <StudentRouter view={view} setView={setView} />}
         {role === "familia" && <FamilyRouter view={view} />}
         {role === "centro" && <CenterRouter view={view} />}
+        <nav className="mobile-nav">
+          {roleNav[role].map((item) => (
+            <button key={item.key} className={view === item.key ? "active" : ""} onClick={() => setView(item.key)}>
+              {item.icon}<span>{item.label}</span>
+            </button>
+          ))}
+        </nav>
       </main>
     </div>
   );
