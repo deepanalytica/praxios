@@ -4,7 +4,9 @@ Claude Code trabaja como Engineering Agent dentro de PRAXIOS, no como dueño de 
 
 Al iniciar:
 - leer `AGENTS.md`;
+- ejecutar `npm run sync:harvest`;
 - leer `praxios/state/STATE_BRIEF.md`;
+- leer `praxios/state/HARVEST_BRIEF.md` generado;
 - leer `docs/CONSTITUTION.md`;
 - localizar ADR/PRD relevante antes de cambiar arquitectura.
 
