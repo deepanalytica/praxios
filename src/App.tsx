@@ -1,22 +1,23 @@
 import{useState}from"react";
 import{Finance,Pipeline}from"./components/Pages";
-import{AgentOfficeOS,DecisionCenter,OpportunityRadar,OSCommandCenter,PortfolioOS,ResourcesPage,SessionGateway,StateGraphPage,SystemPage,WorkflowsPage}from"./components/OSPages";
+import{ActionQueuePage,AgentOfficeOS,DecisionCenter,OpportunityRadar,OSCommandCenter,PortfolioOS,ResourcesPage,SessionGateway,StateGraphPage,SystemPage,WorkflowsPage}from"./components/OSPages";
 import{PraxiosProvider}from"./os/store";
 
-type View="command"|"harvest"|"graph"|"decisions"|"opportunities"|"workflows"|"portfolio"|"agents"|"revenue"|"finance"|"resources"|"system";
+type View="command"|"harvest"|"graph"|"decisions"|"opportunities"|"actions"|"workflows"|"portfolio"|"agents"|"revenue"|"finance"|"resources"|"system";
 const nav:Array<{id:View;label:string;code:string}>=[
   {id:"command",label:"Command Center",code:"01"},
   {id:"harvest",label:"Session Harvest",code:"02"},
   {id:"graph",label:"State Graph",code:"03"},
   {id:"decisions",label:"Decision Engine",code:"04"},
   {id:"opportunities",label:"Opportunity Radar",code:"05"},
-  {id:"workflows",label:"Pipelines",code:"06"},
-  {id:"portfolio",label:"Portfolio",code:"07"},
-  {id:"agents",label:"Agent Office",code:"08"},
-  {id:"revenue",label:"Revenue",code:"09"},
-  {id:"finance",label:"Finance",code:"10"},
-  {id:"resources",label:"Resources",code:"11"},
-  {id:"system",label:"Meta-Harness",code:"12"},
+  {id:"actions",label:"Action Queue",code:"06"},
+  {id:"workflows",label:"Pipelines",code:"07"},
+  {id:"portfolio",label:"Portfolio",code:"08"},
+  {id:"agents",label:"Agent Office",code:"09"},
+  {id:"revenue",label:"Revenue",code:"10"},
+  {id:"finance",label:"Finance",code:"11"},
+  {id:"resources",label:"Resources",code:"12"},
+  {id:"system",label:"Meta-Harness",code:"13"},
 ];
 
 function Screen({view}:{view:View}){
@@ -25,6 +26,7 @@ function Screen({view}:{view:View}){
     case"graph":return <StateGraphPage/>;
     case"decisions":return <DecisionCenter/>;
     case"opportunities":return <OpportunityRadar/>;
+    case"actions":return <ActionQueuePage/>;
     case"workflows":return <WorkflowsPage/>;
     case"portfolio":return <PortfolioOS/>;
     case"agents":return <AgentOfficeOS/>;
