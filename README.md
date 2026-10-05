@@ -21,7 +21,7 @@ Generar $1.000.000 CLP adicionales de caja validada usando activos actuales ante
 - pruebas unitarias iniciales
 - PRD, SDD, TDD y ADRs
 - GitHub Actions
-- configuración Cloudflare Pages
+- despliegue estático con GitHub Pages
 
 Proyectos cargados: Visual Art AI, Deep Living, MSJ, Clinia, Deep Geo, Educabot, Digital Product & IP Factory y PRAXIOS Core.
 
@@ -35,15 +35,19 @@ El sistema debe decir qué hacer y qué no hacer. Ningún proyecto conserva prio
 
 Requiere Node.js 22+.
 
+```bash
 npm install
 npm run dev
+```
 
 Quality gate:
 
+```bash
 npm run lint
 npm run typecheck
 npm run test
 npm run build
+```
 
 ## Documentación
 
@@ -54,20 +58,31 @@ npm run build
 - docs/ROADMAP.md — etapas de evolución
 - docs/adr — decisiones de arquitectura
 
-## Cloudflare
+## GitHub Pages
 
-El workflow deploy-cloudflare.yml despliega main a Cloudflare Pages cuando existen los secrets:
+La V1 del frontend se publica sólo con infraestructura de GitHub:
 
-- CLOUDFLARE_API_TOKEN
-- CLOUDFLARE_ACCOUNT_ID
+1. push a `develop/value-factory-v1` o `main`;
+2. GitHub Actions ejecuta lint, typecheck y tests;
+3. Vite genera `dist/`;
+4. Actions sube el artifact de Pages;
+5. GitHub Pages sirve la aplicación.
 
-Proyecto esperado: praxios-value-factory.
+No se requieren secrets de Cloudflare ni Wrangler.
+
+Si Pages todavía no está habilitado en el repositorio, en GitHub se debe seleccionar:
+
+`Settings → Pages → Build and deployment → Source: GitHub Actions`
+
+La URL esperada para un Project Page es:
+
+`https://deepanalytica.github.io/praxios/`
 
 ## Rama
 
 Trabajo actual: develop/value-factory-v1
 
-main no se modifica hasta que CI esté verde y la rama sea revisada.
+main no se modifica hasta que CI y la revisión visual estén aprobados.
 
 ## Estado de la arquitectura
 
