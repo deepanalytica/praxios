@@ -16,6 +16,7 @@ interface PraxiosContextValue{
   harvestAndCommit:(input:{raw:string;source:SessionSource;title:string;project?:string})=>HarvestBundle;
   runCeoCycle:()=>void;
   updateNodeStatus:(nodeId:string,status:KnowledgeStatus)=>void;
+  addKnowledgeNode:(input:{kind:KnowledgeKind;title:string;summary?:string;project?:string;confidence?:number})=>void;
   runWorkflow:(workflowId:string)=>void;
   exportState:()=>string;
   importState:(raw:string)=>{ok:boolean;message:string};
@@ -149,6 +150,26 @@ export function PraxiosProvider({children}:{children:ReactNode}){
     });
   };
 
+  const addKnowledgeNode=(input:{kind:KnowledgeKind;title:string;summary?:string;project?:string;confidence?:number})=>{
+    setState(previous=>{
+      const nodeId=id("NODE");
+      const node={
+        id:nodeId,
+        kind:input.kind,
+        title:input.title.trim(),
+        summary:(input.summary||input.title).trim(),
+        project:input.project||undefined,
+        status:"open" as const,
+        confidence:Math.max(0,Math.min(100,input.confidence??80)),
+        tags:[],
+        createdAt:new Date().toISOString(),
+      };
+      const next={...previous,nodes:[node,...previous.nodes],events:[event("knowledge.created",`${input.kind} creado`,node.title,"Human",node.project),...previous.events]};
+      next.ceoBrief=buildCeoBrief(next);
+      return next;
+    });
+  };
+
   const runWorkflow=(workflowId:string)=>{
     setState(previous=>{
       const target=previous.workflows.find(w=>w.id===workflowId);
@@ -183,7 +204,7 @@ export function PraxiosProvider({children}:{children:ReactNode}){
     setState(seed);
   };
 
-  const value={state,previewHarvest,commitHarvest,harvestAndCommit,runCeoCycle,updateNodeStatus,runWorkflow,exportState,importState,resetState};
+  const value={state,previewHarvest,commitHarvest,harvestAndCommit,runCeoCycle,updateNodeStatus,addKnowledgeNode,runWorkflow,exportState,importState,resetState};
   return <PraxiosContext.Provider value={value}>{children}</PraxiosContext.Provider>;
 }
 
