@@ -41,9 +41,9 @@ function normalizePack(candidate: Partial<ClassPack>, input: ClassRequest): Clas
         const state = allowedStates.has(item.state as EpistemicState)
           ? (item.state as EpistemicState)
           : "CONJETURA_DECLARADA";
-        // El modelo no puede elevar contenido generado a VERIFICADO.
+        // Una etiqueta generada por el modelo no constituye una comprobación.
         return {
-          state: state === "VERIFICADO" ? "CORROBORADO" as const : state,
+          state: state === "SILENCIO" ? "SILENCIO" as const : "CONJETURA_DECLARADA" as const,
           text: String(item.text || "Afirmación generada"),
           detail: String(item.detail || "Requiere revisión e instrumentación.")
         };
@@ -77,19 +77,20 @@ function normalizePack(candidate: Partial<ClassPack>, input: ClassRequest): Clas
 }
 
 function curriculumContext(input: ClassRequest) {
-  const q = (input.prompt + " " + input.subject).toLowerCase();
-  if (/tect|sismo|placa|terrem/.test(q)) {
+  const q = input.prompt.toLowerCase();
+  const course = input.course.trim();
+  if (/^7(?:\D|$)/.test(course) && /ciencias?/i.test(input.subject) && /tect|sismo|placa|terrem/.test(q)) {
     return {
       oaCode: "CN07 OA 09",
       oaLabel: "Tectónica de placas, patrones de actividad geológica e interacción entre placas.",
-      source: "Catálogo curricular curado del prototipo"
+      source: "https://www.curriculumnacional.cl/recursos/tectonica-placas"
     };
   }
-  if (/fracci|equival/.test(q)) {
+  if (/^5(?:\D|$)/.test(course) && /matem/i.test(input.subject) && /fracci|equival/.test(q)) {
     return {
       oaCode: "MA05 OA 07",
       oaLabel: "Fracciones propias, representación, equivalencia y comparación.",
-      source: "Catálogo curricular curado del prototipo"
+      source: "https://www.curriculumnacional.cl/curriculum/1o-6o-basico/matematica/5-basico/ma05-oa-07"
     };
   }
   return null;
@@ -132,16 +133,20 @@ async function classPack(request: Request, env: Env): Promise<Response> {
     );
     const parsed = parseJson(raw) as Partial<ClassPack>;
     const normalized = normalizePack(parsed, input);
+    if (!curriculum) {
+      normalized.oaCode = "OA PENDIENTE";
+      normalized.oaLabel = "La alineación exacta debe revisarse contra el currículo oficial antes de asignar.";
+    }
     if (curriculum) {
       normalized.oaCode = curriculum.oaCode;
       normalized.oaLabel = curriculum.oaLabel;
       normalized.trust = [
         {
-          state: "VERIFICADO",
-          text: "Alineación curricular",
-          detail: curriculum.source
+          state: "CORROBORADO",
+          text: "Referencia curricular sugerida",
+          detail: `OA del catálogo oficial (${curriculum.source}); revisar si la actividad realmente lo cubre.`
         },
-        ...normalized.trust.filter((item) => item.text !== "Alineación curricular")
+        ...normalized.trust.filter((item) => item.text !== "Alineación curricular" && item.text !== "Referencia curricular sugerida")
       ];
     }
     return Response.json({ pack: normalized, mode: "ai-assisted", curriculum });

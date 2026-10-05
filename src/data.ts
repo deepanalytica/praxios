@@ -91,8 +91,8 @@ export const defaultClassPack: ClassPack = {
     "Plan B sin internet"
   ],
   trust: [
-    { state: "VERIFICADO", text: "Alineación curricular", detail: "OA del catálogo curricular cargado y versionado por el sistema." },
-    { state: "CORROBORADO", text: "Explicación geológica principal", detail: "Apta para la demo; en producción debe enlazar fuentes científicas externas instrumentadas." },
+    { state: "CORROBORADO", text: "Referencia curricular sugerida", detail: "OA del ejemplo curado para la demo; el docente debe revisar si la actividad realmente lo cubre." },
+    { state: "CONJETURA_DECLARADA", text: "Explicación geológica principal", detail: "Ejemplo para la demo; falta contrastar sus afirmaciones con fuentes científicas antes de usarlo en clase." },
     { state: "SILENCIO", text: "Predicción exacta de próximos sismos", detail: "Bloqueada: la clase no tiene evidencia para sostener esa afirmación." }
   ],
   teacherNotes: [
@@ -128,7 +128,7 @@ export const classPulse = [
 
 export function fallbackPack(input: ClassRequest): ClassPack {
   const lower = input.prompt.toLowerCase();
-  if (/tect|sismo|placa|terrem/.test(lower)) {
+  if (/^7(?:\D|$)/.test(input.course.trim()) && /ciencias?/i.test(input.subject) && /tect|sismo|placa|terrem/.test(lower)) {
     return {
       ...defaultClassPack,
       meta: `${input.course} · ${input.subject} · ${input.duration}`,

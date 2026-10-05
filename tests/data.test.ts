@@ -22,6 +22,17 @@ describe("Educabot class-pack fallback", () => {
     expect(pack.trust.some((item) => item.state === "CONJETURA_DECLARADA")).toBe(true);
   });
 
+  it("does not assign the tectonics OA to a different course or subject", () => {
+    const prompt = "Quiero enseñar tectónica de placas y sismos en Chile";
+    expect(fallbackPack({ ...base, course: "5° básico A", prompt }).oaCode).toBe("OA PENDIENTE");
+    expect(fallbackPack({ ...base, subject: "Matemática", prompt }).oaCode).toBe("OA PENDIENTE");
+  });
+
+  it("does not label demo curriculum alignment as verified", () => {
+    const pack = fallbackPack({ ...base, prompt: "Quiero enseñar tectónica de placas" });
+    expect(pack.trust.some((item) => item.state === "VERIFICADO")).toBe(false);
+  });
+
   it("preserves requested output artifacts", () => {
     const pack = fallbackPack({ ...base, prompt: "Quiero enseñar un tema nuevo", outputs: ["Presentación", "Guía alumno"] });
     expect(pack.materials).toContain("Presentación");

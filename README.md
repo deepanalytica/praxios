@@ -2,6 +2,8 @@
 
 Rama de producto: `feature/educabot-prd`.
 
+> La [estrategia de producto v2](docs/educabot/PRODUCT_STRATEGY_V2.md) propone separar Aprende, Crea e Implementa como aplicaciones independientes para sus usuarios. La interfaz de esta rama sigue siendo un prototipo integrado; sus métricas son datos demo y sus controles de veracidad aún no verifican todas las afirmaciones generadas.
+
 Educabot es el vertical educativo construido sobre PRAXIOS + Meta-Harness. El producto conecta cuatro superficies — Docente, Alumno, Familia y Centro de Mando — sobre currículo versionado, Learning Graph, calendario, evidencia y control de autoridad.
 
 ## Qué está desarrollado en esta rama
