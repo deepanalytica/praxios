@@ -118,7 +118,7 @@ export function SessionGateway(){
         {!preview?<div className="empty-state"><strong>La conversación no es la memoria.</strong><p>La memoria son los objetos estructurados que sobreviven a ella.</p></div>:
         <>
           <p className="preview-summary">{preview.summary}</p>
-          <div className="harvest-items">{preview.items.map((item,index)=><div key={item.title+index}><NodeBadge kind={item.kind}/><div><strong>{item.title}</strong><p>{item.summary}</p></div><span>{item.confidence??70}%</span></div>)}</div>
+          <div className="harvest-items">{preview.items.map(item=><div key={`${item.kind}-${item.project||"system"}-${item.title}-${item.summary||""}`}><NodeBadge kind={item.kind}/><div><strong>{item.title}</strong><p>{item.summary}</p></div><span>{item.confidence??70}%</span></div>)}</div>
           <button type="button" className="primary-button full-button" onClick={commit}>Incorporar al State Graph</button>
         </>}
       </article>
