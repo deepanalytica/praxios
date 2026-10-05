@@ -87,10 +87,11 @@ Cada AgentRun debe registrar agent_id, input_hash, model/provider, coste, duraci
 
 ## 6. Despliegue
 
-Frontend: Cloudflare Pages.
+Frontend V1: GitHub Pages.
 CI/CD: GitHub Actions.
-Persistencia futura: PostgreSQL/Supabase.
-Storage futuro: Cloudflare R2.
-Jobs/eventos futuros: Cloudflare Workers + Queues.
+Build estático: Vite.
+Persistencia futura: PostgreSQL/Supabase u otro servicio de datos adecuado.
+Storage futuro: por definir según necesidad.
+Jobs/eventos futuros: backend desacoplado; GitHub Pages no ejecuta procesos persistentes ni secretos de servidor.
 
-No Vercel.
+La interfaz V1 no depende de Cloudflare ni Vercel.
