@@ -1,0 +1,10 @@
+{
+  "name": "Educabot",
+  "short_name": "Educabot",
+  "description": "IA para enseñar y aprender mejor.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07110f",
+  "theme_color": "#07110f",
+  "lang": "es-CL"
+}
