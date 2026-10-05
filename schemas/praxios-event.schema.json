@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://praxios.local/schemas/praxios-event.schema.json",
+  "title": "PRAXIOS Event",
+  "type": "object",
+  "required": ["id","type","title","detail","actor","createdAt"],
+  "properties": {
+    "id":{"type":"string"},
+    "type":{"type":"string"},
+    "title":{"type":"string"},
+    "detail":{"type":"string"},
+    "project":{"type":"string"},
+    "actor":{"type":"string"},
+    "createdAt":{"type":"string","format":"date-time"}
+  },
+  "additionalProperties": false
+}
