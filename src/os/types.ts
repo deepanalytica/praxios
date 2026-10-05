@@ -74,6 +74,19 @@ export interface Workflow{
   steps:WorkflowStep[];
   lastRun?:string;
 }
+export type DealStage="Lead"|"Qualified"|"Discovery"|"Proposal"|"Negotiation"|"Won"|"Lost";
+export interface RevenueDeal{
+  id:string;
+  account:string;
+  offer:string;
+  project:string;
+  stage:DealStage;
+  value:number;
+  probability:number;
+  nextAction:string;
+  createdAt:string;
+  sourceOpportunityId?:string;
+}
 export interface Resource{
   id:string;
   name:string;
@@ -98,5 +111,6 @@ export interface PraxiosState{
   events:SystemEvent[];
   workflows:Workflow[];
   resources:Resource[];
+  deals:RevenueDeal[];
   ceoBrief:CioBrief|null;
 }
