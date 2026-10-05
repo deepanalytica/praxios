@@ -210,6 +210,49 @@ export function WorkflowsPage(){
   </>;
 }
 
+export function ActionQueuePage(){
+  const{state,updateNodeStatus,addKnowledgeNode}=usePraxios();
+  const[title,setTitle]=useState("");
+  const[project,setProject]=useState("");
+  const tasks=state.nodes.filter(n=>n.kind==="task").sort((a,b)=>{
+    const rank={active:0,open:1,blocked:2,done:3,dismissed:4};
+    return rank[a.status]-rank[b.status]||b.createdAt.localeCompare(a.createdAt);
+  });
+  const createTask=()=>{
+    if(!title.trim())return;
+    addKnowledgeNode({kind:"task",title,summary:title,project:project||undefined,confidence:90});
+    setTitle("");
+  };
+  return <>
+    <SectionHeader eyebrow="ACTION QUEUE" title="Las conversaciones terminan en acciones o aprendizaje."
+      description="Tareas cosechadas, acciones manuales y bloqueos visibles en un único frente de ejecución."/>
+    <section className="action-summary">
+      {(["active","open","blocked","done"] as const).map(status=><article key={status}><span>{status}</span><strong>{tasks.filter(t=>t.status===status).length}</strong></article>)}
+    </section>
+    <section className="action-layout">
+      <article className="panel quick-action">
+        <div className="panel-kicker">QUICK CAPTURE</div><h2>Crear acción</h2>
+        <label className="field"><span>Tarea</span><input value={title} onChange={e=>setTitle(e.target.value)} onKeyDown={e=>{if(e.key==="Enter")createTask()}} placeholder="Ej: contactar 5 prospectos VAI"/></label>
+        <label className="field"><span>Proyecto</span><select value={project} onChange={e=>setProject(e.target.value)}><option value="">Transversal</option>{projects.map(p=><option key={p.id} value={p.name}>{p.name}</option>)}</select></label>
+        <button type="button" className="primary-button full-button" onClick={createTask}>Agregar a ejecución</button>
+        <div className="execution-rule"><span>REGLA</span><p>Si una acción no produce revenue, evidencia, reducción de riesgo o capacidad reutilizable, debe justificar por qué consume tiempo.</p></div>
+      </article>
+      <div className="task-stack">
+        {tasks.length===0?<article className="panel empty-state"><strong>Sin tareas cosechadas.</strong><p>Las próximas sesiones pueden alimentar automáticamente esta cola.</p></article>:tasks.map(task=><article className={"panel task-card task-"+task.status} key={task.id}>
+          <div className="task-card-head"><div><NodeBadge kind="task"/><h2>{task.title}</h2></div><span>{task.status}</span></div>
+          <p>{task.summary}</p><div className="task-meta"><span>{task.project||"Transversal"}</span><span>{task.confidence}% confidence</span><span>{fmt(task.createdAt)}</span></div>
+          <div className="decision-actions">
+            <button type="button" onClick={()=>updateNodeStatus(task.id,"active")}>En curso</button>
+            <button type="button" onClick={()=>updateNodeStatus(task.id,"done")}>Completar</button>
+            <button type="button" onClick={()=>updateNodeStatus(task.id,"blocked")}>Bloquear</button>
+            <button type="button" onClick={()=>updateNodeStatus(task.id,"dismissed")}>Descartar</button>
+          </div>
+        </article>)}
+      </div>
+    </section>
+  </>;
+}
+
 export function ResourcesPage(){
   const{state}=usePraxios();
   return <>
