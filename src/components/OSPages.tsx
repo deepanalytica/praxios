@@ -1,6 +1,8 @@
 import{useMemo,useState}from"react";
 import{agents,projects}from"../data/seed";
+import{authorityMatrix}from"../os/harness";
 import{metaHarnessRules,sessionCloseProtocol,sessionStartProtocol}from"../os/protocol";
+import{routingMatrix}from"../os/router";
 import{usePraxios}from"../os/store";
 import type{HarvestBundle,KnowledgeKind,SessionSource}from"../os/types";
 import{money,Score,SectionHeader,StatusBadge}from"./Ui";
@@ -237,6 +239,10 @@ export function SystemPage(){
       <article className="panel protocol-card"><div className="panel-kicker">SESSION CLOSE</div><h2>Harvest contract</h2><pre>{sessionCloseProtocol}</pre><button type="button" className="secondary-button" onClick={()=>copy(sessionCloseProtocol)}>Copiar contrato</button></article>
     </section>
     <section className="panel harness-rules"><div className="panel-kicker">META-HARNESS POLICIES</div><div className="rule-grid">{metaHarnessRules.map((rule,index)=><div key={rule}><span>{String(index+1).padStart(2,"0")}</span><strong>{rule}</strong></div>)}</div></section>
+    <section className="system-grid governance-grid">
+      <article className="panel"><div className="panel-kicker">AUTHORITY MATRIX</div><h2>Qué puede ejecutar la IA</h2><div className="matrix-list">{authorityMatrix.map(row=><div key={row.action}><span>{row.action}</span><strong className={"matrix-"+row.defaultDecision}>{row.defaultDecision}</strong><p>{row.note}</p></div>)}</div></article>
+      <article className="panel"><div className="panel-kicker">MODEL ROUTER</div><h2>El modelo es una dependencia reemplazable</h2><div className="matrix-list">{routingMatrix.map(row=><div key={row.task}><span>{row.task}</span><strong>{row.modelClass}</strong><p>{row.rationale}{row.secondOpinion?" · second opinion":""}</p></div>)}</div></article>
+    </section>
     <section className="system-grid persistence-grid">
       <article className="panel"><div className="panel-kicker">STATE BACKUP</div><h2>{state.nodes.length} objetos · {state.sessions.length} sesiones</h2><p>La V1 persiste localmente. Exporta el estado para respaldo o migración futura a PostgreSQL.</p><button type="button" className="primary-button" onClick={download}>Exportar estado JSON</button></article>
       <article className="panel"><div className="panel-kicker">STATE RESTORE</div><textarea value={importRaw} onChange={e=>setImportRaw(e.target.value)} placeholder="Pega aquí un backup PRAXIOS JSON"/><div className="persistence-actions"><button type="button" className="secondary-button" onClick={doImport}>Importar</button><button type="button" className="danger-button" onClick={()=>{if(window.confirm("¿Restablecer PRAXIOS al estado inicial?"))resetState()}}>Reset</button></div></article>
