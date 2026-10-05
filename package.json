@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run sync:harvest && vite",
     "lint": "biome lint --max-diagnostics=100 src tests",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
