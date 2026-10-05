@@ -466,7 +466,9 @@ h1,h2,h3,p{margin-top:0}
   .wedge-input{border-right:0;border-bottom:1px solid var(--line)}
   .shell{grid-template-columns:76px 1fr}
   .shell>aside{width:76px;padding:16px 10px}
-  .shell>aside .brand b,.side-caption,.role-switch,.side-trust{display:none}
+  .shell>aside .brand b,.side-caption,.shell>aside .role-switch,.side-trust{display:none}
+  .mobile-rolebar{display:block;padding:16px 26px 0}
+  .mobile-rolebar .role-switch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
   .shell nav button{font-size:0;justify-content:center}
   .shell nav button svg{width:19px;height:19px}
   .teacher-hero-grid,.grid2,.grid2.wideleft,.evidence-layout{grid-template-columns:1fr}
@@ -498,6 +500,10 @@ h1,h2,h3,p{margin-top:0}
   .shell{display:block}
   .shell>aside{display:none}
   .shell>main{grid-column:auto}
+  .mobile-rolebar{padding:16px 16px 0}
+  .shell .mobile-nav{display:flex;position:sticky;bottom:0;z-index:20;margin-top:24px;padding:8px;background:#07120f;border-top:1px solid var(--line);justify-content:space-around}
+  .shell .mobile-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;padding:8px 4px;font-size:.62rem;text-align:center}
+  .shell .mobile-nav button svg{width:18px;height:18px}
   .page{padding:30px 16px 70px}
   .shell>main>header{padding:0 16px}
   .pagehead,.packhead,.studiohero{display:block}
