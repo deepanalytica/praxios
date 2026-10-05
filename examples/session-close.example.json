@@ -1,0 +1,41 @@
+{
+  "source": "claude-code",
+  "title": "Improve Visual Art AI conversion path",
+  "summary": "Implemented the diagnosis flow and found a monetization hypothesis worth testing.",
+  "projectId": "visual-art-ai",
+  "ideas": [
+    {
+      "title": "Diagnosis as a paid entry product",
+      "summary": "Package the existing capability as a low-friction paid product before the monthly service.",
+      "confidence": 72,
+      "tags": ["offer", "conversion"]
+    }
+  ],
+  "decisions": [],
+  "opportunities": [
+    {
+      "title": "Paid diagnosis offer",
+      "score": 78,
+      "timeToCashDays": 5,
+      "estimatedValue": 500000,
+      "confidence": 70,
+      "nextAction": "Run a price and conversion test"
+    }
+  ],
+  "evidence": [
+    {
+      "title": "Diagnosis flow shipped",
+      "source": "claude-code",
+      "claim": "The capability is available for a commercial test.",
+      "strength": "HIGH"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "Launch pricing test",
+      "priority": "HIGH",
+      "owner": "Growth"
+    }
+  ],
+  "risks": []
+}
