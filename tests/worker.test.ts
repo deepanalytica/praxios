@@ -45,3 +45,42 @@ describe("Class-pack authority boundary", () => {
     expect(pack.trust[1].state).toBe("CONJETURA_DECLARADA");
   });
 });
+
+describe("Admin controls", () => {
+  const makeEnv = () => {
+    let stored: unknown = null;
+    return {
+      ASSETS: env.ASSETS,
+      ADMIN_TOKEN: "test-secret",
+      ADMIN_KV: {
+        get: async () => stored,
+        put: async (_key: string, value: string) => { stored = JSON.parse(value); }
+      }
+    };
+  };
+
+  it("rejects unauthenticated access and never returns the token", async () => {
+    const local = makeEnv();
+    const denied = await worker.fetch(new Request("https://example.test/api/admin/overview"), local);
+    expect(denied.status).toBe(401);
+    const authorized = await worker.fetch(new Request("https://example.test/api/admin/overview", { headers: { authorization: "Bearer test-secret" } }), local);
+    expect(authorized.status).toBe(200);
+    expect(await authorized.text()).not.toContain("test-secret");
+  });
+
+  it("validates and persists rollout flags", async () => {
+    const local = makeEnv();
+    const headers = { authorization: "Bearer test-secret", "content-type": "application/json" };
+    const invalid = await worker.fetch(new Request("https://example.test/api/admin/flags", { method: "PUT", headers, body: JSON.stringify({ aprende: "false" }) }), local);
+    expect(invalid.status).toBe(400);
+    const changed = await worker.fetch(new Request("https://example.test/api/admin/flags", { method: "PUT", headers, body: JSON.stringify({ aprende: false }) }), local);
+    expect(changed.status).toBe(200);
+    const publicConfig = await worker.fetch(new Request("https://example.test/api/config"), local);
+    const data = await publicConfig.json() as { rollout: { aprende: boolean; crea: boolean } };
+    expect(data.rollout.aprende).toBe(false);
+    expect(data.rollout.crea).toBe(true);
+    await worker.fetch(new Request("https://example.test/api/admin/flags", { method: "PUT", headers, body: JSON.stringify({ crea: false }) }), local);
+    const paused = await worker.fetch(new Request("https://example.test/api/class-pack", { method: "POST", body: JSON.stringify(base) }), local);
+    expect(paused.status).toBe(503);
+  });
+});

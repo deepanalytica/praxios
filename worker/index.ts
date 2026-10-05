@@ -9,6 +9,51 @@ interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
   AI?: AiBinding;
   AI_MODEL?: string;
+  ADMIN_TOKEN?: string;
+  ADMIN_KV?: { get(key: string, type: "json"): Promise<unknown>; put(key: string, value: string): Promise<void> };
+}
+
+type Rollout = { aprende: boolean; crea: boolean; implementa: boolean; musica: boolean };
+const defaultRollout: Rollout = { aprende: true, crea: true, implementa: true, musica: true };
+
+async function readRollout(env: Env): Promise<Rollout> {
+  if (!env.ADMIN_KV) return defaultRollout;
+  const value = await env.ADMIN_KV.get("rollout", "json");
+  if (!value || typeof value !== "object") return defaultRollout;
+  const candidate = value as Partial<Rollout>;
+  return Object.fromEntries(Object.entries(defaultRollout).map(([key, fallback]) => [key, typeof candidate[key as keyof Rollout] === "boolean" ? candidate[key as keyof Rollout] : fallback])) as Rollout;
+}
+
+function authorized(request: Request, env: Env): boolean {
+  return !!env.ADMIN_TOKEN && request.headers.get("authorization") === `Bearer ${env.ADMIN_TOKEN}`;
+}
+
+async function admin(request: Request, env: Env, path: string): Promise<Response> {
+  if (!env.ADMIN_TOKEN) return Response.json({ error: "admin_not_configured" }, { status: 503 });
+  if (!authorized(request, env)) return Response.json({ error: "unauthorized" }, { status: 401 });
+  const headers = { "cache-control": "no-store" };
+  if (path === "/api/admin/overview" && request.method === "GET") {
+    return Response.json({
+      generatedAt: new Date().toISOString(),
+      services: { worker: "online", aiBinding: !!env.AI, rolloutStore: !!env.ADMIN_KV, assets: !!env.ASSETS },
+      rollout: await readRollout(env),
+      usage: null,
+      cost: null,
+      note: "Uso, costos, usuarios e incidentes requieren integraciones de telemetría. No se inventan métricas."
+    }, { headers });
+  }
+  if (path === "/api/admin/flags" && request.method === "PUT") {
+    if (!env.ADMIN_KV) return Response.json({ error: "rollout_store_not_configured" }, { status: 503, headers });
+    let body: unknown;
+    try { body = await request.json(); } catch { return Response.json({ error: "invalid_json" }, { status: 400, headers }); }
+    if (!body || typeof body !== "object" || Array.isArray(body)) return Response.json({ error: "invalid_flags" }, { status: 400, headers });
+    const entries = Object.entries(body);
+    if (!entries.length || entries.some(([key, value]) => !(key in defaultRollout) || typeof value !== "boolean")) return Response.json({ error: "invalid_flags" }, { status: 400, headers });
+    const rollout = { ...(await readRollout(env)), ...body as Partial<Rollout> };
+    await env.ADMIN_KV.put("rollout", JSON.stringify(rollout));
+    return Response.json({ rollout }, { headers });
+  }
+  return Response.json({ error: "not_found" }, { status: 404, headers });
 }
 
 const allowedStates = new Set<EpistemicState>([
@@ -163,11 +208,14 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     if (url.pathname === "/api/class-pack" && request.method === "POST") {
+      if (!(await readRollout(env)).crea) return Response.json({ error: "create_paused" }, { status: 503 });
       return classPack(request, env);
     }
     if (url.pathname === "/api/health") {
-      return Response.json({ ok: true, product: "Educabot" });
+      return Response.json({ ok: true, product: "Educabot", checkedAt: new Date().toISOString() }, { headers: { "cache-control": "no-store" } });
     }
+    if (url.pathname.startsWith("/api/admin/")) return admin(request, env, url.pathname);
+    if (url.pathname === "/api/config" && request.method === "GET") return Response.json({ rollout: await readRollout(env) }, { headers: { "cache-control": "no-store" } });
     return env.ASSETS.fetch(request);
   }
 };
