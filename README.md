@@ -1,89 +1,155 @@
-# PRAXIOS Value Factory
+# PRAXIOS OS
 
-PRAXIOS Value Factory es la capa de gobierno económico y decisión del ecosistema PRAXIOS. Convierte proyectos, oportunidades y evidencia en decisiones de asignación de capital.
+PRAXIOS es el **control plane persistente para gobernar modelos de IA, memoria institucional, decisiones, oportunidades y ejecución**.
 
-## Misión inicial
+No es otro chatbot. ChatGPT, Claude Code, Codex, Gemini y futuros modelos son trabajadores reemplazables dentro del sistema.
 
-Generar $1.000.000 CLP adicionales de caja validada usando activos actuales antes de iniciar otra gran construcción.
+## Estado actual — V0.2 operable
 
-## V1 implementada
+La rama `develop/value-factory-v1` ya incluye:
 
-- Command Center / CEO Daily
-- Portfolio con SCALE, BUILD, TEST, HOLD y KILL
-- Opportunity Score
-- Decision Room
-- Agent Office
-- Experiment Engine
-- Sales Pipeline
-- Finance + Money Map
-- Corporate Constitution
-- interfaz de proveedores LLM desacoplada
-- pruebas unitarias iniciales
-- PRD, SDD, TDD y ADRs
-- GitHub Actions
-- despliegue estático con GitHub Pages
+- Command Center
+- Harvest Engine
+- Session Gateway
+- State Graph
+- Decision Engine
+- Opportunity Radar
+- Execution Pipelines
+- Agent Workforce
+- Evidence Ledger
+- Resource Engine
+- Value Factory
+- Meta-Harness / System
+- estado persistente local
+- estado portable en `data/praxios-state.json`
+- CLI de PRAXIOS
+- contratos para Claude Code y otros agentes
+- tests + CI
+- publicación automática a `gh-pages`
 
-Proyectos cargados: Visual Art AI, Deep Living, MSJ, Clinia, Deep Geo, Educabot, Digital Product & IP Factory y PRAXIOS Core.
+## La idea central
 
-## Principio operativo
+```text
+session / event
+      ↓
+Session Gateway
+      ↓
+Harvest Engine
+      ↓
+State Graph
+      ↓
+Decision Engine
+      ↓
+AI CEO + executive agents
+      ↓
+Execution
+      ↓
+Result / Evidence
+      └──────────────→ State Graph
+```
 
-evidencia → oportunidad → experimento → dinero → aprendizaje → asignación de capital
+Cada sesión debe aumentar el patrimonio intelectual del sistema.
 
-El sistema debe decir qué hacer y qué no hacer. Ningún proyecto conserva prioridad por costo hundido.
+## Operación inmediata
 
-## Ejecutar localmente
+### 1. Abrir la UI
 
-Requiere Node.js 22+.
+GitHub Pages se publica desde la rama `gh-pages`.
+
+URL esperada:
+
+`https://deepanalytica.github.io/praxios/`
+
+### 2. Trabajar con un modelo dentro del repo
+
+```bash
+npm run praxios -- brief visual-art-ai
+```
+
+### 3. Cerrar la sesión
+
+Guardar un HarvestEnvelope y ejecutar:
+
+```bash
+npm run praxios -- harvest harvest/session.json
+```
+
+### 4. Validar estado
+
+```bash
+npm run praxios -- validate
+```
+
+## Scripts
 
 ```bash
 npm install
 npm run dev
-```
-
-Quality gate:
-
-```bash
 npm run lint
 npm run typecheck
 npm run test
 npm run build
+npm run praxios -- brief [projectId]
+npm run praxios -- harvest <file.json>
+npm run praxios -- snapshot
+npm run praxios -- validate
 ```
+
+## Protocolos de agentes
+
+- `PRAXIOS.md` — contrato general de sesión
+- `CLAUDE.md` — instrucciones para Claude Code
+- `AGENTS.md` — contrato para agentes repo-aware
+- `examples/session-close.example.json` — ejemplo de cosecha
 
 ## Documentación
 
-- docs/PRD.md — producto y alcance
-- docs/SDD.md — arquitectura del sistema
-- docs/TDD.md — estrategia de pruebas
-- docs/CONSTITUTION.md — límites de gobierno
-- docs/ROADMAP.md — etapas de evolución
-- docs/adr — decisiones de arquitectura
+- `docs/PRAXIOS_OS.md`
+- `docs/OPERATING_MANUAL.md`
+- `docs/PRD.md`
+- `docs/SDD.md`
+- `docs/TDD.md`
+- `docs/CONSTITUTION.md`
+- `docs/ROADMAP.md`
+- `docs/adr/`
 
-## GitHub Pages
+## Gobernanza
 
-La V1 del frontend se publica sólo con infraestructura de GitHub:
+PRAXIOS conserva el estado institucional.
 
-1. push a `develop/value-factory-v1` o `main`;
-2. GitHub Actions ejecuta lint, typecheck y tests;
-3. Vite genera `dist/`;
-4. Actions sube el artifact de Pages;
-5. GitHub Pages sirve la aplicación.
+Meta-Harness controla permisos, límites y autoridad.
 
-No se requieren secrets de Cloudflare ni Wrangler.
+Los modelos pueden:
+- analizar;
+- investigar;
+- proponer;
+- ejecutar trabajo autorizado.
 
-Si Pages todavía no está habilitado en el repositorio, en GitHub se debe seleccionar:
+Los modelos no pueden:
+- sobrescribir silenciosamente decisiones activas;
+- aprobar por sí solos acciones materiales de alto riesgo;
+- convertir una idea en proyecto sin pasar por gobierno de cartera.
 
-`Settings → Pages → Build and deployment → Source: GitHub Actions`
+## Arquitectura de persistencia
 
-La URL esperada para un Project Page es:
+V0.2 es local-first:
+- navegador → localStorage;
+- repo → `data/praxios-state.json`;
+- sesiones repo-aware → CLI + HarvestEnvelope.
 
-`https://deepanalytica.github.io/praxios/`
+Esto permite comenzar a operar hoy.
 
-## Rama
+La próxima capa será un Session Gateway persistente para sincronización automática, background agents, webhooks y conectores externos.
 
-Trabajo actual: develop/value-factory-v1
+## CI/CD
 
-main no se modifica hasta que CI y la revisión visual estén aprobados.
+GitHub Actions valida:
+- estado PRAXIOS;
+- lint;
+- TypeScript;
+- tests;
+- production build.
 
-## Estado de la arquitectura
+El frontend compilado se publica automáticamente en la rama `gh-pages`.
 
-La V1 usa seed data deliberadamente. El próximo salto no es añadir pantallas: es persistencia, evidencia real, eventos y ejecución gobernada de agentes. El contrato AgentModelProvider permite conectar OpenAI, Anthropic o Google sin acoplar el dominio a un único proveedor.
+Cloudflare y Vercel no son necesarios para esta V0.2.
