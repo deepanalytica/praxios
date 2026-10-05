@@ -1,4 +1,4 @@
-import{createContext,useContext,useEffect,useMemo,useState,type ReactNode}from"react";
+import{createContext,useContext,useEffect,useState,type ReactNode}from"react";
 import{buildCeoBrief}from"./decision";
 import{harvestSession}from"./harvest";
 import{buildSeedState}from"./seed";
@@ -183,7 +183,7 @@ export function PraxiosProvider({children}:{children:ReactNode}){
     setState(seed);
   };
 
-  const value=useMemo(()=>({state,previewHarvest,commitHarvest,harvestAndCommit,runCeoCycle,updateNodeStatus,runWorkflow,exportState,importState,resetState}),[state]);
+  const value={state,previewHarvest,commitHarvest,harvestAndCommit,runCeoCycle,updateNodeStatus,runWorkflow,exportState,importState,resetState};
   return <PraxiosContext.Provider value={value}>{children}</PraxiosContext.Provider>;
 }
 
