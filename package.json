@@ -1,6 +1,28 @@
 {
-  "name":"praxios-value-factory","private":true,"version":"0.1.0","type":"module",
-  "scripts":{"dev":"vite","lint":"biome check src tests","typecheck":"tsc --noEmit","test":"vitest run","build":"npm run typecheck && vite build","preview":"vite preview"},
-  "dependencies":{"react":"^19.1.1","react-dom":"^19.1.1"},
-  "devDependencies":{"@biomejs/biome":"^2.2.2","@types/react":"^19.1.12","@types/react-dom":"^19.1.9","@vitejs/plugin-react":"^5.0.2","typescript":"^5.9.2","vite":"^7.1.5","vitest":"^3.2.4","wrangler":"^4.33.1"}
+  "name": "praxios-value-factory",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint": "biome lint src tests",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.2",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.33.1"
+  }
 }
