@@ -2,7 +2,7 @@ import{createContext,useContext,useEffect,useState,type ReactNode}from"react";
 import{buildCeoBrief}from"./decision";
 import{harvestSession}from"./harvest";
 import{buildSeedState}from"./seed";
-import type{HarvestBundle,KnowledgeKind,KnowledgeStatus,PraxiosState,SessionRecord,SessionSource,SystemEvent}from"./types";
+import type{DealStage,HarvestBundle,KnowledgeKind,KnowledgeStatus,PraxiosState,SessionRecord,SessionSource,SystemEvent}from"./types";
 
 const STORAGE_KEY="praxios.os.state.v1";
 const kinds:KnowledgeKind[]=["idea","decision","task","risk","opportunity","evidence","goal","resource","finding"];
@@ -17,6 +17,8 @@ interface PraxiosContextValue{
   runCeoCycle:()=>void;
   updateNodeStatus:(nodeId:string,status:KnowledgeStatus)=>void;
   addKnowledgeNode:(input:{kind:KnowledgeKind;title:string;summary?:string;project?:string;confidence?:number})=>void;
+  addDeal:(input:{account:string;offer:string;project:string;value:number;stage?:DealStage;nextAction?:string;sourceOpportunityId?:string})=>void;
+  updateDealStage:(dealId:string,stage:DealStage)=>void;
   runWorkflow:(workflowId:string)=>void;
   exportState:()=>string;
   importState:(raw:string)=>{ok:boolean;message:string};
@@ -46,6 +48,7 @@ function loadInitial():PraxiosState{
           events:[...parsed.events],
           workflows:parsed.workflows.length?parsed.workflows:seed.workflows,
           resources:parsed.resources.length?parsed.resources:seed.resources,
+          deals:Array.isArray(parsed.deals)&&parsed.deals.length?parsed.deals:seed.deals,
           ceoBrief:parsed.ceoBrief,
         };
         for(const session of seed.sessions)if(!merged.sessions.some(s=>s.id===session.id))merged.sessions.push(session);
@@ -85,6 +88,7 @@ export function PraxiosProvider({children}:{children:ReactNode}){
         events:[...previous.events],
         workflows:previous.workflows.map(w=>({...w,steps:w.steps.map(s=>({...s}))})),
         resources:[...previous.resources],
+        deals:[...previous.deals],
         ceoBrief:previous.ceoBrief,
       };
       const c=counts();
@@ -170,6 +174,38 @@ export function PraxiosProvider({children}:{children:ReactNode}){
     });
   };
 
+  const addDeal=(input:{account:string;offer:string;project:string;value:number;stage?:DealStage;nextAction?:string;sourceOpportunityId?:string})=>{
+    setState(previous=>{
+      const stage=input.stage||"Lead";
+      const probabilityByStage:Record<DealStage,number>={Lead:15,Qualified:30,Discovery:45,Proposal:65,Negotiation:80,Won:100,Lost:0};
+      const deal={
+        id:id("DEAL"),
+        account:input.account.trim(),
+        offer:input.offer.trim(),
+        project:input.project,
+        stage,
+        value:Math.max(0,input.value),
+        probability:probabilityByStage[stage],
+        nextAction:input.nextAction||"Definir siguiente acción comercial",
+        createdAt:new Date().toISOString(),
+        sourceOpportunityId:input.sourceOpportunityId,
+      };
+      return{...previous,deals:[deal,...previous.deals],events:[event("deal.created",`Nuevo deal: ${deal.account}`,`${deal.offer} · ${deal.value.toLocaleString("es-CL")} CLP`,"CRO",deal.project),...previous.events]};
+    });
+  };
+
+  const updateDealStage=(dealId:string,stage:DealStage)=>{
+    setState(previous=>{
+      const probabilityByStage:Record<DealStage,number>={Lead:15,Qualified:30,Discovery:45,Proposal:65,Negotiation:80,Won:100,Lost:0};
+      const target=previous.deals.find(deal=>deal.id===dealId);
+      return{
+        ...previous,
+        deals:previous.deals.map(deal=>deal.id===dealId?{...deal,stage,probability:probabilityByStage[stage]}:deal),
+        events:[event("deal.stage",`${target?.account||dealId} → ${stage}`,target?.offer||"Deal actualizado","CRO",target?.project),...previous.events],
+      };
+    });
+  };
+
   const runWorkflow=(workflowId:string)=>{
     setState(previous=>{
       const target=previous.workflows.find(w=>w.id===workflowId);
@@ -204,7 +240,7 @@ export function PraxiosProvider({children}:{children:ReactNode}){
     setState(seed);
   };
 
-  const value={state,previewHarvest,commitHarvest,harvestAndCommit,runCeoCycle,updateNodeStatus,addKnowledgeNode,runWorkflow,exportState,importState,resetState};
+  const value={state,previewHarvest,commitHarvest,harvestAndCommit,runCeoCycle,updateNodeStatus,addKnowledgeNode,addDeal,updateDealStage,runWorkflow,exportState,importState,resetState};
   return <PraxiosContext.Provider value={value}>{children}</PraxiosContext.Provider>;
 }
 
