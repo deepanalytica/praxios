@@ -1,6 +1,6 @@
-import{agents,projects}from"../data/seed";
+import{agents,deals as legacyDeals,projects}from"../data/seed";
 import{generatedHarvest}from"../generated/harvest.generated";
-import type{GraphEdge,KnowledgeKind,KnowledgeNode,PraxiosState,Resource,SessionRecord,SystemEvent,Workflow}from"./types";
+import type{GraphEdge,KnowledgeKind,KnowledgeNode,PraxiosState,Resource,RevenueDeal,SessionRecord,SystemEvent,Workflow}from"./types";
 
 const now="2026-10-05T15:00:00.000Z";
 const zeroCounts=():Record<KnowledgeKind,number>=>({idea:0,decision:0,task:0,risk:0,opportunity:0,evidence:0,goal:0,resource:0,finding:0});
@@ -49,6 +49,18 @@ export const baseWorkflows:Workflow[]=[
   ]},
 ];
 
+export const baseDeals:RevenueDeal[]=legacyDeals.map(deal=>({
+  id:deal.id,
+  account:deal.company,
+  offer:deal.offer,
+  project:deal.offer.includes("Deep Living")?"Deep Living":deal.offer.includes("Deep Geo")?"Deep Geo":deal.offer.includes("MSJ")?"MSJ":"Visual Art AI",
+  stage:deal.stage,
+  value:deal.value,
+  probability:deal.probability,
+  nextAction:deal.stage==="Lead"?"Calificar problema y presupuesto":deal.stage==="Qualified"?"Agendar discovery":deal.stage==="Discovery"?"Preparar propuesta":deal.stage==="Proposal"?"Hacer follow-up":deal.stage==="Negotiation"?"Cerrar condiciones":"Registrar resultado",
+  createdAt:now,
+}));
+
 export const baseEvents:SystemEvent[]=[
   {id:"evt-1",type:"system.bootstrap",title:"PRAXIOS OS iniciado",detail:"State Graph, Harvest y Decision Engine disponibles.",actor:"PRAXIOS Core",createdAt:now},
   {id:"evt-2",type:"policy.active",title:"Meta-Harness activo",detail:"Decisiones materiales requieren evidencia y trazabilidad.",actor:"Meta-Harness",createdAt:now},
@@ -56,7 +68,7 @@ export const baseEvents:SystemEvent[]=[
 ];
 
 export function buildSeedState():PraxiosState{
-  const state:PraxiosState={sessions:[],nodes:[...baseNodes],edges:[...baseEdges],events:[...baseEvents],workflows:[...baseWorkflows],resources:[...baseResources],ceoBrief:null};
+  const state:PraxiosState={sessions:[],nodes:[...baseNodes],edges:[...baseEdges],events:[...baseEvents],workflows:[...baseWorkflows],resources:[...baseResources],deals:[...baseDeals],ceoBrief:null};
   for(const bundle of generatedHarvest){
     const counts=zeroCounts();
     for(const item of bundle.items)counts[item.kind]+=1;
