@@ -1,66 +1,72 @@
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Check, ChevronRight, Headphones, Lightbulb, Pause, Play, RotateCcw, ShieldCheck, Sparkles, Volume2 } from "lucide-react";
-import { AppHeader } from "../App";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowRight, ArrowUpRight, BookOpen, CalendarDays, ChartLine, Check, ChevronRight, Clock3, Headphones, House, Pause, PenLine, Play, RotateCcw, Target, Users } from "lucide-react";
+import WorkspaceShell, { type NavItem } from "./WorkspaceShell";
+import { CalendarBoard, EventInspector, kindLabel } from "./CalendarBoard";
+import { addDays, dateKey, loadPlan, longDate, shortDate, startOfWeek, usePlan, type PlanEvent } from "../learningPlan";
 
-type Answer = "" | "1/6" | "2/3" | "2/6";
+type StudentTab = "hoy" | "calendario" | "progreso" | "practicar" | "familia";
+type Answer = "" | "1/4" | "2/4" | "3/4";
+const practiceKey = "educabot-practica-fracciones";
 
 function useFocusSound() {
   const audio = useRef<AudioContext | null>(null);
   const timer = useRef<number | null>(null);
   const [playing, setPlaying] = useState(false);
-  const stop = () => {
-    if (timer.current !== null) window.clearInterval(timer.current);
-    timer.current = null;
-    if (audio.current) void audio.current.close();
-    audio.current = null;
-    setPlaying(false);
-  };
+  const stop = () => { if (timer.current !== null) window.clearInterval(timer.current); timer.current = null; if (audio.current) void audio.current.close(); audio.current = null; setPlaying(false); };
   useEffect(() => () => { if (timer.current !== null) window.clearInterval(timer.current); if (audio.current) void audio.current.close(); }, []);
   const toggle = () => {
     if (playing) { stop(); return; }
-    const context = new AudioContext();
-    audio.current = context;
+    const context = new AudioContext(); audio.current = context;
     let bar = 0;
     const chords = [[174.61, 261.63, 349.23], [196, 293.66, 392], [164.81, 246.94, 329.63], [174.61, 261.63, 349.23]];
-    const phrase = () => {
-      const start = context.currentTime;
-      for (const [index, frequency] of chords[bar % chords.length].entries()) {
-        const oscillator = context.createOscillator();
-        const gain = context.createGain();
-        oscillator.type = "sine";
-        oscillator.frequency.value = frequency;
-        oscillator.connect(gain).connect(context.destination);
-        gain.gain.setValueAtTime(0, start);
-        gain.gain.linearRampToValueAtTime(index === 0 ? 0.028 : 0.013, start + 1.2);
-        gain.gain.setValueAtTime(index === 0 ? 0.028 : 0.013, start + 6);
-        gain.gain.linearRampToValueAtTime(0, start + 7.8);
-        oscillator.start(start);
-        oscillator.stop(start + 8);
-      }
-      bar += 1;
-    };
-    phrase();
-    timer.current = window.setInterval(phrase, 8000);
-    setPlaying(true);
+    const phrase = () => { const start = context.currentTime; for (const [index, frequency] of chords[bar % chords.length].entries()) { const oscillator = context.createOscillator(); const gain = context.createGain(); oscillator.type = "sine"; oscillator.frequency.value = frequency; oscillator.connect(gain).connect(context.destination); gain.gain.setValueAtTime(0, start); gain.gain.linearRampToValueAtTime(index === 0 ? 0.028 : 0.013, start + 1.2); gain.gain.setValueAtTime(index === 0 ? 0.028 : 0.013, start + 6); gain.gain.linearRampToValueAtTime(0, start + 7.8); oscillator.start(start); oscillator.stop(start + 8); } bar += 1; };
+    phrase(); timer.current = window.setInterval(phrase, 8000); setPlaying(true);
   };
   return { playing, toggle };
 }
 
+function WeekRail({ events, onSelect }: { events: PlanEvent[]; onSelect: (date: string) => void }) {
+  const today = dateKey(new Date());
+  const days = Array.from({ length: 7 }, (_, index) => addDays(startOfWeek(new Date()), index));
+  return <div className="p-week-rail">{days.map((day) => { const key = dateKey(day); const count = events.filter((event) => event.date === key).length; return <button key={key} className={key === today ? "is-today" : ""} onClick={() => onSelect(key)}><span>{new Intl.DateTimeFormat("es-CL", { weekday: "short" }).format(day).replace(".", "").toUpperCase()}</span><strong>{day.getDate()}</strong><i className={count ? "has-event" : ""}/></button>; })}</div>;
+}
+
 export default function LearnApp() {
-  const [tab, setTab] = useState<"aprender" | "familia">("aprender");
+  const [tab, setTab] = useState<StudentTab>(() => {
+    const requested = new URLSearchParams(window.location.search).get("vista");
+    return (["calendario", "progreso", "practicar", "familia"] as string[]).includes(requested || "") ? requested as StudentTab : "hoy";
+  });
+  const [selectedDate, setSelectedDate] = useState(() => loadPlan().find((event) => event.date >= dateKey(new Date()))?.date || dateKey(new Date()));
   const [answer, setAnswer] = useState<Answer>("");
   const [reason, setReason] = useState("");
   const [checked, setChecked] = useState(false);
-  const [saved, setSaved] = useState(false);
+  const [completed, setCompleted] = useState(() => localStorage.getItem(practiceKey) === "completada");
   const [musicEnabled, setMusicEnabled] = useState(true);
   const { playing, toggle } = useFocusSound();
+  const events = usePlan();
+  const today = dateKey(new Date());
+  const upcoming = useMemo(() => events.filter((event) => event.date >= today), [events, today]);
+  const nextExam = upcoming.find((event) => event.kind === "prueba");
+  const todayEvents = events.filter((event) => event.date === today);
+  const nextActivity = todayEvents[0] || upcoming[0];
+  const nav: NavItem<StudentTab>[] = [
+    { key: "hoy", label: "Hoy", icon: <House size={18}/> },
+    { key: "calendario", label: "Calendario", icon: <CalendarDays size={18}/> },
+    { key: "progreso", label: "Mi progreso", icon: <ChartLine size={18}/> },
+    { key: "practicar", label: "Practicar", icon: <PenLine size={18}/> },
+    { key: "familia", label: "Para mi familia", icon: <Users size={18}/> }
+  ];
+  useEffect(() => { const url = new URL(window.location.href); if (tab === "hoy") url.searchParams.delete("vista"); else url.searchParams.set("vista", tab); window.history.replaceState({}, "", url); }, [tab]);
   useEffect(() => { fetch("/api/config", { headers: { accept: "application/json" } }).then((response) => response.json()).then((data: { rollout?: { musica?: boolean } }) => { if (data.rollout?.musica === false) setMusicEnabled(false); }).catch(() => {}); }, []);
-  const ready = !!answer && reason.trim().length >= 15;
-  const correct = answer === "2/3";
-  const check = () => { if (!ready) return; setChecked(true); if (correct) { localStorage.setItem("educabot-practica-fracciones", "completada"); setSaved(true); } };
-  return <div className="learn-app"><AppHeader product="Aprende"/><div className="workspace learn-workspace"><div className="workspace-top"><div><span className="eyebrow">TU ESPACIO PARA ENTENDER</span><h1>Hoy, una idea<br/><em>a la vez.</em></h1><p>La IA te acompaña con preguntas y pistas. La respuesta y el razonamiento son tuyos.</p></div><div className="learn-spark" aria-hidden="true"><span>✳</span></div></div>
-    <div className="segment-tabs" role="tablist" aria-label="Vistas de Aprende"><button role="tab" aria-selected={tab === "aprender"} className={tab === "aprender" ? "active" : ""} onClick={() => setTab("aprender")}>Para aprender</button><button role="tab" aria-selected={tab === "familia"} className={tab === "familia" ? "active" : ""} onClick={() => setTab("familia")}>Para mi familia</button></div>
-    {tab === "aprender" ? <div className="learn-layout"><main className="practice-panel"><div className="panel-kicker"><span>MATEMÁTICA · 5º BÁSICO</span><span>DEMO INTERACTIVA</span></div><h2>¿Cuánto es un tercio<br/>más otro tercio?</h2><p className="muted">Imagina una barra dividida en tres partes iguales. Coloreas una parte, y luego otra.</p><div className="fraction-art" aria-label="Barra dividida en tres partes, dos coloreadas"><span/><span/><span/></div><div className="question-line">¿Qué fracción de la barra quedó coloreada?</div><div className="answers" role="group" aria-label="Elige una fracción">{(["1/6", "2/3", "2/6"] as Answer[]).map((value) => <button key={value} className={answer === value ? "selected" : ""} onClick={() => { setAnswer(value); setChecked(false); }}>{value}</button>)}</div><label className="reason-label" htmlFor="reason">Ahora explícalo con tus palabras</label><textarea id="reason" value={reason} onChange={(e) => {setReason(e.target.value); setChecked(false);}} placeholder="Creo que es… porque…" rows={3}/><div className="practice-footer"><span>Escribe al menos una frase para comprobar tu idea.</span><button className="button button-dark" disabled={!ready} onClick={check}>Comprobar mi idea <ArrowRight size={16}/></button></div>{checked && <div role="status" className={`feedback ${correct ? "feedback-good" : "feedback-try"}`}>{correct ? <><Check size={20}/> Elegiste 2/3. La barra muestra dos de tres partes iguales; compara esa idea con tu explicación.</> : <><RotateCcw size={20}/> Mira la barra otra vez. Cuenta cuántas partes iguales hay en total y cuántas están coloreadas. Luego vuelve a explicarlo.</>}</div>}</main><aside className="learn-aside"><div className="aside-block"><span className="aside-icon"><Lightbulb size={22}/></span><h3>Una pista, no la solución</h3><p>El denominador cuenta todas las partes iguales. El numerador, las que elegiste.</p><button onClick={() => document.getElementById("reason")?.focus()}>Probar mi explicación <ChevronRight size={15}/></button></div>{musicEnabled && <div className="aside-block sound-block"><span className="aside-icon"><Headphones size={22}/></span><h3>Ambiente de estudio</h3><p>Paisaje sonoro original, suave y sin letra. Tú eliges si te ayuda; también puedes estudiar en silencio.</p><button className="sound-toggle" onClick={toggle}>{playing ? <Pause size={16}/> : <Play size={16}/>} {playing ? "Pausar música" : "Escuchar música"}</button><span className="sound-note"><Volume2 size={14}/> Volumen bajo · Sin reproducción automática</span></div>}</aside></div> : <div className="family-layout"><div className="family-main"><span className="eyebrow">PARA ACOMPAÑAR, SIN INVADIR</span><h2>Preguntas mejores<br/>para estudiar juntos.</h2><p>La vista familiar muestra avance y sugerencias útiles. Las respuestas privadas y conversaciones del estudiante no aparecen aquí.</p><div className="family-progress"><span>Actividad de ejemplo</span><strong>Fracciones: partes iguales</strong><div className="progress-rule"><i style={{width: saved || localStorage.getItem("educabot-practica-fracciones") ? "100%" : "36%"}}/></div><small>{saved || localStorage.getItem("educabot-practica-fracciones") ? "Práctica completada en este navegador" : "Práctica por completar"}</small></div></div><div className="family-tip"><ShieldCheck size={25}/><h3>Prueba esta pregunta</h3><p>“¿Cómo sabes que son tercios y no sextos?” Escucha cómo lo explica antes de corregir.</p><span>DATOS LOCALES DE ESTA DEMO</span></div></div>}
-    <div className="learn-bottom"><Sparkles size={18}/><span>En una versión real, el progreso se mediría con tareas repetidas, transferencia y revisión humana. Esta demo muestra solo una actividad.</span></div>
-  </div></div>;
+  const goToDate = (date: string) => { setSelectedDate(date); setTab("calendario"); };
+  const checkAnswer = () => { if (!answer || reason.trim().length < 15) return; setChecked(true); if (answer === "2/4") { localStorage.setItem(practiceKey, "completada"); setCompleted(true); } };
+  const footer = musicEnabled ? <button className="p-focus-control" onClick={toggle}><Headphones size={17}/><span><strong>Modo enfoque</strong><small>{playing ? "Paisaje sonoro activo" : "Música opcional · silencio por defecto"}</small></span>{playing ? <Pause size={15}/> : <Play size={15}/>}</button> : null;
+
+  return <div className="premium-app p-student"><WorkspaceShell product="Aprende" eyebrow="ESPACIO ESTUDIANTE" nav={nav} active={tab} onNavigate={setTab} switchHref="/crea" switchLabel="Espacio docente" footer={footer}>
+    {tab === "hoy" && <><div className="p-page-heading"><div><span className="p-kicker">MATEMÁTICA · 5° BÁSICO</span><h1>Tu plan de hoy<span>.</span></h1><p>{longDate(today)} · Una idea, un paso claro para avanzar.</p></div><button className="p-outline-action" onClick={() => setTab("calendario")}>Ver calendario <ArrowUpRight size={16}/></button></div><div className="p-home-grid"><div className="p-home-primary"><section className="p-focus-feature"><div className="p-feature-copy"><span className="p-light-kicker">SIGUIENTE EN TU RUTA</span><h2>{nextActivity?.title || "Tu próxima actividad"}</h2><p>{nextActivity?.detail || "Explora el calendario para ver lo que viene."}</p><div className="p-feature-meta"><span><BookOpen size={15}/> {nextActivity?.topic || "Matemática"}</span><span><Clock3 size={15}/> 10 min de práctica</span></div><button onClick={() => setTab("practicar")}>Empezar a practicar <ArrowRight size={17}/></button></div><div className="p-fraction-scene" aria-hidden="true"><div className="p-fraction-orbit"><i/><i/><i/></div><div className="p-fraction-formula">½ <span>=</span> ²⁄₄ <span>=</span> ³⁄₆</div></div></section><section className="p-week-section"><div className="p-section-heading"><div><span className="p-kicker">TU RITMO</span><h2>Esta semana</h2></div><button className="p-text-action" onClick={() => setTab("calendario")}>Ver mes completo <ArrowRight size={15}/></button></div><WeekRail events={events} onSelect={goToDate}/><div className="p-week-list">{events.filter((event) => event.date >= dateKey(startOfWeek(new Date())) && event.date <= dateKey(addDays(startOfWeek(new Date()), 6))).map((event) => <button key={event.id} onClick={() => goToDate(event.date)}><span className="p-list-date">{shortDate(event.date)}</span><span className={`p-kind-dot p-kind-${event.kind}`}/><span><strong>{event.title}</strong><small>{event.topic} · {kindLabel(event.kind)}</small></span><ChevronRight size={17}/></button>)}</div></section></div><aside className="p-home-aside"><section className="p-next-exam"><span className="p-kicker">PRÓXIMA PRUEBA</span>{nextExam ? <><div className="p-exam-date"><strong>{new Date(`${nextExam.date}T12:00:00`).getDate()}</strong><span>{new Intl.DateTimeFormat("es-CL", { month: "short" }).format(new Date(`${nextExam.date}T12:00:00`)).toUpperCase()}</span></div><h3>{nextExam.title}</h3><p>{nextExam.detail}</p><button onClick={() => goToDate(nextExam.date)}>Ver qué estudiar <ArrowRight size={16}/></button></> : <p>Aún no hay pruebas programadas.</p>}</section><section className="p-route-summary"><div className="p-section-heading"><div><span className="p-kicker">EN QUÉ VAS</span><h3>Tu progreso</h3></div><Target size={20}/></div><div className="p-progress-line"><span>Práctica de fracciones</span><strong>{completed ? "Realizada" : "Pendiente"}</strong></div><div className="p-progress-track"><i style={{ width: completed ? "100%" : "0%" }}/></div><p>{completed ? "Ya respondiste la primera actividad. El siguiente paso es explicar una equivalencia en un problema nuevo." : "Una actividad breve te espera. Tu avance se guarda en este navegador."}</p><button className="p-text-action" onClick={() => setTab("progreso")}>Ver progreso <ArrowRight size={15}/></button></section></aside></div></>}
+    {tab === "calendario" && <><div className="p-page-heading"><div><span className="p-kicker">PLAN DE CLASES Y EVALUACIONES</span><h1>Calendario<span>.</span></h1><p>Selecciona una fecha para ver el contenido y cómo prepararte.</p></div><div className="p-legend"><span><i className="p-kind-clase"/> Clase</span><span><i className="p-kind-practica"/> Práctica</span><span><i className="p-kind-prueba"/> Prueba</span></div></div><div className="p-calendar-layout"><CalendarBoard events={events} selected={selectedDate} onSelect={setSelectedDate}/><EventInspector selected={selectedDate} events={events}/></div><section className="p-upcoming-section"><div className="p-section-heading"><div><span className="p-kicker">PARA ORGANIZARTE</span><h2>Evaluaciones próximas</h2></div></div><div className="p-upcoming-list">{upcoming.filter((event) => event.kind === "prueba").map((event) => <button key={event.id} onClick={() => setSelectedDate(event.date)}><span>{shortDate(event.date)}</span><strong>{event.title}</strong><small>{event.detail}</small><ArrowUpRight size={17}/></button>)}</div></section></>}
+    {tab === "progreso" && <><div className="p-page-heading"><div><span className="p-kicker">EVIDENCIA PERSONAL · DEMO LOCAL</span><h1>Mi progreso<span>.</span></h1><p>Lo que has practicado aquí y lo que viene después. Una respuesta correcta no certifica dominio.</p></div></div><div className="p-progress-layout"><section className="p-progress-overview"><span className="p-kicker">ACTIVIDAD REGISTRADA</span><div className="p-large-number">{completed ? "01" : "00"}<span> / 01</span></div><h2>{completed ? "Primer paso realizado" : "Empieza por una idea"}</h2><p>{completed ? "Reconociste la equivalencia entre un medio y dos cuartos en esta demo. Para saber si lo comprendiste, tendrás que explicarlo y usarlo en otra situación." : "Completa la práctica inicial de fracciones. Después podrás revisar tu siguiente paso."}</p><button className="p-solid-action" onClick={() => setTab("practicar")}>{completed ? "Repetir práctica" : "Empezar práctica"} <ArrowRight size={16}/></button></section><section className="p-skill-path"><span className="p-kicker">RUTA DEL CONTENIDO</span><h2>Fracciones, paso a paso</h2><div className="p-skill-list"><div className={completed ? "is-done" : ""}><span>01</span><div><strong>Representar partes iguales</strong><p>Identificar qué indica cada número de la fracción.</p></div><b>{completed ? "Practicado" : "Por comenzar"}</b></div><div><span>02</span><div><strong>Reconocer equivalencias</strong><p>Justificar por qué dos dibujos expresan la misma cantidad.</p></div><b>En el plan</b></div><div><span>03</span><div><strong>Sumar fracciones</strong><p>Resolver y comprobar con modelos visuales.</p></div><b>En el plan</b></div></div></section></div><div className="p-evidence-note"><Target size={19}/><p>Para medir mejora real faltan varias tareas, una prueba de transferencia y revisión de las explicaciones. Esta vista solo registra la actividad realizada en este navegador.</p></div></>}
+    {tab === "practicar" && <><div className="p-page-heading"><div><span className="p-kicker">PRÁCTICA GUIADA · FRACCIONES</span><h1>Piensa y explica<span>.</span></h1><p>Primero intenta resolverlo. Después compara tu explicación con el modelo.</p></div></div><div className="p-practice-layout"><section className="p-exercise"><div className="p-exercise-step"><span>01 / 01</span><span>FRACCIONES EQUIVALENTES</span></div><h2>¿Qué fracción equivale<br/>a un medio?</h2><p>La barra muestra una de dos partes iguales coloreada.</p><div className="p-exercise-visual" aria-label="Dos partes iguales; una coloreada"><i/><i/></div><label className="p-question">¿Cuál representa la misma cantidad?</label><div className="p-answer-options" role="group" aria-label="Elige una fracción">{(["1/4", "2/4", "3/4"] as Answer[]).map((value) => <button key={value} className={answer === value ? "is-selected" : ""} onClick={() => { setAnswer(value); setChecked(false); }}>{value}</button>)}</div><label className="p-reason-label" htmlFor="student-reason">Explícalo con tus palabras</label><textarea id="student-reason" value={reason} onChange={(event) => { setReason(event.target.value); setChecked(false); }} rows={3} placeholder="Creo que es… porque…"/><div className="p-exercise-actions"><span>Tu explicación queda solo en esta pantalla.</span><button className="p-solid-action" disabled={!answer || reason.trim().length < 15} onClick={checkAnswer}>Comprobar <ArrowRight size={16}/></button></div>{checked && <div role="status" className={`p-answer-feedback ${answer === "2/4" ? "is-right" : "is-retry"}`}>{answer === "2/4" ? <><Check size={18}/> Elegiste 2/4. Si divides cada mitad en dos, quedan dos partes coloreadas de cuatro. Compara esta idea con tu explicación.</> : <><RotateCcw size={18}/> Divide cada mitad en dos partes iguales y vuelve a contar las partes coloreadas.</>}</div>}</section><aside className="p-practice-aside"><span className="p-kicker">SI TE ATASCAS</span><h3>Una pista, no la respuesta.</h3><p>Si divides cada mitad en dos, ¿cuántas partes hay en total y cuántas quedan coloreadas?</p><div className="p-mini-diagram"><span>partes tomadas</span><strong>―</strong><span>partes en total</span></div><button className="p-text-action" onClick={() => document.getElementById("student-reason")?.focus()}>Volver a mi explicación <ArrowRight size={15}/></button></aside></div></>}
+    {tab === "familia" && <><div className="p-page-heading"><div><span className="p-kicker">ACOMPAÑAMIENTO FAMILIAR</span><h1>Para estudiar juntos<span>.</span></h1><p>Un resumen útil y preguntas para conversar. Sin mostrar la explicación privada del estudiante.</p></div></div><div className="p-family-layout"><section className="p-family-main"><span className="p-kicker">ESTADO EN ESTE NAVEGADOR</span><h2>{completed ? "Una práctica realizada." : "La primera práctica está pendiente."}</h2><p>{completed ? "Se respondió una actividad de fracciones. La siguiente conversación puede explorar si logra explicarlo con un ejemplo diferente." : "Pueden comenzar con una actividad breve sobre partes iguales."}</p><div className="p-family-divider"/><span className="p-kicker">PRÓXIMA EVALUACIÓN</span><h3>{nextExam?.title || "Sin pruebas programadas"}</h3><p>{nextExam ? `${longDate(nextExam.date)} · ${nextExam.detail}` : "El calendario mostrará las pruebas cuando estén programadas."}</p><button className="p-text-action" onClick={() => nextExam && goToDate(nextExam.date)}>Ver calendario <ArrowRight size={15}/></button></section><aside className="p-family-prompt"><span className="p-kicker">PREGUNTA PARA HOY</span><blockquote>“¿Cómo sabes que 1/2 y 2/4 representan la misma cantidad?”</blockquote><p>Escucha su explicación antes de corregir. Pídele que dibuje otro ejemplo.</p><div>Los datos de esta demo se guardan solo en este navegador.</div></aside></div></>}
+  </WorkspaceShell></div>;
 }

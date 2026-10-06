@@ -12,6 +12,12 @@ Rama de trabajo: `feature/educabot-prd`. Prototipo funcional de PRAXIOS para pro
 | `/implementa` | Seguimiento institucional | Concepto sin datos reales; etapa posterior |
 | `/admin` | Consola de operación interna | Salud pública y vista previa; acceso protegido para estado y controles reales |
 
+### Calendario compartido de la demo
+
+Aprende ahora incluye **Hoy**, **Calendario**, **Mi progreso**, **Practicar** y **Para mi familia**. En el calendario se muestran clases, prácticas y pruebas, con el contenido y una indicación concreta para prepararse. Crea incluye **Resumen**, **Planificación**, **Crear material** y **Evaluaciones**. El docente puede programar clases o pruebas con fecha, contenido y preparación; esas entradas aparecen en Aprende dentro del mismo navegador. También puede programar un borrador de clase después de marcar su revisión.
+
+Las vistas pueden abrirse directamente con `?vista=calendario`, `?vista=progreso` o `?vista=planificacion`, según el producto. El plan añadido por el docente y la práctica completada se guardan en `localStorage`; no hay cuentas, sincronización entre dispositivos ni datos escolares reales. Los eventos iniciales son ejemplos relativos a la semana actual.
+
 La recomendación de lanzamiento, hipótesis de precios y plan de validación están en [LAUNCH_STRATEGY_V3.md](docs/educabot/LAUNCH_STRATEGY_V3.md). La [estrategia anterior](docs/educabot/PRODUCT_STRATEGY_V2.md) se conserva como historial de decisiones.
 
 ## Ejecutar y verificar
