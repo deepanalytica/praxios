@@ -12,6 +12,7 @@ const base: ClassRequest = {
 
 const env = {
   ASSETS: { fetch: async () => new Response("", { status: 404 }) },
+  AI_ENABLED: "true",
   AI: {
     run: async () => ({
       response: JSON.stringify({
@@ -32,6 +33,28 @@ async function generate(input: ClassRequest) {
 }
 
 describe("Class-pack authority boundary", () => {
+  it("serves a concrete local example without invoking AI when public AI is disabled", async () => {
+    let invoked = false;
+    const local = { ...env, AI_ENABLED: "false", AI: { run: async () => { invoked = true; throw new Error("Unexpected AI call"); } } };
+    const response = await worker.fetch(new Request("https://example.test/api/class-pack", {
+      method: "POST", body: JSON.stringify({ ...base, course: "5° básico A", subject: "Matemática", prompt: "Fracciones equivalentes" })
+    }), local);
+    const data = await response.json() as { pack: ClassPack; mode: string; curriculum: { source: string } };
+    expect(response.status).toBe(200);
+    expect(invoked).toBe(false);
+    expect(data.mode).toBe("deterministic-fallback");
+    expect(data.pack.oaCode).toBe("MA05 OA 07");
+    expect(data.pack.flow.some((step) => step.copy.includes("2/4"))).toBe(true);
+    expect(data.curriculum.source).toContain("ma05-oa-07");
+  });
+
+  it("rejects malformed and oversized input", async () => {
+    const malformed = await worker.fetch(new Request("https://example.test/api/class-pack", { method: "POST", body: "{" }), env);
+    expect(malformed.status).toBe(400);
+    const oversized = await worker.fetch(new Request("https://example.test/api/class-pack", { method: "POST", body: JSON.stringify({ ...base, prompt: "x".repeat(3001) }) }), env);
+    expect(oversized.status).toBe(413);
+  });
+
   it("does not accept a model's invented OA or verified label", async () => {
     const { pack } = await generate({ ...base, course: "8° básico A" });
     expect(pack.oaCode).toBe("OA PENDIENTE");

@@ -2,6 +2,8 @@
 
 Fecha: 6 de octubre de 2026. Alcance: prototipo de `feature/educabot-prd`, principalmente Aprende y Crea. Esta es una revisión experta de pantallas y código; todavía no equivale a investigación con estudiantes, docentes y apoderados.
 
+**Estado de implementación:** la demo pública incorpora sesiones por actividad, explicación antes del modelo, transferencia, progreso sin atribuir dominio, agenda móvil, Familia separada y revisión docente declarada con fuente. Quedan pendientes para uso con personas reales: autenticación, autorización familiar, sincronización, revisión por afirmación con evidencias auditables, editor y versiones de materiales, telemetría y evaluación de aprendizaje con usuarios.
+
 ## Dictamen
 
 La versión actual logró una identidad visual ordenada y una separación inicial entre Aprende y Crea. Aún se percibe como una demostración de producto: el estudiante ve un panel antes de entrar al contenido; el docente revisa un borrador sin herramientas concretas para comprobarlo; «progreso» cuenta una actividad, no aprendizaje. La siguiente iteración debe cambiar el centro de gravedad desde el panel hacia la tarea real.

@@ -107,6 +107,49 @@ export const defaultClassPack: ClassPack = {
   ]
 };
 
+export type CurriculumReference = { oaCode: string; oaLabel: string; source: string };
+
+export function curatedCurriculum(input: ClassRequest): CurriculumReference | null {
+  const prompt = input.prompt.toLowerCase();
+  const course = input.course.trim();
+  if (/^7(?:\D|$)/.test(course) && /ciencias?/i.test(input.subject) && /tect|sismo|placa|terrem/.test(prompt)) {
+    return { oaCode: "CN07 OA 09", oaLabel: "Tectónica de placas, actividad geológica e interacción entre placas.", source: "https://www.curriculumnacional.cl/recursos/tectonica-placas" };
+  }
+  if (/^5(?:\D|$)/.test(course) && /matem/i.test(input.subject) && /fracci|equival/.test(prompt)) {
+    return { oaCode: "MA05 OA 07", oaLabel: "Fracciones propias: representación y creación de fracciones equivalentes.", source: "https://www.curriculumnacional.cl/curriculum/1o-6o-basico/matematica/5-basico/ma05-oa-07" };
+  }
+  return null;
+}
+
+export const fractionClassPack: ClassPack = {
+  title: "Una cantidad, distintas formas",
+  meta: "5° básico A · Matemática · 45 min",
+  goal: "Representar 1/2 y 2/4 con el mismo todo y explicar por qué cubren la misma cantidad.",
+  oaCode: "MA05 OA 07",
+  oaLabel: "Fracciones propias: representación y creación de fracciones equivalentes.",
+  flow: [
+    { time: "0–7 min", name: "Observar", copy: "Mostrar dos barras del mismo largo: una dividida en mitades y otra en cuartos. Preguntar qué cantidad está coloreada en cada una." },
+    { time: "7–18 min", name: "Construir", copy: "Doblar dos tiras iguales. Colorear 1/2 en la primera y 2/4 en la segunda; superponerlas para comparar la superficie." },
+    { time: "18–30 min", name: "Explicar", copy: "Cada pareja dibuja el mismo todo de dos formas y escribe por qué partir las piezas no cambia la cantidad total coloreada." },
+    { time: "30–39 min", name: "Transferir", copy: "Representar 3/6 y decidir si equivale a 1/2. Justificar con un dibujo antes de usar una regla simbólica." },
+    { time: "39–45 min", name: "Ticket de salida", copy: "Dibujar una equivalencia distinta y explicar cómo sabe que las cantidades coinciden." }
+  ],
+  materials: ["Tiras de papel del mismo tamaño", "Guía visual", "Ticket de salida", "Pauta docente"],
+  trust: [
+    { state: "CORROBORADO", text: "Referencia curricular sugerida", detail: "MA05 OA 07 aparece en el Currículum Nacional; el docente debe revisar la cobertura de esta actividad." },
+    { state: "CONJETURA_DECLARADA", text: "Adecuación al curso", detail: "La secuencia es un ejemplo de demostración. Requiere comprobar tiempos, nivel y ejemplos con el grupo real." }
+  ],
+  teacherNotes: [
+    "Usar tiras del mismo tamaño para que la comparación tenga sentido.",
+    "Pedir una explicación propia antes de enseñar el procedimiento de amplificar.",
+    "Si aparece 2/4 = 2/8, volver a comparar superficies con las tiras."
+  ],
+  exitTicket: [
+    "Dibuja 1/2 y 2/4 usando dos barras del mismo largo. Explica por qué representan lo mismo.",
+    "¿Es 3/6 equivalente a 1/2? Muéstralo con un dibujo y una frase."
+  ]
+};
+
 export const upcoming = [
   { date: "08 OCT", title: "Prueba de Ciencias", note: "reforzar subducción", level: "high" },
   { date: "10 OCT", title: "Guía Matemática", note: "fracciones equivalentes", level: "medium" },
@@ -128,6 +171,13 @@ export const classPulse = [
 
 export function fallbackPack(input: ClassRequest): ClassPack {
   const lower = input.prompt.toLowerCase();
+  if (/^5(?:\D|$)/.test(input.course.trim()) && /matem/i.test(input.subject) && /fracci|equival/.test(lower)) {
+    return {
+      ...fractionClassPack,
+      meta: `${input.course} · ${input.subject} · ${input.duration}`,
+      materials: input.outputs.length ? [...input.outputs, "Tiras de papel del mismo tamaño", "Pauta docente"] : fractionClassPack.materials
+    };
+  }
   if (/^7(?:\D|$)/.test(input.course.trim()) && /ciencias?/i.test(input.subject) && /tect|sismo|placa|terrem/.test(lower)) {
     return {
       ...defaultClassPack,

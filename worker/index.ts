@@ -1,5 +1,5 @@
 import type { ClassPack, ClassRequest, EpistemicState } from "../src/data";
-import { fallbackPack } from "../src/data";
+import { curatedCurriculum, fallbackPack } from "../src/data";
 
 interface AiBinding {
   run(model: string, input: unknown): Promise<unknown>;
@@ -8,6 +8,7 @@ interface AiBinding {
 interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
   AI?: AiBinding;
+  AI_ENABLED?: string;
   AI_MODEL?: string;
   ADMIN_TOKEN?: string;
   ADMIN_KV?: { get(key: string, type: "json"): Promise<unknown>; put(key: string, value: string): Promise<void> };
@@ -35,7 +36,7 @@ async function admin(request: Request, env: Env, path: string): Promise<Response
   if (path === "/api/admin/overview" && request.method === "GET") {
     return Response.json({
       generatedAt: new Date().toISOString(),
-      services: { worker: "online", aiBinding: !!env.AI, rolloutStore: !!env.ADMIN_KV, assets: !!env.ASSETS },
+      services: { worker: "online", aiBinding: !!env.AI, aiEnabled: !!env.AI && env.AI_ENABLED === "true", rolloutStore: !!env.ADMIN_KV, assets: !!env.ASSETS },
       rollout: await readRollout(env),
       usage: null,
       cost: null,
@@ -121,36 +122,25 @@ function normalizePack(candidate: Partial<ClassPack>, input: ClassRequest): Clas
   };
 }
 
-function curriculumContext(input: ClassRequest) {
-  const q = input.prompt.toLowerCase();
-  const course = input.course.trim();
-  if (/^7(?:\D|$)/.test(course) && /ciencias?/i.test(input.subject) && /tect|sismo|placa|terrem/.test(q)) {
-    return {
-      oaCode: "CN07 OA 09",
-      oaLabel: "Tectónica de placas, patrones de actividad geológica e interacción entre placas.",
-      source: "https://www.curriculumnacional.cl/recursos/tectonica-placas"
-    };
-  }
-  if (/^5(?:\D|$)/.test(course) && /matem/i.test(input.subject) && /fracci|equival/.test(q)) {
-    return {
-      oaCode: "MA05 OA 07",
-      oaLabel: "Fracciones propias, representación, equivalencia y comparación.",
-      source: "https://www.curriculumnacional.cl/curriculum/1o-6o-basico/matematica/5-basico/ma05-oa-07"
-    };
-  }
-  return null;
-}
-
 async function classPack(request: Request, env: Env): Promise<Response> {
-  const input = await request.json() as ClassRequest;
-  if (!input.prompt?.trim()) {
+  let input: ClassRequest;
+  try { input = await request.json() as ClassRequest; }
+  catch { return Response.json({ error: "invalid_json" }, { status: 400 }); }
+  if (!input || typeof input !== "object" || typeof input.prompt !== "string" || !input.prompt.trim()) {
     return Response.json({ error: "prompt_required" }, { status: 400 });
   }
+  if (typeof input.course !== "string" || typeof input.subject !== "string" || typeof input.duration !== "string") {
+    return Response.json({ error: "invalid_request" }, { status: 400 });
+  }
+  if (input.prompt.length > 3000 || input.course.length > 120 || input.subject.length > 120 || input.duration.length > 50) {
+    return Response.json({ error: "input_too_long" }, { status: 413 });
+  }
+  input.outputs = Array.isArray(input.outputs) ? input.outputs.filter((item): item is string => typeof item === "string" && item.length <= 80).slice(0, 8) : [];
 
-  const curriculum = curriculumContext(input);
+  const curriculum = curatedCurriculum(input);
 
-  if (!env.AI) {
-    return Response.json({ pack: fallbackPack(input), mode: "deterministic-fallback", curriculum });
+  if (!env.AI || env.AI_ENABLED !== "true") {
+    return Response.json({ pack: fallbackPack(input), mode: "deterministic-fallback", curriculum }, { headers: { "cache-control": "no-store" } });
   }
 
   const system = [
@@ -194,13 +184,13 @@ async function classPack(request: Request, env: Env): Promise<Response> {
         ...normalized.trust.filter((item) => item.text !== "Alineación curricular" && item.text !== "Referencia curricular sugerida")
       ];
     }
-    return Response.json({ pack: normalized, mode: "ai-assisted", curriculum });
-  } catch (error) {
+    return Response.json({ pack: normalized, mode: "ai-assisted", curriculum }, { headers: { "cache-control": "no-store" } });
+  } catch {
     return Response.json({
       pack: fallbackPack(input),
       mode: "deterministic-fallback",
-      warning: String(error)
-    });
+      curriculum
+    }, { headers: { "cache-control": "no-store" } });
   }
 }
 

@@ -2,6 +2,9 @@ node_modules/
 dist/
 .wrangler/
 work/
+.playwright-cli/
+output/playwright/
+.admin-token.local
 .env
 .env.*
 !.env.example

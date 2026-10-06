@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export type PlanKind = "clase" | "practica" | "prueba";
+export type ActivityId = "partes" | "equivalencias" | "suma" | "ensayo";
 export type PlanEvent = {
   id: string;
   date: string;
@@ -10,6 +11,8 @@ export type PlanEvent = {
   method: string;
   detail: string;
   origin: "demo" | "docente";
+  activityId?: ActivityId;
+  sourceNote?: string;
 };
 
 const storageKey = "educabot-plan-v2";
@@ -54,10 +57,10 @@ export function demoPlan(today = new Date()): PlanEvent[] {
     ...event, id: `demo-${offset}`, date: dateKey(addDays(monday, offset)), origin: "demo"
   });
   return [
-    make(0, { kind: "clase", title: "Las partes de un todo", topic: "Fracciones", method: "Observa un modelo y explica qué representa cada parte.", detail: "Identificar numerador y denominador usando barras divididas en partes iguales." }),
-    make(2, { kind: "practica", title: "Fracciones equivalentes", topic: "Equivalencia", method: "Compara representaciones y justifica por qué expresan la misma cantidad.", detail: "Representar 1/2, 2/4 y 3/6; explicar una equivalencia con tus palabras." }),
-    make(4, { kind: "clase", title: "Sumar con igual denominador", topic: "Suma de fracciones", method: "Construye la suma con piezas antes de escribirla con números.", detail: "Resolver sumas sencillas y comprobar el resultado con un modelo visual." }),
-    make(7, { kind: "practica", title: "Ensayo de preparación", topic: "Fracciones", method: "Resuelve sin pistas al principio; después revisa tus errores.", detail: "Practicar representación, equivalencia y suma; registrar qué conviene repasar." }),
+    make(0, { kind: "clase", title: "Las partes de un todo", topic: "Fracciones", method: "Observa un modelo y explica qué representa cada parte.", detail: "Identificar numerador y denominador usando barras divididas en partes iguales.", activityId: "partes" }),
+    make(2, { kind: "practica", title: "Fracciones equivalentes", topic: "Equivalencia", method: "Compara representaciones y justifica por qué expresan la misma cantidad.", detail: "Representar 1/2, 2/4 y 3/6; explicar una equivalencia con tus palabras.", activityId: "equivalencias" }),
+    make(4, { kind: "clase", title: "Sumar con igual denominador", topic: "Suma de fracciones", method: "Construye la suma con piezas antes de escribirla con números.", detail: "Resolver sumas sencillas y comprobar el resultado con un modelo visual.", activityId: "suma" }),
+    make(7, { kind: "practica", title: "Ensayo de preparación", topic: "Fracciones", method: "Resuelve sin pistas al principio; después revisa tus errores.", detail: "Practicar representación, equivalencia y suma; registrar qué conviene repasar.", activityId: "ensayo" }),
     make(10, { kind: "prueba", title: "Prueba de fracciones", topic: "Fracciones y equivalencia", method: "Repasa un poco cada día. Practica explicando el procedimiento en voz alta.", detail: "Contenidos: partes de un todo, fracciones equivalentes y suma con igual denominador." })
   ];
 }
@@ -66,7 +69,7 @@ function customPlan(): PlanEvent[] {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) || "[]") as unknown;
     if (!Array.isArray(saved)) return [];
-    return saved.filter((item): item is PlanEvent => !!item && typeof item === "object" && typeof item.id === "string" && /^\d{4}-\d{2}-\d{2}$/.test(item.date) && ["clase", "practica", "prueba"].includes(item.kind) && typeof item.title === "string" && typeof item.topic === "string" && typeof item.method === "string" && typeof item.detail === "string" && item.origin === "docente");
+    return saved.filter((item): item is PlanEvent => !!item && typeof item === "object" && typeof item.id === "string" && /^\d{4}-\d{2}-\d{2}$/.test(item.date) && ["clase", "practica", "prueba"].includes(item.kind) && typeof item.title === "string" && typeof item.topic === "string" && typeof item.method === "string" && typeof item.detail === "string" && (item.sourceNote === undefined || typeof item.sourceNote === "string") && item.origin === "docente");
   } catch { return []; }
 }
 
