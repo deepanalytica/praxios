@@ -209,9 +209,67 @@
       </div>
     </section>
 
+    <section class="section ontology-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">04 · Decision ontology</span><h2>Trace the decision, not just the prompt.</h2></div>
+        <p>PRAXIOS models each consequential decision as a graph of accountable objects. The goal is to reconstruct what happened without relying on a chat transcript.</p>
+      </div>
+      <div class="ontology-shell reveal">
+        <div class="ontology-ring">
+          <div class="ontology-node n1"><span>OBJECTIVE</span><b>What was intended?</b></div>
+          <div class="ontology-node n2"><span>CONTEXT</span><b>What was known?</b></div>
+          <div class="ontology-node n3"><span>MODEL / AGENT</span><b>Who reasoned?</b></div>
+          <div class="ontology-node n4"><span>EVIDENCE</span><b>What supports it?</b></div>
+          <div class="ontology-node n5"><span>POLICY</span><b>What was allowed?</b></div>
+          <div class="ontology-node n6"><span>EVALUATION</span><b>What was tested?</b></div>
+          <div class="ontology-node n7"><span>APPROVAL</span><b>Who accepted risk?</b></div>
+          <div class="ontology-node n8"><span>OUTCOME</span><b>What changed?</b></div>
+          <div class="ontology-core">
+            <small>IMMUTABLE LOGICAL RECORD</small>
+            <strong>Decision<br>Record</strong>
+            <span>identity · timestamp · lineage · state</span>
+          </div>
+        </div>
+        <div class="ontology-copy">
+          <span class="kicker">Why this matters</span>
+          <h3>A decision should survive the disappearance of the conversation that created it.</h3>
+          <p>The record links business intent, evidence, model activity, deterministic controls, human accountability and the real-world result. This is the foundation for auditability, post-mortem analysis and organizational memory.</p>
+          <div class="ontology-example">
+            <span>Example query</span>
+            <code>Why did Agent-17 recommend Supplier B on 2026-09-14?</code>
+            <p>PRAXIOS should be able to answer with the sources used, their versions, the model and tool chain, policy checks, evaluator results, approver identity and subsequent outcome.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section assurance-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">05 · Decision assurance</span><h2>Do not compress uncertainty into a fake confidence score.</h2></div>
+        <p>NIST recommends measurements with uncertainty, documentation and independent review. PRAXIOS therefore treats assurance as a vector of signals rather than “the model is 93% sure.”</p>
+      </div>
+      <div class="assurance-console reveal">
+        <div class="assurance-header">
+          <div><span>DECISION ASSURANCE VECTOR</span><b>Supplier recommendation / illustrative record</b></div>
+          <span class="assurance-badge">requires human approval</span>
+        </div>
+        <div class="assurance-rows">
+          <div class="assurance-row"><span>Evidence coverage</span><div class="meter"><i style="--v:92%"></i></div><b>high</b><small>material claims mapped to sources</small></div>
+          <div class="assurance-row"><span>Source freshness</span><div class="meter"><i style="--v:76%"></i></div><b>medium</b><small>one financial source nearing refresh threshold</small></div>
+          <div class="assurance-row"><span>Evaluator agreement</span><div class="meter"><i style="--v:84%"></i></div><b>high</b><small>independent checks broadly agree</small></div>
+          <div class="assurance-row"><span>Policy completeness</span><div class="meter"><i style="--v:100%"></i></div><b>passed</b><small>all deterministic rules executed</small></div>
+          <div class="assurance-row"><span>Outcome precedent</span><div class="meter"><i style="--v:48%"></i></div><b>limited</b><small>insufficient comparable historical outcomes</small></div>
+        </div>
+        <div class="assurance-footer">
+          <p><b>Important:</b> these values are illustrative UI semantics, not production metrics. The product principle is the point: uncertainty must remain decomposable and inspectable.</p>
+          <a href="https://airc.nist.gov/airmf-resources/playbook/measure/" target="_blank" rel="noopener">NIST Measure guidance ↗</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section verification-section">
       <div class="section-head reveal">
-        <div><span class="kicker">04 · Seven trust gates</span><h2>Every consequential action must earn permission to continue.</h2></div>
+        <div><span class="kicker">06 · Seven trust gates</span><h2>Every consequential action must earn permission to continue.</h2></div>
         <p>This is the proposed verification architecture. It is a product specification under development—not a claim of audited production performance.</p>
       </div>
       <div class="gates">
@@ -227,7 +285,7 @@
 
     <section class="section deterministic-section">
       <div class="section-head reveal">
-        <div><span class="kicker">05 · Engineering concept</span><h2>The model proposes. The control plane disposes.</h2></div>
+        <div><span class="kicker">07 · Engineering concept</span><h2>The model proposes. The control plane disposes.</h2></div>
         <p>Rust is relevant not as investor theater, but where deterministic enforcement matters: policy execution, state machines, signed events, concurrency safety and reproducible system behavior.</p>
       </div>
       <div class="boundary-diagram reveal">
@@ -252,7 +310,7 @@
 
     <section class="section framework-section">
       <div class="section-head reveal">
-        <div><span class="kicker">06 · Governance framework</span><h2>Mapped to recognized risk-management concepts.</h2></div>
+        <div><span class="kicker">08 · Governance framework</span><h2>Mapped to recognized risk-management concepts.</h2></div>
         <p>NIST AI RMF organizes AI risk around four functions: Govern, Map, Measure and Manage. PRAXIOS is being designed as operational software that can support those activities—not as a certification substitute.</p>
       </div>
       <div class="nist-map reveal">
@@ -270,7 +328,7 @@
 
     <section id="market" class="section market-section">
       <div class="section-head reveal">
-        <div><span class="kicker">07 · Market wedge</span><h2>Start where AI use and accountability are already colliding.</h2></div>
+        <div><span class="kicker">09 · Market wedge</span><h2>Start where AI use and accountability are already colliding.</h2></div>
         <p>Rather than claim a speculative trillion-dollar TAM, PRAXIOS starts with a bottom-up serviceable market built from official enterprise counts and observed AI adoption.</p>
       </div>
       <div class="market-model reveal">
@@ -294,7 +352,7 @@
 
     <section id="business" class="section business-section">
       <div class="section-head reveal">
-        <div><span class="kicker">08 · Business model</span><h2>Land through a governed workflow. Expand into the control plane.</h2></div>
+        <div><span class="kicker">10 · Business model</span><h2>Land through a governed workflow. Expand into the control plane.</h2></div>
         <p>The commercial thesis is enterprise software with implementation revenue early, progressively shifting toward recurring platform, usage and outcome-linked economics.</p>
       </div>
 
@@ -347,7 +405,7 @@
 
     <section class="section go-to-market">
       <div class="section-head reveal">
-        <div><span class="kicker">09 · Go-to-market</span><h2>Sell the painful workflow, not the platform abstraction.</h2></div>
+        <div><span class="kicker">11 · Go-to-market</span><h2>Sell the painful workflow, not the platform abstraction.</h2></div>
         <p>PRAXIOS should enter through decisions where failure is expensive, evidence matters and the buyer already feels the pain.</p>
       </div>
       <div class="gtm-grid">
@@ -365,7 +423,7 @@
 
     <section class="section verticals-section">
       <div class="section-head reveal">
-        <div><span class="kicker">10 · Proving environments</span><h2>One core. Multiple places to learn.</h2></div>
+        <div><span class="kicker">12 · Proving environments</span><h2>One core. Multiple places to learn.</h2></div>
         <p>The verticals are not presented as six unrelated startups. They are environments for developing reusable control patterns around one core architecture.</p>
       </div>
       <div class="vertical-grid">
@@ -380,7 +438,7 @@
 
     <section class="section moat-section">
       <div class="section-head reveal">
-        <div><span class="kicker">11 · Defensibility strategy</span><h2>The moat is not a prompt.</h2></div>
+        <div><span class="kicker">13 · Defensibility strategy</span><h2>The moat is not a prompt.</h2></div>
         <p>PRAXIOS must earn defensibility through operational data, workflow depth and integration—not through access to the same frontier models everyone can buy.</p>
       </div>
       <div class="moat-loop reveal">
@@ -394,7 +452,7 @@
 
     <section class="section status-section">
       <div class="section-head reveal">
-        <div><span class="kicker">12 · What is real today</span><h2>Separate the thesis from the proof.</h2></div>
+        <div><span class="kicker">14 · What is real today</span><h2>Separate the thesis from the proof.</h2></div>
         <p>Credibility matters more than pretending to be further ahead. This is the current investor framing.</p>
       </div>
       <div class="status-grid">
@@ -410,7 +468,7 @@
 
     <section class="section roadmap-section">
       <div class="section-head reveal">
-        <div><span class="kicker">13 · 18-month execution plan</span><h2>Turn architecture into repeatable enterprise evidence.</h2></div>
+        <div><span class="kicker">15 · 18-month execution plan</span><h2>Turn architecture into repeatable enterprise evidence.</h2></div>
         <p>The round should finance proof of product, proof of value and proof of repeatability—not indefinite R&D.</p>
       </div>
       <div class="roadmap">
@@ -449,7 +507,7 @@
 
     <section id="sources" class="section sources-section">
       <div class="section-head reveal">
-        <div><span class="kicker">14 · Evidence room</span><h2>Every external claim should be inspectable.</h2></div>
+        <div><span class="kicker">16 · Evidence room</span><h2>Every external claim should be inspectable.</h2></div>
         <p>Primary government, standards and academic sources are preferred. Internal assumptions are labeled separately throughout the site.</p>
       </div>
       <div class="source-list reveal">
