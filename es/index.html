@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="es" data-default-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07090d">
+  <meta name="description" content="PRAXIOS construye la capa de control para trabajo asistido por IA gobernable, trazable y medible. Dossier para inversionistas.">
+  <meta property="og:title" content="PRAXIOS — La capa de control para el trabajo con IA">
+  <meta property="og:description" content="Gobierna agentes. Verifica evidencia. Traza decisiones. Mide resultados.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <title>PRAXIOS — Dossier para inversionistas</title>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="PRAXIOS home">
+      <img src="../assets/praxios-mark.svg" alt="" width="34" height="34">
+      <span>PRAXIOS</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="#problem">Problema</a>
+      <a href="#architecture">Arquitectura</a>
+      <a href="#market">Mercado</a>
+      <a href="#business">Negocio</a>
+      <a href="#evidence">Evidencia</a>
+    </nav>
+    <div class="header-actions">
+      <a class="lang-switch" href="../" aria-label="Ver versión en inglés">EN</a>
+      <button class="theme-toggle" type="button" aria-label="Cambiar tema de color" title="Cambiar tema de color"><span class="theme-icon" aria-hidden="true">☼</span></button>
+      <a class="btn btn-ghost desktop-only" href="#sources">Fuentes</a>
+      <button class="btn btn-primary" data-open-access>Acceso inversionista</button>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" aria-hidden="true">
+      <a href="#problem">Problema</a><a href="#architecture">Arquitectura</a><a href="#market">Mercado</a>
+      <a href="#business">Negocio</a><a href="#evidence">Evidencia</a><a href="#sources">Fuentes</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="eyebrow reveal">Dossier para inversionistas · Octubre 2026</div>
+      <h1 class="display reveal" data-delay="60">La IA está entrando en la empresa.<br><span class="text-gradient">El control no avanza al mismo ritmo.</span></h1>
+      <p class="hero-copy reveal" data-delay="120">PRAXIOS está construyendo una capa de control para el trabajo asistido por IA: una capa gobernada entre los objetivos de la organización y los modelos probabilísticos, diseñada para que las acciones de agentes sean trazables, respaldadas por evidencia y medibles.</p>
+      <div class="hero-actions reveal" data-delay="170">
+        <a class="btn btn-primary btn-lg" href="#problem">Ver el caso de negocio <span>↘</span></a>
+        <a class="btn btn-secondary btn-lg" href="#architecture">Explorar la arquitectura</a>
+      </div>
+
+      <div class="hero-proof reveal" data-delay="220">
+        <div><strong>88%</strong><span>organizaciones reportan uso de IA</span><small>Stanford AI Index 2026</small></div>
+        <div><strong>~1 in 3</strong><span>intentos de agentes aún fallan</span><small>OSWorld, AI Index 2026</small></div>
+        <div><strong>362</strong><span>incidentes de IA documentados en 2025</span><small>vs. 233 en 2024</small></div>
+        <div><strong>€15M / 3%</strong><span>posibles sanciones de transparencia en la UE</span><small>marco del Art. 50 del AI Act</small></div>
+      </div>
+
+      <div class="hero-system reveal" data-delay="260" aria-label="PRAXIOS control loop">
+        <div class="system-topbar">
+          <span class="status-dot"></span><span>CICLO DE CONTROL / MODELO EN VIVO</span><span class="mono muted">arquitectura ilustrativa</span>
+        </div>
+        <div class="system-flow">
+          <div class="flow-node"><small>01</small><b>Objetivo</b><span>¿Qué debe ocurrir?</span></div>
+          <i>→</i>
+          <div class="flow-node"><small>02</small><b>Contexto</b><span>¿Qué se sabe?</span></div>
+          <i>→</i>
+          <div class="flow-node active"><small>03</small><b>PRAXIOS</b><span>¿Qué está permitido y verificado?</span></div>
+          <i>→</i>
+          <div class="flow-node"><small>04</small><b>Agentes</b><span>¿Quién ejecuta?</span></div>
+          <i>→</i>
+          <div class="flow-node"><small>05</small><b>Resultado</b><span>¿Funcionó?</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="section problem-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">01 · El problema del cliente</span><h2>La IA empresarial se está convirtiendo en un problema de gestión.</h2></div>
+        <p>Un CIO, COO o responsable de riesgo no necesita otro chatbot. Necesita saber qué hizo la IA, por qué lo hizo, qué evidencia utilizó, quién lo aprobó y si la acción generó valor.</p>
+      </div>
+
+      <div class="pain-grid">
+        <article class="pain-card reveal">
+          <span class="pain-number">01</span><h3>Ejecución fragmentada</h3>
+          <p>Teams mix multiple models, agents, SaaS tools and internal data. Contexto disappears across sessions and responsibility becomes ambiguous.</p>
+          <div class="business-impact"><span>Negocio impact</span><b>Trabajo duplicado · costos ocultos · decisiones inconsistentes</b></div>
+        </article>
+        <article class="pain-card reveal" data-delay="60">
+          <span class="pain-number">02</span><h3>Resultados probabilísticos llegan a procesos deterministas</h3>
+          <p>Los modelos de lenguaje pueden producir respuestas plausibles pero falsas. NIST clasifica explícitamente esto como confabulación, un riesgo propio de la IA generativa.</p>
+          <div class="business-impact"><span>Negocio impact</span><b>Un dato incorrecto puede convertirse en una acción automatizada</b></div>
+        </article>
+        <article class="pain-card reveal" data-delay="120">
+          <span class="pain-number">03</span><h3>Se rompe la trazabilidad</h3>
+          <p>Cuando un agente encadena herramientas y modelos, la organización necesita trazabilidad desde fuente → inferencia → aprobación → acción. La mayoría de las interfaces de chat no fueron diseñadas para eso.</p>
+          <div class="business-impact"><span>Negocio impact</span><b>Exposición regulatoria, legal y operacional</b></div>
+        </article>
+        <article class="pain-card reveal" data-delay="180">
+          <span class="pain-number">04</span><h3>El ROI es difícil de demostrar</h3>
+          <p>Los pilotos con agentes pueden verse impresionantes y, aun así, producir valor económico poco claro. Lo que suele faltar es telemetría de resultados, no capacidad del modelo.</p>
+          <div class="business-impact"><span>Negocio impact</span><b>Experimentación sin retornos verificables</b></div>
+        </article>
+      </div>
+
+      <div class="executive-scenario reveal">
+        <div class="scenario-copy">
+          <span class="kicker">Flujo empresarial ilustrativo</span>
+          <h3>La pregunta no es “¿qué modelo es más inteligente?”</h3>
+          <p>Un agente de compras recomienda un proveedor. El CFO pregunta: ¿qué fuentes informaron la decisión? ¿Estaban vigentes? ¿Qué modelo generó la recomendación? ¿Se cumplieron las políticas? ¿Era necesaria una aprobación humana? ¿Qué cambió después de ejecutar?</p>
+          <p class="callout">Si la empresa no puede reconstruir esa cadena, no gobierna plenamente la decisión.</p>
+        </div>
+        <div class="scenario-ledger">
+          <div class="ledger-row good"><span>Procedencia de fuentes</span><b>verificada</b></div>
+          <div class="ledger-row good"><span>Restricciones de política</span><b>aprobadas</b></div>
+          <div class="ledger-row warn"><span>Confianza del modelo</span><b>insuficiente por sí sola</b></div>
+          <div class="ledger-row good"><span>Evaluador independiente</span><b>aprobadas</b></div>
+          <div class="ledger-row good"><span>Aprobación humana</span><b>registrada</b></div>
+          <div class="ledger-row"><span>Resultado delta</span><b>medido</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence" class="section evidence-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">02 · Por qué ahora</span><h2>La curva de capacidad avanza más rápido que la capa de control.</h2></div>
+        <p>PRAXIOS es una tesis sobre timing: los modelos se vuelven más baratos y capaces mientras la gobernanza, la verificación y la rendición de cuentas aumentan de valor.</p>
+      </div>
+
+      <div class="evidence-grid">
+        <a class="metric-card reveal" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>$581.69B</strong><h3>inversión corporativa global en IA durante 2025</h3><p>Más que se duplicó interanualmente; la inversión privada representó la mayor proporción.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="50" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>88%</strong><h3>adopción organizacional de IA</h3><p>70% reportó IA generativa en al menos una función de negocio; el despliegue de agentes sigue en una etapa temprana.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="100" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>66.3%</strong><h3>éxito de agentes en OSWorld</h3><p>Ha aumentado fuertemente, pero aún falla aproximadamente uno de cada tres intentos en tareas estructuradas de uso de computador.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="150" href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>362</strong><h3>incidentes de IA documentados</h3><p>Subió desde 233 en 2024, señal de que la capacidad de IA responsable no está avanzando al mismo ritmo que la adopción.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+        <a class="metric-card reveal" href="https://ec.europa.eu/eurostat/web/interactive-publications/digitalisation-2026" target="_blank" rel="noopener">
+          <span class="source-chip">Eurostat · 2026 edition</span><strong>55%</strong><h3>grandes empresas de la UE usando IA</h3><p>20% de todas las empresas de la UE y cerca de 30% de las medianas usaron tecnologías de IA en 2025.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="50" href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" target="_blank" rel="noopener">
+          <span class="source-chip">European Commission · 2026</span><strong>€15M</strong><h3>límite superior de sanción por transparencia</h3><p>O hasta 3% de la facturación anual mundial para ciertas infracciones del Artículo 50, según el AI Act.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="100" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>59%</strong><h3>citan brechas de conocimiento</h3><p>Entre las barreras para implementar IA responsable; 48% menciona presupuesto y 41% incertidumbre regulatoria.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="150" href="https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2025</span><strong>280×</strong><h3>reducción del costo de inferencia</h3><p>Para desempeño MMLU nivel GPT‑3.5 entre nov. 2022 y oct. 2024. La inteligencia se está comoditizando.</p><span class="source-link">Abrir fuente ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section thesis-section">
+      <div class="thesis-block reveal">
+        <span class="kicker">Tesis de inversión</span>
+        <p class="mega-quote">A medida que la inteligencia se vuelve abundante,<br><span>dirigirla se vuelve escaso y valioso.</span></p>
+      </div>
+      <div class="thesis-columns reveal">
+        <div><small>LA PREGUNTA DEL SOFTWARE TRADICIONAL</small><h3>¿Qué puede hacer el software?</h3></div>
+        <div><small>LA PREGUNTA NATIVA DE IA</small><h3>¿Qué debe hacer la máquina, bajo qué evidencia, política y responsabilidad?</h3></div>
+      </div>
+    </section>
+
+    <section id="architecture" class="section architecture-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">03 · La arquitectura</span><h2>Una capa de control determinista alrededor de inteligencia probabilística.</h2></div>
+        <p>PRAXIOS no pretende volver deterministas los modelos de lenguaje. Busca hacer explícito, inspeccionable y gobernado el <em>proceso alrededor de ellos</em>.</p>
+      </div>
+
+      <div class="arch-shell reveal">
+        <div class="arch-toolbar"><span class="status-dot"></span><b>CAPA DE CONTROL PRAXIOS</b><span class="mono">arquitectura objetivo · v0.3</span></div>
+        <div class="arch-canvas">
+          <div class="arch-lane objective-lane"><span>INTENCIÓN DE NEGOCIO</span><b>Objetivo contract</b><small>meta · restricciones · métrica de éxito · clase de riesgo</small></div>
+          <div class="arch-arrow">↓</div>
+          <div class="organ-grid">
+            <button class="organ active" data-organ="Objetivo Compiler"><small>01</small><b>Objetivo Compiler</b><span>convierte intención en condiciones verificables</span></button>
+            <button class="organ" data-organ="Contexto Ledger"><small>02</small><b>Contexto Ledger</b><span>estado versionado y procedencia</span></button>
+            <button class="organ" data-organ="Planner & Router"><small>03</small><b>Planificador y enrutador</b><span>selección de modelo / herramienta / agente</span></button>
+            <button class="organ" data-organ="Policy Engine"><small>04</small><b>Motor de políticas</b><span>restricciones deterministas</span></button>
+            <button class="organ" data-organ="Evidencia Engine"><small>05</small><b>Evidencia Engine</b><span>afirmaciones ↔ fuentes ↔ vigencia</span></button>
+            <button class="organ" data-organ="Evaluator"><small>06</small><b>Evaluador</b><span>pruebas y umbrales independientes</span></button>
+            <button class="organ" data-organ="Human Gateway"><small>07</small><b>Pasarela humana</b><span>aprobación y escalamiento</span></button>
+            <button class="organ" data-organ="Execution Bus"><small>08</small><b>Bus de ejecución</b><span>acciones acotadas de herramientas</span></button>
+            <button class="organ" data-organ="Resultado Ledger"><small>09</small><b>Resultado Ledger</b><span>telemetría y aprendizaje</span></button>
+          </div>
+          <div id="organ-detail" class="organ-detail"><span>OBJETIVO COMPILER</span><p>Translates a business request into a machine-readable contract: intended outcome, allowed actions, evidence requirements, limits, approvals and success criteria.</p></div>
+          <div class="arch-arrow">↓</div>
+          <div class="model-lane">
+            <span>CAPA DE MODELOS Y HERRAMIENTAS</span>
+            <div><b>GPT</b><b>Claude</b><b>Gemini</b><b>Abiertos / locales</b><b>APIs</b><b>Datos empresariales</b></div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-lane outcome-lane"><span>EJECUCIÓN EN EL MUNDO REAL</span><b>Action + medido outcome</b><small>traza · costo · latencia · calidad · cambio de negocio</small></div>
+        </div>
+      </div>
+
+      <div class="principle-grid">
+        <article class="principle reveal"><span>PRINCIPIO 01</span><h3>Probabilístico por dentro.<br>Determinista por fuera.</h3><p>El razonamiento del modelo puede variar. Los permisos, esquemas, transiciones de estado, controles de política y eventos de auditoría no deberían hacerlo.</p></article>
+        <article class="principle reveal" data-delay="70"><span>PRINCIPIO 02</span><h3>Ninguna acción sin trazabilidad.</h3><p>Las acciones de alto impacto deben conservar suficiente procedencia para reconstruir fuente, modelo, política, evaluación y estado de aprobación.</p></article>
+        <article class="principle reveal" data-delay="140"><span>PRINCIPIO 03</span><h3>Confianza no es evidencia.</h3><p>A model sounding certain is not a verification mechanism. Evidencia must be independently inspectable.</p></article>
+      </div>
+    </section>
+
+    <section class="section ontology-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">04 · Ontología de decisiones</span><h2>Traza la decisión, no solo el prompt.</h2></div>
+        <p>PRAXIOS modela cada decisión relevante como un grafo de objetos responsables. El objetivo es reconstruir qué ocurrió sin depender del historial de una conversación.</p>
+      </div>
+      <div class="ontology-shell reveal">
+        <div class="ontology-ring">
+          <div class="ontology-node n1"><span>OBJETIVO</span><b>¿Qué se pretendía?</b></div>
+          <div class="ontology-node n2"><span>CONTEXTO</span><b>¿Qué se sabía?</b></div>
+          <div class="ontology-node n3"><span>MODELO / AGENTE</span><b>¿Quién razonó?</b></div>
+          <div class="ontology-node n4"><span>EVIDENCIA</span><b>¿Qué la respalda?</b></div>
+          <div class="ontology-node n5"><span>POLÍTICA</span><b>¿Qué estaba permitido?</b></div>
+          <div class="ontology-node n6"><span>EVALUACIÓN</span><b>¿Qué se verificó?</b></div>
+          <div class="ontology-node n7"><span>APROBACIÓN</span><b>¿Quién aceptó el riesgo?</b></div>
+          <div class="ontology-node n8"><span>RESULTADO</span><b>¿Qué cambió?</b></div>
+          <div class="ontology-core">
+            <small>REGISTRO LÓGICO INMUTABLE</small>
+            <strong>Registro de<br>decisión</strong>
+            <span>identidad · fecha/hora · linaje · estado</span>
+          </div>
+        </div>
+        <div class="ontology-copy">
+          <span class="kicker">Por qué importa</span>
+          <h3>Una decisión debe sobrevivir a la desaparición de la conversación que la originó.</h3>
+          <p>El registro conecta intención de negocio, evidencia, actividad del modelo, controles deterministas, responsabilidad humana y resultado real. Esa es la base para auditoría, análisis posterior y memoria organizacional.</p>
+          <div class="ontology-example">
+            <span>Consulta de ejemplo</span>
+            <code>¿Por qué el Agente‑17 recomendó al Proveedor B el 14‑09‑2026?</code>
+            <p>PRAXIOS debería responder con las fuentes utilizadas, sus versiones, la cadena de modelos y herramientas, controles de política, resultados de evaluación, identidad de quien aprobó y el resultado posterior.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section assurance-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">05 · Aseguramiento de decisiones</span><h2>No comprimas la incertidumbre en un falso porcentaje de confianza.</h2></div>
+        <p>NIST recomienda mediciones con incertidumbre, documentación y revisión independiente. Por eso PRAXIOS trata el aseguramiento como un vector de señales, no como “el modelo está 93% seguro”.</p>
+      </div>
+      <div class="assurance-console reveal">
+        <div class="assurance-header">
+          <div><span>VECTOR DE ASEGURAMIENTO DE DECISIÓN</span><b>Recomendación de proveedor / registro ilustrativo</b></div>
+          <span class="assurance-badge">requiere aprobación humana</span>
+        </div>
+        <div class="assurance-rows">
+          <div class="assurance-row"><span>Evidencia coverage</span><div class="meter"><i style="--v:92%"></i></div><b>alto</b><small>afirmaciones materiales vinculadas a fuentes</small></div>
+          <div class="assurance-row"><span>Vigencia de fuentes</span><div class="meter"><i style="--v:76%"></i></div><b>medio</b><small>una fuente financiera cercana al umbral de actualización</small></div>
+          <div class="assurance-row"><span>Evaluador agreement</span><div class="meter"><i style="--v:84%"></i></div><b>alto</b><small>las verificaciones independientes concuerdan ampliamente</small></div>
+          <div class="assurance-row"><span>Completitud de políticas</span><div class="meter"><i style="--v:100%"></i></div><b>aprobadas</b><small>todas las reglas deterministas ejecutadas</small></div>
+          <div class="assurance-row"><span>Resultado precedent</span><div class="meter"><i style="--v:48%"></i></div><b>limitado</b><small>insuficientes resultados históricos comparables</small></div>
+        </div>
+        <div class="assurance-footer">
+          <p><b>Importante:</b> estos valores son semántica ilustrativa de interfaz, no métricas de producción. El principio de producto es lo relevante: la incertidumbre debe permanecer descomponible e inspeccionable.</p>
+          <a href="https://airc.nist.gov/airmf-resources/playbook/measure/" target="_blank" rel="noopener">Guía NIST Measure ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section verification-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">06 · Siete compuertas de confianza</span><h2>Toda acción relevante debe ganarse el permiso para continuar.</h2></div>
+        <p>Esta es la arquitectura de verificación propuesta. Es una especificación de producto en desarrollo, no una afirmación de desempeño auditado en producción.</p>
+      </div>
+      <div class="gates">
+        <div class="gate reveal"><span>G1</span><div><b>Objetivo gate</b><p>¿El resultado solicitado es explícito, medible y está dentro del alcance?</p></div></div>
+        <div class="gate reveal"><span>G2</span><div><b>Contexto gate</b><p>¿Las fuentes de datos están autorizadas, vigentes, versionadas y son atribuibles?</p></div></div>
+        <div class="gate reveal"><span>G3</span><div><b>Compuerta de esquema</b><p>¿La salida cumple restricciones deterministas de tipo, rango y estructura?</p></div></div>
+        <div class="gate reveal"><span>G4</span><div><b>Evidencia gate</b><p>¿Las afirmaciones materiales pueden vincularse a evidencia independiente que las respalde?</p></div></div>
+        <div class="gate reveal"><span>G5</span><div><b>Compuerta de evaluación</b><p>¿Los evaluadores independientes cumplen umbrales de calidad específicos de la tarea?</p></div></div>
+        <div class="gate reveal"><span>G6</span><div><b>Compuerta de riesgo y aprobación</b><p>¿La política permite autonomía o el sistema debe escalar a una persona?</p></div></div>
+        <div class="gate reveal"><span>G7</span><div><b>Resultado gate</b><p>¿La acción produjo el resultado esperado y qué debe aprender el sistema?</p></div></div>
+      </div>
+    </section>
+
+    <section class="section deterministic-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">07 · Concepto de ingeniería</span><h2>El modelo propone. La capa de control decide si puede ejecutarse.</h2></div>
+        <p>Rust is relevant not as investor theater, but where deterministic enforcement matters: policy execution, state machines, registrada events, concurrency safety and reproducible system behavior.</p>
+      </div>
+      <div class="boundary-diagram reveal">
+        <div class="boundary probabilistic">
+          <span>DOMINIO PROBABILÍSTICO</span>
+          <h3>Capa de razonamiento</h3>
+          <ul><li>Planificación</li><li>Comprensión del lenguaje</li><li>Generación</li><li>Priorización</li><li>Sugerencias de enrutamiento</li></ul>
+          <small>LLM / modelos multimodales / modelos especializados</small>
+        </div>
+        <div class="boundary-control">
+          <span class="shield">◆</span><b>LÍMITE DE CONTROL</b><small>esquemas · políticas · firmas · compuertas</small>
+        </div>
+        <div class="boundary deterministic">
+          <span>DOMINIO DETERMINISTA</span>
+          <h3>Núcleo de ejecución</h3>
+          <ul><li>Controles de permiso</li><li>Transiciones de estado</li><li>Validación</li><li>Eventos de auditoría</li><li>Restricciones de herramientas</li></ul>
+          <small>núcleo orientado a Rust + interfaces tipadas</small>
+        </div>
+      </div>
+      <p class="architecture-note reveal"><b>Importante:</b> deterministic software cannot guarantee that an AI-generated fact is true. It can guarantee that defined validation, approval and logging rules were executed. PRAXIOS is deregistrada around that distinction.</p>
+    </section>
+
+    <section class="section framework-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">08 · Marco de gobernanza</span><h2>Mapeado a conceptos reconocidos de gestión de riesgo.</h2></div>
+        <p>NIST AI RMF organizes AI risk around four functions: Govern, Map, Measure and Manage. PRAXIOS is being deregistrada as operational software that can support those activities—not as a certification substitute.</p>
+      </div>
+      <div class="nist-map reveal">
+        <div class="nist-core"><span>NIST AI RMF</span><b>GOVERN</b><small>transversal</small></div>
+        <div class="nist-item"><b>MAP</b><span>Objetivo contract<br>Contexto ledger<br>Risk classification</span></div>
+        <div class="nist-item"><b>MEASURE</b><span>Evidencia engine<br>Evaluador<br>Resultado telemetry</span></div>
+        <div class="nist-item"><b>MANAGE</b><span>Motor de políticas<br>Pasarela humana<br>Controles de ejecución</span></div>
+      </div>
+      <div class="framework-foot reveal">
+        <a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST AI RMF Core ↗</a>
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">Perfil NIST para IA generativa ↗</a>
+        <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">Marco del AI Act de la UE ↗</a>
+      </div>
+    </section>
+
+    <section id="market" class="section market-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">09 · Mercado wedge</span><h2>Empezar donde el uso de IA y la responsabilidad ya están chocando.</h2></div>
+        <p>En lugar de declarar un TAM especulativo de billones, PRAXIOS parte con un mercado servible bottom‑up construido desde conteos oficiales de empresas y adopción observada de IA.</p>
+      </div>
+      <div class="market-model reveal">
+        <div class="formula">
+          <div><strong>55,000</strong><span>grandes empresas de la UE</span><small>Eurostat 2024</small></div><i>×</i><div><strong>55.03%</strong><span>usan IA</span><small>Eurostat 2025</small></div><i>+</i>
+          <div><strong>251,000</strong><span>medio EU enterprises</span><small>Eurostat 2024</small></div><i>×</i><div><strong>30.36%</strong><span>usan IA</span><small>Eurostat 2025</small></div>
+        </div>
+        <div class="formula-result"><span>≈</span><strong>106,000</strong><div><b>AI-active medio + large enterprises</b><small>base direccionable calculada; redondeada</small></div></div>
+      </div>
+      <div class="market-cards">
+        <article class="market-card reveal"><span>SUPUESTO</span><strong>€36k</strong><h3>ACV inicial modelado de plataforma</h3><p>Supuesto interno de planificación. No es una estadística externa de mercado.</p></article>
+        <article class="market-card reveal" data-delay="70"><span>SAM MODELADO</span><strong>≈ €3.8B</strong><h3>oportunidad anual de plataforma</h3><p>106k AI-active medio/grandes empresas de la UE × €36k ACV. This is a bottom-up scenario, not a forecast.</p></article>
+        <article class="market-card reveal" data-delay="140"><span>0,1% PENETRACIÓN</span><strong>≈ €3.8M</strong><h3>ARR ilustrativo</h3><p>Solo ~106 clientes al mismo ACV. El caso inicial no requiere penetración masiva del mercado.</p></article>
+      </div>
+      <div class="market-source reveal">
+        <p><b>Por qué la UE sirve como ancla de dimensionamiento:</b> the region has current official enterprise statistics, rapidly rising AI adoption and an enforceable AI governance regime. It does not imply PRAXIOS is limitado to Europe.</p>
+        <a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251209-2" target="_blank" rel="noopener">Conteo de empresas ↗</a>
+        <a href="https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/106920.pdf" target="_blank" rel="noopener">Adopción de IA por tamaño de empresa ↗</a>
+      </div>
+    </section>
+
+    <section id="business" class="section business-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">10 · Negocio model</span><h2>Entrar por un flujo gobernado. Expandirse hasta convertirse en la capa de control.</h2></div>
+        <p>La tesis comercial es software empresarial con ingresos de implementación al inicio, desplazándose progresivamente hacia plataforma recurrente, uso y economías vinculadas a resultados.</p>
+      </div>
+
+      <div class="business-model-grid">
+        <article class="biz-card reveal"><span>01</span><h3>Socio de diseño</h3><strong>€15k–€40k</strong><p>Despliegue acotado de un flujo, mapeo de arquitectura y diseño de evaluación.</p><small>Goal: prove a alto-value use case.</small></article>
+        <article class="biz-card reveal" data-delay="50"><span>02</span><h3>Plataforma</h3><strong>€30k–€120k+ ARR</strong><p>Capa de control, evidencia, políticas, auditoría, evaluación, conectores y Decision Room.</p><small>Objetivo: ingresos recurrentes de software.</small></article>
+        <article class="biz-card reveal" data-delay="100"><span>03</span><h3>Uso</h3><strong>metered</strong><p>Ejecuciones de agentes, evaluaciones, cargas de verificación, almacenamiento y conectores empresariales.</p><small>Objetivo: crecer con el trabajo ejecutado por máquinas.</small></article>
+        <article class="biz-card reveal" data-delay="150"><span>04</span><h3>Resultado layer</h3><strong>selective</strong><p>Cuando los resultados son atribuibles, los contratos pueden incluir componentes ligados al desempeño.</p><small>Objetivo: alinear precio con valor realizado.</small></article>
+      </div>
+
+      <div class="economics reveal">
+        <div class="economics-copy">
+          <span class="kicker">Modelo interactivo de riesgo de decisión</span>
+          <h3>¿Cuánto vale controlar un flujo no gobernado?</h3>
+          <p>Esta calculadora no afirma que PRAXIOS eliminará errores. Permite a un inversionista probar la sensibilidad económica de un flujo usando supuestos explícitos.</p>
+          <div class="calc-fields">
+            <label>Decisiones asistidas por IA / mes<input id="decisions" type="number" min="0" value="500"></label>
+            <label>Tasa estimada de error material<input id="errorRate" type="number" min="0" max="100" step="0.1" value="2"></label>
+            <label>Costo promedio / error material (€)<input id="errorCost" type="number" min="0" value="5000"></label>
+            <label>Reducción objetivo por controles (%)<input id="reduction" type="number" min="0" max="100" value="40"></label>
+          </div>
+        </div>
+        <div class="calc-output">
+          <span>EXPOSICIÓN ANUAL ILUSTRATIVA</span><strong id="annualExposure">€600,000</strong>
+          <hr><span>EXPOSICIÓN POTENCIALMENTE EVITADA</span><strong id="avoidedExposure">€240,000</strong>
+          <small>Escenario aritmético únicamente. No es una afirmación ni garantía de desempeño.</small>
+        </div>
+      </div>
+
+      <div class="projection reveal">
+        <div class="projection-head">
+          <div><span class="kicker">Modelo operativo ilustrativo a cinco años</span><h3>Un resultado de escala venture sin requerir una cuota de mercado extraordinaria.</h3></div>
+          <p>Objetivos de gestión para discusión de planificación. No son proyecciones auditadas.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th></tr></thead>
+            <tbody>
+              <tr><td>Clientes empresariales</td><td>6</td><td>20</td><td>55</td><td>130</td><td>260</td></tr>
+              <tr><td>Plataforma ACV</td><td>€30k</td><td>€36k</td><td>€48k</td><td>€60k</td><td>€72k</td></tr>
+              <tr class="altolight-row"><td>ARR de cierre</td><td>€0.18M</td><td>€0.72M</td><td>€2.64M</td><td>€7.80M</td><td>€18.72M</td></tr>
+              <tr><td>Margen bruto objetivo</td><td>52%</td><td>60%</td><td>68%</td><td>74%</td><td>78%</td></tr>
+              <tr><td>Participación de la base UE activa en IA</td><td>0.006%</td><td>0.019%</td><td>0.052%</td><td>0.122%</td><td>0.244%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fineprint">Supuestos: clientes al cierre de cada año; ACV es el valor promedio anual recurrente de plataforma; servicios e implementación no se incluyen en ARR. Los resultados reales pueden diferir materialmente.</p>
+      </div>
+    </section>
+
+    <section class="section go-to-market">
+      <div class="section-head reveal">
+        <div><span class="kicker">11 · Go-to-market</span><h2>Vender el flujo doloroso, no la abstracción de plataforma.</h2></div>
+        <p>PRAXIOS debe entrar por decisiones donde el error es costoso, la evidencia importa y el comprador ya siente el problema.</p>
+      </div>
+      <div class="gtm-grid">
+        <article class="gtm-card reveal"><span>ENTRADA A</span><h3>Geoespacial / minería / infraestructura</h3><p>Las decisiones operacionales combinan datos satelitales, mapas, evidencia de ingeniería, restricciones de seguridad y reportabilidad ejecutiva.</p><b>Comprador:</b><small>operaciones · riesgo · gerencia técnica</small></article>
+        <article class="gtm-card reveal" data-delay="60"><span>ENTRADA B</span><h3>Sector público / flujos regulados</h3><p>Alta carga documental, responsabilidad pública y fuerte necesidad de trazabilidad entre decisiones.</p><b>Comprador:</b><small>transformación digital · CIO · dirección de programas</small></article>
+        <article class="gtm-card reveal" data-delay="120"><span>ENTRADA C</span><h3>Gobernanza de agentes empresariales</h3><p>Las empresas que ya despliegan copilotos y agentes necesitan una capa común para aprobaciones, evidencia, evaluación y telemetría.</p><b>Comprador:</b><small>CIO · CISO · riesgo · equipos de plataforma de IA</small></article>
+      </div>
+      <div class="land-expand reveal">
+        <div><span>ENTRAR</span><b>Un flujo relevante</b></div><i>→</i>
+        <div><span>PROBAR</span><b>Trazabilidad + cambio medible</b></div><i>→</i>
+        <div><span>EXPANDIR</span><b>Más agentes y áreas de negocio</b></div><i>→</i>
+        <div><span>ESTANDARIZAR</span><b>La capa de control se vuelve infraestructura</b></div>
+      </div>
+    </section>
+
+    <section class="section verticals-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">12 · Entornos de prueba</span><h2>Un solo núcleo. Múltiples lugares donde aprender.</h2></div>
+        <p>Las verticales no se presentan como seis startups independientes. Son entornos para desarrollar patrones reutilizables de control sobre una arquitectura central.</p>
+      </div>
+      <div class="vertical-grid">
+        <article><span>DEEP GEO</span><h3>Inteligencia de decisión espacial</h3><p>Evidencia-rich, alto-context operational decisions in territory, infrastructure and mining.</p></article>
+        <article><span>VISUAL ART AI</span><h3>Demanda y descubrimiento</h3><p>Flujos medidos que conectan presencia digital, búsqueda, recomendación por IA y resultados de negocio.</p></article>
+        <article><span>MSJ</span><h3>Comunicaciones agentivas</h3><p>Agentes de atención acotados a través de canales de mensajería y sistemas operacionales.</p></article>
+        <article><span>CLINIA</span><h3>Operaciones de salud</h3><p>Un entorno regulado donde permisos y supervisión humana son críticos.</p></article>
+        <article><span>EDUCABOT</span><h3>Sistemas de aprendizaje</h3><p>Contexto persistente, evidencia, supervisión humana y medición de resultados en aprendizaje.</p></article>
+        <article><span>DEEP LIVING</span><h3>Flujos inmobiliarios</h3><p>Transacciones intensivas en documentos, insumos de valoración, procedencia y aprobaciones multipartes.</p></article>
+      </div>
+    </section>
+
+    <section class="section moat-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">13 · Estrategia de defensibilidad</span><h2>El moat no es un prompt.</h2></div>
+        <p>PRAXIOS debe construir defensibilidad mediante datos operacionales, profundidad de flujos e integración, no mediante acceso a los mismos modelos de frontera que cualquiera puede comprar.</p>
+      </div>
+      <div class="moat-loop reveal">
+        <div><b>01</b><span>Flujos gobernados</span></div><i>→</i><div><b>02</b><span>Trazas de decisión</span></div><i>→</i><div><b>03</b><span>Datos de evaluación</span></div><i>→</i><div><b>04</b><span>Resultado data</span></div><i>→</i><div><b>05</b><span>Mejores políticas y enrutamiento</span></div>
+      </div>
+      <div class="moat-not">
+        <div><span>NO ES EL MOAT</span><p>Bibliotecas de prompts · una sola API de modelo · chat genérico · “magia de IA” opaca.</p></div>
+        <div><span>MOAT POTENCIAL</span><p>Grafos de políticas por dominio · sets propietarios de evaluación · linaje de evidencia · integraciones · datos acumulados de ejecución/resultados · costo de cambio.</p></div>
+      </div>
+    </section>
+
+    <section class="section status-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">14 · Qué es real hoy</span><h2>Separar la tesis de la evidencia.</h2></div>
+        <p>La credibilidad importa más que aparentar una madurez inexistente. Este es el encuadre actual para inversionistas.</p>
+      </div>
+      <div class="status-grid">
+        <article class="status-card done reveal"><span>CONSTRUIDO / EN DESARROLLO</span><ul><li>Arquitectura PRAXIOS / Meta‑Harness</li><li>Modelo de interacción Decision Room</li><li>Flujos de dominio en verticales geoespaciales, comerciales y de servicios</li><li>Tesis de orquestación agnóstica a modelos</li><li>Evidencia / evaluation / governance specifications</li></ul></article>
+        <article class="status-card next reveal" data-delay="70"><span>SIGUIENTES PRUEBAS</span><ul><li>Núcleo de control listo para producción</li><li>Socios de diseño empresariales pagados</li><li>Plantilla de despliegue repetible</li><li>ROI medido en flujos gobernados</li><li>Preparación en seguridad / compliance</li></ul></article>
+        <article class="status-card risk reveal" data-delay="140"><span>RIESGOS CONOCIDOS</span><ul><li>Riesgo de concentración en el fundador</li><li>Ciclos de venta empresariales</li><li>Plataforma vendors may expand downward</li><li>Los requisitos de gobernanza varían por sector</li><li>El product-market fit aún no está probado a escala</li></ul></article>
+      </div>
+      <div class="anti-hype reveal">
+        <b>Lo que PRAXIOS no afirma</b>
+        <span>No tenemos un foundation model propietario.</span><span>No garantizamos que la IA nunca alucine.</span><span>No ofrecemos certificación regulatoria automática.</span><span>No declaramos un moat antes de probarlo con clientes.</span>
+      </div>
+    </section>
+
+    <section class="section roadmap-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">15 · Plan de ejecución a 18 meses</span><h2>Convertir la arquitectura en evidencia empresarial repetible.</h2></div>
+        <p>La ronda debe financiar prueba de producto, prueba de valor y prueba de repetibilidad, no I+D indefinido.</p>
+      </div>
+      <div class="roadmap">
+        <article class="phase reveal"><span>0–3 MESES</span><h3>Núcleo</h3><ul><li>Objetivo / policy schema</li><li>Núcleo de estado + políticas orientado a Rust</li><li>Evidencia ledger MVP</li><li>Evaluador interface</li></ul></article>
+        <article class="phase reveal" data-delay="60"><span>3–6 MESES</span><h3>Socio de diseños</h3><ul><li>3–5 flujos con socios</li><li>Línea base de fallos / costos</li><li>Aprobación humana gates</li><li>Decision Room v1</li></ul></article>
+        <article class="phase reveal" data-delay="120"><span>6–12 MESES</span><h3>Productizar</h3><ul><li>Conectores reutilizables</li><li>Paquetes de políticas</li><li>Observabilidad empresarial</li><li>Endurecimiento de seguridad</li></ul></article>
+        <article class="phase reveal" data-delay="180"><span>12–18 MESES</span><h3>Repetibilidad</h3><ul><li>5–8 despliegues empresariales pagados</li><li>€250k–€400k ARR objetivo</li><li>2 patrones verticales validados</li><li>Métricas listas para Seed</li></ul></article>
+      </div>
+    </section>
+
+    <section class="section ask-section">
+      <div class="ask-card reveal">
+        <div>
+          <span class="kicker">Pre-seed</span>
+          <h2>Levantar capital para probar la capa de control.</h2>
+          <p>Target range deregistrada to fund approximately 18 months of focused product and market validation. Final terms remain subject to investor discussion.</p>
+        </div>
+        <div class="ask-number"><span>OBJETIVO</span><strong>US$1.0–1.5M</strong><small>rango de planificación · no es un término de financiamiento comprometido</small></div>
+      </div>
+      <div class="funds reveal">
+        <div style="--p:45"><span>45%</span><b>Ingeniería core</b></div>
+        <div style="--p:20"><span>20%</span><b>Seguridad y evaluaciones</b></div>
+        <div style="--p:20"><span>20%</span><b>GTM empresarial</b></div>
+        <div style="--p:10"><span>10%</span><b>Cloud / infraestructura</b></div>
+        <div style="--p:5"><span>5%</span><b>Legal / compliance</b></div>
+      </div>
+    </section>
+
+    <section class="section founder-section">
+      <div class="founder-card reveal">
+        <div class="founder-mark">AR</div>
+        <div><span class="kicker">Fundador</span><h2>Alexis Reyes Saavedra</h2><p>Fundador of Deep Analytica. Building at the intersection of AI systems, decision intelligence, geospatial workflows, product design and operational execution from Chile, with an explicit goal: turn frontier-model capability into governed, measurable systems.</p></div>
+        <div class="founder-risk"><span>PLAN DE EQUIPO</span><p>La estructura actual concentrada en el fundador es un riesgo. El plan pre‑seed prioriza ingeniería senior de sistemas, capacidades de seguridad/evaluación y go‑to‑market empresarial.</p></div>
+      </div>
+    </section>
+
+    <section id="sources" class="section sources-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">16 · Evidencia room</span><h2>Toda afirmación externa debe poder inspeccionarse.</h2></div>
+        <p>Se priorizan fuentes gubernamentales, estándares y fuentes académicas primarias. Los supuestos internos están etiquetados por separado en todo el sitio.</p>
+      </div>
+      <div class="source-list reveal">
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener"><span>Stanford HAI</span><b>2026 AI Index Report</b><small>adopción · incidentes · inversión · desempeño técnico</small></a>
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener"><span>Stanford HAI</span><b>Capítulo de economía</b><small>88% adopción · US$581,69B inversión corporativa en IA</small></a>
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance" target="_blank" rel="noopener"><span>Stanford HAI</span><b>Desempeño técnico</b><small>confiabilidad de agentes · limitaciones de benchmarks</small></a>
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai" target="_blank" rel="noopener"><span>Stanford HAI</span><b>IA responsable</b><small>roles de gobernanza · barreras de implementación</small></a>
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener"><span>NIST</span><b>AI Risk Management Framework</b><small>base para gestión de riesgo de IA confiable</small></a>
+        <a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener"><span>NIST AIRC</span><b>AI RMF Core</b><small>Govern · Map · Measure · Manage</small></a>
+        <a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=958388" target="_blank" rel="noopener"><span>NIST</span><b>Perfil de IA generativa</b><small>confabulación y riesgos de IA generativa</small></a>
+        <a href="https://ec.europa.eu/eurostat/web/interactive-publications/digitalisation-2026" target="_blank" rel="noopener"><span>Eurostat</span><b>Digitalización en Europa 2026</b><small>adopción empresarial de IA</small></a>
+        <a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251209-2" target="_blank" rel="noopener"><span>Eurostat</span><b>Datos de tamaño empresarial UE</b><small>55k large · 251k medio enterprises</small></a>
+        <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener"><span>European Commission</span><b>AI Act</b><small>calendario de aplicación y gobernanza</small></a>
+        <a href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" target="_blank" rel="noopener"><span>European Commission</span><b>FAQ de transparencia Artículo 50</b><small>obligaciones y sanciones</small></a>
+      </div>
+      <div class="method-note reveal"><b>Nota metodológica.</b> Mercado sizing, ACV, penetration and five-year financial figures on this page are PRAXIOS internal planning scenarios derived from cited public base data. They are not third-party forecasts and should not be interpreted as guaranteed outcomes.</div>
+    </section>
+
+    <section class="section final-section">
+      <div class="final-card reveal">
+        <span class="kicker">La oportunidad</span>
+        <h2>Los modelos generan.<br><span>PRAXIOS dirige.</span></h2>
+        <p>A medida que las empresas delegan más trabajo a la IA, la infraestructura que gobierna decisiones de máquinas puede volverse tan importante como los propios modelos.</p>
+        <div><button class="btn btn-primary btn-lg" data-open-access>Solicitar acceso inversionista</button><button class="btn btn-secondary btn-lg" data-open-dataroom>Ver Data Room</button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand"><img src="../assets/praxios-mark.svg" alt="" width="30" height="30"><span>PRAXIOS</span></div>
+    <p>AI Resultado Infrastructure · Investor materials · 2026</p>
+    <p class="fineprint">Las declaraciones prospectivas y los supuestos internos de planificación son inherentemente inciertos. Este sitio es para fines de conversación y no constituye una oferta de venta de valores.</p>
+  </footer>
+
+  <dialog id="access-modal">
+    <div class="modal-head"><div><span class="kicker">Acceso inversionista</span><h2>Solicitar paquete de due diligence</h2></div><button data-close-modal aria-label="Close">×</button></div>
+    <p>Deck de inversión, memo de arquitectura, roadmap, modelo operativo, plan de seguridad y futuros materiales del Data Room.</p>
+    <form id="access-form">
+      <label>Nombre<input name="name" required autocomplete="name"></label>
+      <label>Fondo / empresa<input name="company" required autocomplete="organization"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Mensaje<textarea name="message" rows="3" placeholder="¿Qué te gustaría revisar?"></textarea></label>
+      <button class="btn btn-primary" type="submit">Preparar solicitud</button>
+    </form>
+    <div id="request-output" hidden><p>Tu información no se transmite desde este sitio estático. Copia la solicitud formateada y envíala por tu canal preferido.</p><pre id="request-text"></pre><button id="copy-request" class="btn btn-secondary">Copiar solicitud</button></div>
+  </dialog>
+
+  <dialog id="dataroom-modal">
+    <div class="modal-head"><div><span class="kicker">Vista previa del Data Room</span><h2>Deregistrada for diligence, not decoration.</h2></div><button data-close-modal aria-label="Close">×</button></div>
+    <div class="dataroom-list">
+      <div><span>01</span><b>Deck de inversión</b><small>tesis · problema · mercado · ronda</small></div>
+      <div><span>02</span><b>Arquitectura memo</b><small>capa de control · trust gates · modelo de datos</small></div>
+      <div><span>03</span><b>Roadmap de producto</b><small>hitos a 18 meses</small></div>
+      <div><span>04</span><b>Modelo financiero</b><small>drivers · escenarios · runway</small></div>
+      <div><span>05</span><b>Seguridad y gobernanza</b><small>modelo de amenazas · controles · plan de auditoría</small></div>
+      <div><span>06</span><b>Evidencia de clientes</b><small>socios de diseño · ROI · casos</small></div>
+    </div>
+    <p class="fineprint">Los materiales sensibles de due diligence deben estar detrás de acceso autenticado, no en un sitio público de GitHub Pages.</p>
+  </dialog>
+
+  <script src="../app.js"></script>
+</body>
+</html>
