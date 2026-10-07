@@ -1,3 +1,23 @@
+const root=document.documentElement;
+const pageLang=root.lang==="es"?"es":"en";
+const savedTheme=localStorage.getItem("praxios-theme");
+const defaultTheme=root.dataset.defaultTheme||"dark";
+function applyTheme(theme){
+  root.dataset.theme=theme;
+  const icon=document.querySelector(".theme-icon");
+  const btn=document.querySelector(".theme-toggle");
+  if(icon) icon.textContent=theme==="light"?"☾":"☼";
+  if(btn) btn.setAttribute("aria-label",theme==="light"?(pageLang==="es"?"Cambiar a modo oscuro":"Switch to dark mode"):(pageLang==="es"?"Cambiar a modo claro":"Switch to light mode"));
+}
+applyTheme(savedTheme||defaultTheme);
+document.addEventListener("click",e=>{
+  const btn=e.target.closest(".theme-toggle");
+  if(!btn)return;
+  const next=root.dataset.theme==="light"?"dark":"light";
+  localStorage.setItem("praxios-theme",next);
+  applyTheme(next);
+});
+
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
 
@@ -36,7 +56,17 @@ if(menuBtn&&mobileMenu){
   }));
 }
 
-const organContent={
+const organContent=pageLang==="es"?{
+  "Objective Compiler":"Traduce una solicitud de negocio a un contrato legible por máquina: resultado esperado, acciones permitidas, requisitos de evidencia, límites, aprobaciones y criterios de éxito.",
+  "Context Ledger":"Mantiene contexto operativo versionado y procedencia para distinguir evidencia vigente, evidencia obsoleta, supuestos y decisiones anteriores.",
+  "Planner & Router":"Descompone el trabajo y selecciona modelos, herramientas y agentes según tarea, costo, latencia, riesgo e historial de evaluación, sin depender de un único proveedor.",
+  "Policy Engine":"Aplica restricciones deterministas antes de ejecutar: permisos, límites de datos, aprobaciones requeridas, topes de gasto, herramientas permitidas y reglas sectoriales.",
+  "Evidence Engine":"Vincula afirmaciones materiales con fuentes y metadatos, incluida vigencia y procedencia, para detectar afirmaciones sin respaldo antes de actuar.",
+  "Evaluator":"Ejecuta verificaciones independientes de la ruta principal: hechos, esquemas, políticas, rúbricas de calidad y revisión entre modelos.",
+  "Human Gateway":"Escala decisiones relevantes o inciertas a personas designadas y registra quién aprobó, rechazó o modificó la acción propuesta.",
+  "Execution Bus":"Entrega interfaces acotadas a herramientas y APIs, controlando qué puede modificar un agente y registrando la transición de estado resultante.",
+  "Outcome Ledger":"Registra costo, latencia, calidad y resultados de negocio después de ejecutar, generando retroalimentación para mejorar rutas, políticas y evaluaciones."
+}:{
   "Objective Compiler":"Translates a business request into a machine-readable contract: intended outcome, allowed actions, evidence requirements, limits, approvals and success criteria.",
   "Context Ledger":"Maintains versioned operational context and provenance so an agent can distinguish current evidence, stale evidence, assumptions and prior decisions.",
   "Planner & Router":"Decomposes work and selects models, tools and agents by task, cost, latency, risk and evaluation history rather than loyalty to one provider.",
@@ -94,14 +124,14 @@ if(form){
     e.preventDefault();
     const data=new FormData(form);
     const lines=[
-      "PRAXIOS — Investor Access Request",
+      pageLang==="es"?"PRAXIOS — Solicitud de acceso para inversionistas":"PRAXIOS — Investor Access Request",
       "",
-      "Name: "+(data.get("name")||""),
-      "Fund / company: "+(data.get("company")||""),
+      (pageLang==="es"?"Nombre: ":"Name: ")+(data.get("name")||""),
+      (pageLang==="es"?"Fondo / empresa: ":"Fund / company: ")+(data.get("company")||""),
       "Email: "+(data.get("email")||""),
-      "Message: "+(data.get("message")||"—"),
+      (pageLang==="es"?"Mensaje: ":"Message: ")+(data.get("message")||"—"),
       "",
-      "Requested materials: Investor deck, Architecture memo, Product roadmap, Financial model, Security & governance plan, Customer evidence."
+      pageLang==="es"?"Material solicitado: Deck de inversión, memo de arquitectura, roadmap de producto, modelo financiero, plan de seguridad y gobernanza, evidencia de clientes.":"Requested materials: Investor deck, Architecture memo, Product roadmap, Financial model, Security & governance plan, Customer evidence."
     ];
     requestText.textContent=lines.join("\n");
     output.hidden=false;
@@ -112,10 +142,10 @@ $("#copy-request")?.addEventListener("click",async()=>{
   try{
     await navigator.clipboard.writeText(requestText.textContent);
     const btn=$("#copy-request");
-    btn.textContent="Copied ✓";
-    setTimeout(()=>btn.textContent="Copy request",1500);
+    btn.textContent=pageLang==="es"?"Copiado ✓":"Copied ✓";
+    setTimeout(()=>btn.textContent=pageLang==="es"?"Copiar solicitud":"Copy request",1500);
   }catch{
-    $("#copy-request").textContent="Select the text above to copy";
+    $("#copy-request").textContent=pageLang==="es"?"Selecciona el texto de arriba para copiarlo":"Select the text above to copy";
   }
 });
 
