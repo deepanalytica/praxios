@@ -79,3 +79,93 @@ dialog{width:min(680px,calc(100% - 28px));border:1px solid var(--border-strong);
 .assurance-footer{display:flex;align-items:center;gap:24px;justify-content:space-between;padding:20px 24px;background:var(--surface-soft)}.assurance-footer p{margin:0;color:var(--text-secondary);font-size:.76rem;max-width:800px}.assurance-footer a{white-space:nowrap;font-size:.7rem;color:var(--text-accent)}
 @media(max-width:900px){.ontology-shell{grid-template-columns:1fr}.ontology-ring{min-height:560px}.assurance-row{grid-template-columns:140px 1fr 70px}.assurance-row>small{grid-column:2/-1}.assurance-footer{align-items:flex-start;flex-direction:column}}
 @media(max-width:580px){.ontology-ring{min-height:520px;border-radius:var(--radius-xl);padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px}.ontology-ring:before,.ontology-ring:after{display:none}.ontology-core{position:relative;left:auto;top:auto;transform:none;width:auto;height:auto;border-radius:var(--radius-lg);grid-column:1/-1;grid-row:1;padding:24px}.ontology-node{position:relative!important;inset:auto!important;transform:none!important;width:auto}.n1,.n2,.n3,.n4,.n5,.n6,.n7,.n8{left:auto;right:auto;top:auto;bottom:auto}.assurance-row{grid-template-columns:1fr 70px}.assurance-row .meter{grid-column:1/-1;grid-row:2}.assurance-row>small{grid-column:1/-1}.assurance-header{align-items:flex-start;flex-direction:column}}
+
+/* Theme controls */
+.lang-switch,.theme-toggle{height:38px;min-width:38px;padding:0 11px;border:1px solid var(--border-subtle);border-radius:var(--radius-pill);display:inline-flex;align-items:center;justify-content:center;background:var(--action-secondary);color:var(--text-secondary);font:600 .72rem var(--font-mono);cursor:pointer;transition:.2s var(--ease-out)}
+.lang-switch:hover,.theme-toggle:hover{color:var(--text-primary);border-color:var(--border-strong);transform:translateY(-1px)}
+.theme-toggle{padding:0;width:38px}.theme-icon{font-size:1rem;line-height:1}
+
+/* Light semantic theme */
+html[data-theme="light"]{
+  --surface-canvas:#f4f1ea;
+  --surface-raised:rgba(255,255,255,.78);
+  --surface-elevated:rgba(255,255,255,.96);
+  --surface-soft:rgba(21,30,38,.035);
+  --surface-hover:rgba(21,30,38,.065);
+  --border-subtle:rgba(19,31,40,.11);
+  --border-strong:rgba(19,31,40,.20);
+  --border-accent:rgba(17,122,90,.28);
+  --text-primary:#101820;
+  --text-secondary:#44515c;
+  --text-tertiary:#6e7a84;
+  --text-accent:#087a59;
+  --text-info:#006c88;
+  --text-warning:#9a5a00;
+  --text-danger:#a63a3a;
+  --action-primary:#123f35;
+  --action-primary-ink:#f8fffb;
+  --action-secondary:rgba(18,31,40,.045);
+  --shadow-panel:0 24px 70px rgba(18,28,36,.09);
+  --shadow-glow:0 0 60px rgba(12,120,91,.06);
+}
+html[data-theme="light"] body{background:#f4f1ea;color:var(--text-primary)}
+html[data-theme="light"] body:before{opacity:.3;background-image:linear-gradient(rgba(15,30,40,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(15,30,40,.045) 1px,transparent 1px)}
+html[data-theme="light"] .ambient{background:radial-gradient(circle at 68% 8%,rgba(0,108,136,.08),transparent 30%),radial-gradient(circle at 16% 28%,rgba(8,122,89,.07),transparent 24%)}
+html[data-theme="light"] .cursor-glow{background:radial-gradient(circle,rgba(0,108,136,.06),transparent 68%)}
+html[data-theme="light"] .site-header{background:rgba(244,241,234,.82)}
+html[data-theme="light"] .text-gradient{background:linear-gradient(100deg,#0d1820 0%,#087a59 48%,#006c88 100%);background-clip:text;-webkit-background-clip:text;color:transparent}
+html[data-theme="light"] .hero-proof>div,
+html[data-theme="light"] .vertical-grid article{background:rgba(255,255,255,.78)}
+html[data-theme="light"] .hero-system,
+html[data-theme="light"] .arch-shell,
+html[data-theme="light"] .assurance-console{background:rgba(255,255,255,.76)}
+html[data-theme="light"] .arch-toolbar,
+html[data-theme="light"] .system-topbar{background:rgba(255,255,255,.42)}
+html[data-theme="light"] .organ,
+html[data-theme="light"] .flow-node,
+html[data-theme="light"] .arch-lane,
+html[data-theme="light"] .model-lane,
+html[data-theme="light"] .metric-card,
+html[data-theme="light"] .pain-card,
+html[data-theme="light"] .principle,
+html[data-theme="light"] .market-card,
+html[data-theme="light"] .biz-card,
+html[data-theme="light"] .gtm-card,
+html[data-theme="light"] .status-card,
+html[data-theme="light"] .phase,
+html[data-theme="light"] .nist-item,
+html[data-theme="light"] .projection,
+html[data-theme="light"] .economics-copy,
+html[data-theme="light"] .calc-output,
+html[data-theme="light"] .source-list a,
+html[data-theme="light"] .moat-not>div{background:rgba(255,255,255,.58)}
+html[data-theme="light"] .organ:hover,
+html[data-theme="light"] .organ.active{background:rgba(8,122,89,.07)}
+html[data-theme="light"] .organ-detail{background:linear-gradient(90deg,rgba(8,122,89,.08),rgba(255,255,255,.2))}
+html[data-theme="light"] .probabilistic{background:radial-gradient(circle at 0 0,rgba(0,108,136,.09),transparent 40%)}
+html[data-theme="light"] .deterministic{background:radial-gradient(circle at 100% 100%,rgba(8,122,89,.09),transparent 40%)}
+html[data-theme="light"] .boundary-control{background:rgba(8,122,89,.04)}
+html[data-theme="light"] .ontology-core,
+html[data-theme="light"] .ontology-node{background:rgba(255,255,255,.94)}
+html[data-theme="light"] .ontology-example,
+html[data-theme="light"] .calc-fields input,
+html[data-theme="light"] #access-form input,
+html[data-theme="light"] #access-form textarea{background:rgba(255,255,255,.72)}
+html[data-theme="light"] dialog{background:#f7f4ee}
+html[data-theme="light"] pre{background:#ece8df;color:#34434f}
+html[data-theme="light"] .btn-primary:hover{background:#1a5144}
+html[data-theme="light"] .mobile-menu{background:rgba(247,244,238,.98)}
+html[data-theme="light"] .market-model,
+html[data-theme="light"] .ontology-shell,
+html[data-theme="light"] .final-card,
+html[data-theme="light"] .ask-card{background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(8,122,89,.035),rgba(0,108,136,.025))}
+html[data-theme="light"] .meter{background:rgba(16,24,32,.08)}
+html[data-theme="light"] .meter i{background:linear-gradient(90deg,#006c88,#087a59)}
+html[data-theme="light"] .source-chip,
+html[data-theme="light"] .kicker,
+html[data-theme="light"] .eyebrow{color:#087a59}
+
+@media(max-width:540px){
+  .lang-switch{height:36px;min-width:36px;padding:0 9px}
+  .theme-toggle{height:36px;width:36px;min-width:36px}
+}
