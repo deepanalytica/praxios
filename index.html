@@ -1,689 +1,515 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#06090f" />
-  <meta name="description" content="PRAXIOS — AI Outcome Operating System. Infrastructure for directing, governing and verifying AI-powered work." />
-  <meta property="og:title" content="PRAXIOS — AI Outcome Operating System" />
-  <meta property="og:description" content="The control plane for AI work." />
-  <meta property="og:type" content="website" />
-  <title>PRAXIOS — Investor Dossier</title>
-  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTUiIGZpbGw9IiMwODBkMTMiLz48cGF0aCBkPSJNMTggNDdWMTdoMTdjOCAwIDEzIDQgMTMgMTFzLTUgMTEtMTMgMTFoLTd2OEgxOHptMTAtMTZoN2MyIDAgNC0xIDQtM3MtMi0zLTQtM2gtN3Y2eiIgZmlsbD0iI2VhZjZmZiIvPjxwYXRoIGQ9Im00NSAxNSA1LTUiIHN0cm9rZT0iIzlmZmZjYSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4K" type="image/svg+xml" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07090d">
+  <meta name="description" content="PRAXIOS is building the control plane for governed, traceable and measurable AI work. Investor dossier.">
+  <meta property="og:title" content="PRAXIOS — The control plane for AI work">
+  <meta property="og:description" content="Govern agents. Verify evidence. Trace decisions. Measure outcomes.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-:root {
-  --bg: #06090f;
-  --bg-2: #090d14;
-  --panel: rgba(15, 21, 31, .72);
-  --panel-strong: #0f1621;
-  --line: rgba(255,255,255,.11);
-  --line-soft: rgba(255,255,255,.06);
-  --text: #f4f7fb;
-  --muted: #9aa7b6;
-  --faint: #647080;
-  --blue: #7dd3fc;
-  --mint: #9fffca;
-  --white: #ffffff;
-  --radius: 22px;
-  --max: 1240px;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: var(--bg); overflow-x: clip; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; line-height: 1.5; overflow-x: clip; max-width: 100vw; }
-a { color: inherit; text-decoration: none; }
-button,input,textarea { font: inherit; }
-button { color: inherit; }
-::selection { background: rgba(125,211,252,.25); }
-.noise { position: fixed; inset: 0; opacity: .035; pointer-events: none; z-index: 99; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); }
-.cursor-glow { position: fixed; width: 480px; height: 480px; border-radius: 50%; pointer-events: none; z-index: 0; opacity: .12; background: radial-gradient(circle, rgba(125,211,252,.65), transparent 68%); transform: translate(-50%,-50%); transition: opacity .3s; }
-.section-shell { width: min(var(--max), calc(100% - 56px)); margin-inline: auto; position: relative; z-index: 1; }
-.topbar { height: 74px; width: min(var(--max), calc(100% - 40px)); position: fixed; left: 50%; top: 16px; transform: translateX(-50%); z-index: 80; display: flex; align-items: center; gap: 28px; padding: 0 18px 0 14px; border: 1px solid var(--line); border-radius: 18px; background: rgba(6,9,15,.72); backdrop-filter: blur(22px); box-shadow: 0 18px 55px rgba(0,0,0,.25); }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-family: "Space Grotesk",sans-serif; letter-spacing: .08em; font-weight: 700; font-size: 14px; }
-.brand img { display: block; }
-.desktop-nav { display: flex; align-items: center; gap: 27px; margin-left: auto; }
-.desktop-nav a { font-size: 13px; color: #a8b3c0; transition: color .2s; }
-.desktop-nav a:hover { color: white; }
-.nav-cta { border: 1px solid rgba(255,255,255,.18); background: white; color: #071018; padding: 11px 16px; border-radius: 10px; font-weight: 700; font-size: 12px; cursor: pointer; }
-.menu-btn { display: none; width: 42px; height: 42px; border: 1px solid var(--line); background: transparent; border-radius: 10px; align-items:center; justify-content:center; flex-direction:column; gap:6px; }
-.menu-btn span { width: 18px; height:1px; background:white; }
-.mobile-menu { display: none; }
-.hero { min-height: 880px; padding: 190px 0 96px; display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(430px, .98fr); gap: 78px; align-items: center; }
-.hero-grid { position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, black 0%, transparent 88%); z-index:-3; }
-.hero-orb { position:absolute; border-radius:999px; filter: blur(20px); z-index:-2; pointer-events:none; }
-.orb-a { width:620px; height:620px; top:70px; left:-300px; background:radial-gradient(circle, rgba(51,134,255,.16), transparent 68%); }
-.orb-b { width:520px; height:520px; top:155px; right:-260px; background:radial-gradient(circle, rgba(135,255,202,.08), transparent 69%); }
-.eyebrow,.kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .13em; color: #9eb0c0; }
-.eyebrow { display:inline-flex; align-items:center; gap:9px; padding:8px 10px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.02); }
-.pulse-dot { width:7px;height:7px;border-radius:50%;background:var(--mint); box-shadow:0 0 0 0 rgba(159,255,202,.5); animation:pulse 2.1s infinite; }
-@keyframes pulse { 70% { box-shadow:0 0 0 8px rgba(159,255,202,0); } 100% { box-shadow:0 0 0 0 rgba(159,255,202,0); } }
-.hero h1 { font-family:"Space Grotesk",sans-serif; font-size:clamp(58px, 6.3vw, 96px); line-height:.94; letter-spacing:-.055em; margin:28px 0 28px; max-width:800px; }
-.hero h1 span { color:#93a6b8; }
-.hero-lede { max-width:650px; font-size:20px; color:#aab5c1; line-height:1.6; margin:0 0 34px; }
-.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
-.btn { border-radius:11px; padding:13px 17px; display:inline-flex; align-items:center; justify-content:center; gap:18px; border:1px solid transparent; cursor:pointer; font-size:13px; font-weight:700; transition:transform .2s,border-color .2s,background .2s; }
-.btn:hover { transform:translateY(-2px); }
-.btn-primary { background:#f5f8fb; color:#071018; box-shadow:0 12px 40px rgba(255,255,255,.08); }
-.btn-ghost { background:rgba(255,255,255,.025); border-color:var(--line); color:#dbe4eb; }
-.btn-ghost:hover { border-color:rgba(255,255,255,.24); }
-.hero-meta { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:62px; padding-top:24px; border-top:1px solid var(--line-soft); max-width:690px; }
-.hero-meta div { display:flex; flex-direction:column; gap:5px; }
-.hero-meta strong { font-family:"IBM Plex Mono", monospace; font-size:9px; letter-spacing:.12em; color:#647385; font-weight:500; }
-.hero-meta span { font-size:12px; color:#bac4ce; }
-.control-surface { border:1px solid rgba(255,255,255,.12); background:linear-gradient(145deg,rgba(16,24,35,.86),rgba(8,13,20,.72)); border-radius:24px; box-shadow:0 45px 120px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.05); overflow:hidden; transform:perspective(1000px) rotateY(-2deg) rotateX(1deg); }
-.surface-head { height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 17px; border-bottom:1px solid var(--line-soft); font-family:"IBM Plex Mono", monospace; font-size:9px; letter-spacing:.1em; color:#798696; }
-.live { display:flex;align-items:center;gap:7px;color:#9ed9bc; }
-.live i { width:6px;height:6px;border-radius:50%;background:#84e0ad;box-shadow:0 0 12px rgba(132,224,173,.7); }
-.surface-main { padding:16px; display:grid; gap:13px; }
-.objective-card { background:#0c131d; border:1px solid var(--line-soft); border-radius:14px; padding:20px; }
-.label { font-family:"IBM Plex Mono",monospace; font-size:8px; letter-spacing:.13em;color:#647386; }
-.objective-card h3 { font-size:20px; line-height:1.35; letter-spacing:-.02em; margin:10px 0 18px; max-width:390px; }
-.objective-progress { height:3px;background:#1b2735;border-radius:9px;overflow:hidden; }
-.objective-progress span { display:block;width:72%;height:100%;background:linear-gradient(90deg,var(--blue),var(--mint)); animation:progress 5s ease-in-out infinite alternate; }
-@keyframes progress { from{width:54%} to{width:86%} }
-.micro-row { margin-top:11px;display:flex;justify-content:space-between;font-size:9px;color:#687789;font-family:"IBM Plex Mono",monospace; }
-.micro-row b { color:#b8e6cf;font-weight:500; }
-.agent-stream { border:1px solid var(--line-soft); border-radius:14px; overflow:hidden; }
-.stream-row { min-height:66px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:9px 13px;border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.008); }
-.stream-row:last-child { border-bottom:0; }
-.stream-row.active { background:linear-gradient(90deg,rgba(125,211,252,.07),transparent); }
-.agent-icon { width:28px;height:28px;border-radius:8px;display:grid;place-items:center;border:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:8px;color:#84c8ef; }
-.stream-row div { display:flex;flex-direction:column;gap:2px; }
-.stream-row b { font-size:11px;font-weight:600; }
-.stream-row small { font-size:9px;color:#617081; }
-.stream-row em { font-family:"IBM Plex Mono",monospace;font-size:8px;color:#7d8b9a;font-style:normal; }
-.surface-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:9px; }
-.surface-metrics div { border:1px solid var(--line-soft);border-radius:12px;padding:13px;background:#0b1119;display:flex;flex-direction:column; }
-.surface-metrics small { font-size:7px;letter-spacing:.1em;color:#536173;font-family:"IBM Plex Mono",monospace; }
-.surface-metrics strong { font-family:"Space Grotesk",sans-serif;font-size:24px;margin:4px 0 1px; }
-.surface-metrics span { font-size:8px;color:#6e7b88; }
-.scroll-cue { position:absolute;bottom:24px;left:0;font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.1em;color:#536170;display:flex;align-items:center;gap:10px; }
-.scroll-cue span { width:24px;height:1px;background:#556270; }
-.statement { padding:155px 0 130px; display:grid;grid-template-columns:160px 1fr;gap:40px;border-top:1px solid var(--line-soft); }
-.statement-number { font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;color:#536171;padding-top:11px; }
-.statement-copy { max-width:940px; }
-.statement h2,.section-head h2,.loop-title h2,.raise h2,.founder h2,.closing h2 { font-family:"Space Grotesk",sans-serif;letter-spacing:-.045em;line-height:1.05; }
-.statement h2 { font-size:clamp(46px,5.4vw,76px);margin:18px 0 38px; }
-.statement h2 span,.loop-title h2 span,.closing h2 span { color:#7e8e9f; }
-.statement-copy>p:not(.kicker) { color:#9ca9b8;font-size:18px;line-height:1.7;max-width:770px; }
-.contrast-grid { grid-column:2;display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin-top:30px;max-width:940px; }
-.contrast-card { min-height:280px;border:1px solid var(--line);border-radius:18px;padding:25px;position:relative;overflow:hidden; }
-.contrast-card span { font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.13em;color:#5e6c7c; }
-.contrast-card h3 { font-family:"Space Grotesk",sans-serif;font-size:34px;margin:17px 0 25px; }
-.contrast-card ul { list-style:none;padding:0;margin:0;display:grid;gap:13px; }
-.contrast-card li { font-size:13px;color:#8492a2;display:flex;align-items:center;gap:8px; }
-.contrast-card li:before { content:"";width:4px;height:4px;border-radius:50%;background:#5b6978; }
-.contrast-card.bright { background:linear-gradient(145deg,rgba(125,211,252,.08),rgba(159,255,202,.025));border-color:rgba(125,211,252,.2); }
-.contrast-card.bright h3 { color:#eafaff; }
-.contrast-card.bright li:before { background:var(--mint);box-shadow:0 0 9px rgba(159,255,202,.5); }
-.transition-arrow { color:#526170; }
-.architecture,.proof,.defensibility,.market,.business,.raise,.founder { padding:130px 0; border-top:1px solid var(--line-soft); }
-.section-head { display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end;margin-bottom:62px; }
-.section-head h2 { font-size:clamp(44px,5vw,70px);margin:16px 0 0; }
-.section-head>p { color:#8f9dac;font-size:15px;line-height:1.7;max-width:470px;margin:0 0 8px; }
-.arch-stage { height:690px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at 50% 50%,rgba(31,64,77,.14),transparent 32%),#080c12;position:relative;overflow:hidden; }
-.arch-stage:before { content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.023) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.023) 1px,transparent 1px);background-size:40px 40px; }
-.arch-lines { position:absolute;inset:0;width:100%;height:100%; }
-.arch-lines path { fill:none;stroke:url(#lineGlow);stroke-width:1;opacity:.16;stroke-dasharray:5 7;animation:dash 18s linear infinite; }
-@keyframes dash { to { stroke-dashoffset:-220; } }
-.arch-node { position:absolute;top:50%;transform:translateY(-50%);width:180px;border:1px solid var(--line);background:#0c121b;border-radius:16px;padding:19px;display:flex;flex-direction:column;gap:4px;z-index:2; }
-.arch-node.human { left:36px; }
-.arch-node.outcome { right:36px; }
-.arch-node span { font-family:"IBM Plex Mono",monospace;font-size:8px;color:#5d6c7c;letter-spacing:.12em; }
-.arch-node strong { font-size:20px;margin-top:4px; }
-.arch-node small { font-size:9px;color:#687789;line-height:1.5; }
-.layer-stack { position:absolute;left:37.5%;top:50%;transform:translate(-50%,-50%);display:grid;gap:12px;width:270px;z-index:3; }
-.layer-card { text-align:left;border:1px solid var(--line);background:#0d141e;color:#dce5ec;border-radius:13px;padding:12px 14px;display:grid;grid-template-columns:26px 1fr;column-gap:8px;cursor:pointer;transition:.2s; }
-.layer-card:hover,.layer-card.is-active { border-color:rgba(125,211,252,.38);background:#111c28;transform:translateX(4px); }
-.layer-card i { grid-row:1/3;font-family:"IBM Plex Mono",monospace;font-size:8px;color:#5d92b1;font-style:normal;padding-top:2px; }
-.layer-card span { font-size:11px;font-weight:600; }
-.layer-card small { font-size:8px;color:#617080;margin-top:2px; }
-.arch-core { position:absolute;left:62.7%;top:50%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(125,211,252,.2);background:radial-gradient(circle,rgba(125,211,252,.1),rgba(7,12,18,.98) 67%);box-shadow:0 0 85px rgba(65,167,218,.09);z-index:3; }
-.arch-core:before,.arch-core:after { content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.045); }
-.arch-core:before { inset:-38px; }.arch-core:after { inset:-78px; }
-.arch-core img { margin-bottom:10px; }
-.arch-core span { font-family:"Space Grotesk",sans-serif;letter-spacing:.1em;font-weight:700;font-size:13px; }
-.arch-core small { font-family:"IBM Plex Mono",monospace;font-size:7px;letter-spacing:.13em;color:#5c6b7d;margin-top:4px; }
-.layer-detail { margin-top:15px;min-height:73px;border:1px solid var(--line-soft);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:26px;background:rgba(255,255,255,.012); }
-.layer-detail span { min-width:180px;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;color:#80b8d7; }
-.layer-detail p { margin:0;font-size:12px;color:#798898; }
-.loop-section { padding:0 0 130px; }
-.loop-grid { border:1px solid var(--line);border-radius:22px;padding:50px;background:linear-gradient(145deg,rgba(125,211,252,.035),rgba(159,255,202,.02)); }
-.loop-title { display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:30px; }
-.loop-title h2 { font-size:48px;margin:14px 0 0; }
-.loop-flow { margin-top:52px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:30px;border-top:1px solid var(--line-soft); }
-.loop-flow span { padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:"IBM Plex Mono",monospace;font-size:9px;color:#a9b6c2;background:#0c1219; }
-.loop-flow b { color:#4e6070;font-weight:400; }
-.verticals-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
-.vertical-card { min-height:330px;border:1px solid var(--line);border-radius:18px;padding:23px;background:#090e15;position:relative;transition:.25s; }
-.vertical-card:hover { transform:translateY(-5px);border-color:rgba(255,255,255,.19); }
-.vertical-card.featured { grid-row:span 2;min-height:674px;background:radial-gradient(circle at 60% 35%,rgba(125,211,252,.09),transparent 40%),#0b1119; }
-.vertical-code { position:absolute;right:18px;top:17px;font-family:"IBM Plex Mono",monospace;font-size:9px;color:#3f4c5b; }
-.vertical-icon { width:42px;height:42px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;color:#79a2bb;background:#0d151f; }
-.vertical-icon.geo { width:56px;height:56px;font-size:22px;color:#8cd8ff;box-shadow:0 0 35px rgba(125,211,252,.08); }
-.vertical-card h3 { font-family:"Space Grotesk",sans-serif;font-size:26px;margin:48px 0 14px;letter-spacing:-.03em; }
-.vertical-card.featured h3 { font-size:38px;margin-top:250px; }
-.vertical-card p { font-size:13px;color:#8190a0;line-height:1.65;max-width:360px; }
-.tags { display:flex;flex-wrap:wrap;gap:6px;margin-top:24px; }
-.tags span { font-family:"IBM Plex Mono",monospace;font-size:7px;letter-spacing:.07em;color:#728294;border:1px solid var(--line);border-radius:999px;padding:6px 8px; }
-.status { position:absolute;left:23px;bottom:23px;font-family:"IBM Plex Mono",monospace;font-size:8px;color:#75aa90;display:flex;align-items:center;gap:7px; }
-.status i { width:6px;height:6px;border-radius:50%;background:#7ed7a5; }
-.proof-note { margin:27px 0 0;color:#687788;font-size:12px; }
-.proof-note strong { color:#bac7d2;font-weight:600; }
-.defense-layout { border:1px solid var(--line);border-radius:24px;display:grid;grid-template-columns:1fr 1fr;min-height:590px;overflow:hidden;background:#080d13; }
-.defense-rings { min-height:590px;position:relative;display:grid;place-items:center;border-right:1px solid var(--line-soft);overflow:hidden;background:radial-gradient(circle,rgba(125,211,252,.07),transparent 55%); }
-.ring { position:absolute;border:1px solid rgba(255,255,255,.065);border-radius:50%;display:flex;align-items:flex-start;justify-content:center; }
-.ring span { transform:translateY(-50%);background:#080d13;padding:0 8px;font-family:"IBM Plex Mono",monospace;font-size:7px;letter-spacing:.12em;color:#526172; }
-.r1{width:470px;height:470px}.r2{width:370px;height:370px}.r3{width:270px;height:270px}.r4{width:170px;height:170px}
-.ring-core { width:90px;height:90px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(125,211,252,.19);background:#0c151e;box-shadow:0 0 50px rgba(125,211,252,.08); }
-.ring-core img { width:48px; }
-.defense-list { display:grid;grid-template-rows:repeat(5,1fr); }
-.defense-list>div { display:grid;grid-template-columns:48px 1fr;gap:16px;padding:18px 24px;align-items:center;border-bottom:1px solid var(--line-soft); }
-.defense-list>div:last-child { border-bottom:0; }
-.defense-list b { font-family:"IBM Plex Mono",monospace;font-size:9px;color:#4d5c6d;font-weight:500; }
-.defense-list span { display:flex;flex-direction:column;gap:5px; }
-.defense-list strong { font-size:14px; }
-.defense-list small { font-size:10px;color:#6f7e8e; }
-.signal-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:12px; }
-.signal-card { min-height:285px;border:1px solid var(--line);border-radius:17px;padding:20px;background:#090e15;display:flex;flex-direction:column;transition:.25s; }
-.signal-card:hover { border-color:rgba(125,211,252,.24);transform:translateY(-3px); }
-.signal-card>span { font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.1em;color:#5e6f80; }
-.signal-card strong { font-family:"Space Grotesk",sans-serif;font-size:23px;line-height:1.15;margin:38px 0 15px;letter-spacing:-.03em; }
-.signal-card p { font-size:11px;color:#758495;line-height:1.65;margin:0; }
-.signal-card em { margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:8px;color:#74b5d8;font-style:normal;padding-top:22px; }
-.business-grid { display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden; }
-.business-grid article { min-height:345px;padding:27px;border-right:1px solid var(--line-soft);background:#090e15; }
-.business-grid article:last-child{border-right:0}
-.business-grid article>span { font-family:"IBM Plex Mono",monospace;font-size:9px;color:#4b5b6b; }
-.business-grid h3 { font-family:"Space Grotesk",sans-serif;font-size:32px;margin:86px 0 18px;letter-spacing:-.04em; }
-.business-grid p { font-size:12px;line-height:1.7;color:#788797;max-width:300px; }
-.business-grid small { display:block;margin-top:35px;font-family:"IBM Plex Mono",monospace;font-size:8px;color:#5e8194; }
-.raise-panel { border:1px solid rgba(125,211,252,.18);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:.9fr 1.1fr;background:radial-gradient(circle at 15% 20%,rgba(125,211,252,.1),transparent 36%),#090f16; }
-.raise-copy { padding:55px; }
-.raise-copy h2 { font-size:58px;margin:17px 0 24px; }
-.raise-copy>p:not(.kicker) { color:#8897a7;font-size:13px;line-height:1.7;max-width:440px; }
-.raise-amount { display:flex;flex-direction:column;margin:52px 0 30px; }
-.raise-amount small { font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.12em;color:#5f6f80; }
-.raise-amount strong { font-family:"Space Grotesk",sans-serif;font-size:44px;letter-spacing:-.04em;margin:6px 0 2px; }
-.raise-amount span { font-size:10px;color:#667687; }
-.milestones { padding:54px 47px;border-left:1px solid var(--line-soft);background:rgba(3,6,10,.25); }
-.milestones h3 { font-size:13px;color:#aab7c3;margin:0 0 25px; }
-.milestones ol { list-style:none;padding:0;margin:0; }
-.milestones li { min-height:82px;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;border-top:1px solid var(--line-soft); }
-.milestones li>span { font-family:"IBM Plex Mono",monospace;font-size:8px;color:#4e6071; }
-.milestones li div { display:flex;flex-direction:column;gap:4px; }
-.milestones b { font-size:12px; }.milestones small{font-size:9px;color:#6a7989}
-.raise-context { margin-top:14px;border:1px solid var(--line-soft);border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:center; }
-.raise-context>span { font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.12em;color:#556576; }
-.raise-context p { margin:0;color:#718091;font-size:10px;line-height:1.55; }
-.raise-context a { font-size:9px;color:#86bdd8;white-space:nowrap; }
-.founder-panel { border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:55px 0;display:grid;grid-template-columns:160px 1.5fr .7fr;gap:44px;align-items:center; }
-.founder-monogram { width:124px;height:156px;border-radius:16px;border:1px solid var(--line);display:grid;place-items:center;background:linear-gradient(150deg,#111a25,#0a0f15);font-family:"Space Grotesk",sans-serif;font-size:34px;color:#7892a6; }
-.founder-copy h2 { font-size:48px;margin:15px 0 20px; }
-.quote { color:#9aa7b6;font-size:14px;line-height:1.75;max-width:590px; }
-.founder-name { display:flex;flex-direction:column;margin-top:25px;gap:2px; }
-.founder-name strong{font-size:12px}.founder-name span{font-size:9px;color:#617080}
-.founder-focus { border-left:1px solid var(--line-soft);padding-left:30px; }
-.founder-focus>span { font-family:"IBM Plex Mono",monospace;font-size:8px;color:#536273;letter-spacing:.1em; }
-.founder-focus ul { list-style:none;padding:0;margin:20px 0 0;display:grid;gap:11px; }
-.founder-focus li { font-size:11px;color:#8493a2; }
-.closing { padding:160px 0 150px; text-align:center; }
-.closing-inner { max-width:920px;margin:auto; }
-.closing-inner>p:first-of-type { font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.13em;color:#596879;margin-top:25px; }
-.closing h2 { font-size:clamp(48px,6vw,84px);margin:24px 0; }
-.closing-copy { max-width:650px;margin:0 auto 35px;color:#8795a4;font-size:14px;line-height:1.7; }
-.closing .hero-actions { justify-content:center; }
-.footer { min-height:130px;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;color:#5b6978;font-size:9px; }
-.footer>p { text-align:center; }.footer>div:last-child { display:flex;justify-content:flex-end;gap:20px; }.footer a{color:#8d9baa}
-.modal { width:min(650px,calc(100% - 30px));color:var(--text);background:#0a1018;border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:36px;box-shadow:0 45px 120px rgba(0,0,0,.65); }
-.modal::backdrop { background:rgba(1,4,8,.72);backdrop-filter:blur(9px); }
-.modal-close { position:absolute;right:16px;top:14px;width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:transparent;color:#9aa8b6;font-size:20px;cursor:pointer; }
-.modal-mark { width:46px;height:46px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;margin-bottom:25px; }.modal-mark img{width:28px}
-.modal h2 { font-family:"Space Grotesk",sans-serif;font-size:38px;letter-spacing:-.04em;margin:12px 0; }
-.modal>p:not(.kicker) { font-size:12px;color:#8190a0;line-height:1.65;max-width:540px; }
-#access-form { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px; }
-#access-form label { font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.08em;color:#6f7e8e;display:grid;gap:7px; }
-#access-form label:nth-child(3),#access-form label:nth-child(4),#access-form button,#access-form>small { grid-column:1/-1; }
-input,textarea { width:100%;border:1px solid var(--line);border-radius:10px;background:#080d13;color:white;padding:11px 12px;outline:0;resize:vertical; }
-input:focus,textarea:focus{border-color:rgba(125,211,252,.36)}
-#access-form>small { font-family:Inter,sans-serif;color:#536171;font-size:8px;line-height:1.5; }
-.request-output { margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#070b10; }
-.request-output>span { font-family:"IBM Plex Mono",monospace;font-size:8px;color:#7ac49c; }.request-output pre{white-space:pre-wrap;color:#a8b5c2;font-size:10px;line-height:1.5}
-.dataroom { width:min(860px,calc(100% - 30px)); }.dataroom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:28px 0}.dataroom-grid>div{min-height:110px;border:1px solid var(--line);border-radius:12px;padding:13px;display:flex;flex-direction:column}.dataroom-grid b{font-family:"IBM Plex Mono",monospace;font-size:8px;color:#536171}.dataroom-grid span{font-size:11px;font-weight:600;margin-top:20px}.dataroom-grid small{font-size:8px;color:#657484;margin-top:3px}
-.reveal { opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--delay,0ms); }.reveal.is-visible{opacity:1;transform:translateY(0)}
-@media (max-width: 1050px) {
-  .desktop-nav{display:none}.menu-btn{display:flex}.nav-cta{margin-left:auto}.hero{grid-template-columns:1fr;gap:55px;padding-top:150px}.control-surface{max-width:680px}.hero-meta{max-width:680px}.statement{grid-template-columns:1fr}.statement-number{display:none}.contrast-grid{grid-column:1}.section-head{grid-template-columns:1fr;gap:18px}.arch-stage{height:760px}.arch-lines{display:none}.arch-node.human{left:32px;top:105px;transform:none}.arch-node.outcome{right:32px;top:auto;bottom:34px;transform:none}.layer-stack{left:31%;top:52%;}.arch-core{left:69%;top:50%}.verticals-grid{grid-template-columns:1fr 1fr}.vertical-card.featured{grid-row:auto;min-height:420px;grid-column:span 2}.vertical-card.featured h3{margin-top:135px}.signal-grid{grid-template-columns:1fr 1fr}.raise-panel{grid-template-columns:1fr}.milestones{border-left:0;border-top:1px solid var(--line-soft)}.founder-panel{grid-template-columns:140px 1fr}.founder-focus{grid-column:2}.footer{grid-template-columns:1fr auto}.footer>p{display:none}
-}
-@media (max-width: 720px) {
-  .section-shell{width:min(100% - 30px,var(--max))}.topbar{width:calc(100% - 20px);top:10px;height:62px}.nav-cta{display:none}.mobile-menu{position:fixed;z-index:75;top:82px;left:10px;right:10px;padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(7,11,17,.96);backdrop-filter:blur(16px);flex-direction:column;gap:4px}.mobile-menu.is-open{display:flex}.mobile-menu a,.mobile-menu button{padding:13px;border:0;border-bottom:1px solid var(--line-soft);background:transparent;text-align:left;color:#b1bdc9}.hero{min-height:auto;padding:130px 0 100px}.hero h1{font-size:55px}.hero-lede{font-size:16px}.hero-actions{flex-direction:column;align-items:stretch}.hero-meta{grid-template-columns:1fr 1fr;margin-top:40px}.control-surface{transform:none}.surface-metrics{grid-template-columns:1fr}.scroll-cue{display:none}.statement,.architecture,.proof,.defensibility,.market,.business,.raise,.founder{padding:95px 0}.statement h2,.section-head h2{font-size:43px}.contrast-grid{grid-template-columns:1fr}.transition-arrow{transform:rotate(90deg);text-align:center}.arch-stage{height:900px}.arch-node{width:calc(100% - 44px);left:22px!important;right:auto!important}.arch-node.human{top:26px}.arch-node.outcome{bottom:26px}.layer-stack{left:50%;top:45%;width:calc(100% - 70px)}.arch-core{left:50%;top:70%;width:145px;height:145px}.layer-detail{display:block}.layer-detail span{display:block;margin-bottom:8px}.loop-grid{padding:28px}.loop-title{grid-template-columns:1fr}.loop-title h2{font-size:39px}.loop-flow{justify-content:flex-start}.verticals-grid{grid-template-columns:1fr}.vertical-card.featured{grid-column:auto}.signal-grid{grid-template-columns:1fr}.business-grid{grid-template-columns:1fr}.business-grid article{border-right:0;border-bottom:1px solid var(--line-soft);min-height:260px}.business-grid h3{margin-top:52px}.defense-layout{grid-template-columns:1fr}.defense-rings{min-height:440px;border-right:0;border-bottom:1px solid var(--line-soft)}.r1{width:350px;height:350px}.r2{width:280px;height:280px}.r3{width:210px;height:210px}.r4{width:140px;height:140px}.raise-copy{padding:32px 25px}.raise-copy h2{font-size:43px}.milestones{padding:30px 24px}.raise-context{grid-template-columns:1fr;gap:10px}.founder-panel{grid-template-columns:1fr}.founder-monogram{width:100%;height:110px}.founder-focus{grid-column:auto;border-left:0;border-top:1px solid var(--line-soft);padding:25px 0 0}.closing{padding:110px 0}.closing h2{font-size:47px}.footer{grid-template-columns:1fr;gap:18px;padding:28px 0}.footer>div:last-child{justify-content:flex-start;flex-wrap:wrap}.cursor-glow{display:none}.dataroom-grid{grid-template-columns:1fr 1fr}#access-form{grid-template-columns:1fr}#access-form label{grid-column:1/-1}.modal{padding:28px 20px}.modal h2{font-size:32px}
-}
-@media (max-width:420px){.hero h1{font-size:48px}.hero-meta{grid-template-columns:1fr}.dataroom-grid{grid-template-columns:1fr}.surface-head{font-size:8px}.stream-row{grid-template-columns:30px 1fr}.stream-row em{display:none}.vertical-card.featured h3{margin-top:110px}.r1{width:310px;height:310px}.r2{width:245px;height:245px}.r3{width:180px;height:180px}}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
-
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>PRAXIOS — Investor Dossier</title>
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
 
-  <header class="topbar">
+  <header class="site-header">
     <a class="brand" href="#top" aria-label="PRAXIOS home">
-      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIgcng9IjE5IiBzdHJva2U9InVybCgjYSkiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0zMSA2NlYzMUg1MC4yQzYwLjEgMzEgNjYgMzYuMiA2NiA0NC43QzY2IDUzLjIgNjAuMSA1OC4zIDUwLjIgNTguM0g0MS41VjY2SDMxWk00MS41IDQ5LjdINDkuM0M1My40IDQ5LjcgNTUuOCA0Ny45IDU1LjggNDQuN0M1NS44IDQxLjUgNTMuNCAzOS43IDQ5LjMgMzkuN0g0MS41VjQ5LjdaIiBmaWxsPSJ1cmwoI2IpIi8+CiAgPHBhdGggZD0iTTY3IDI5TDc0IDIyIiBzdHJva2U9IiM5RkZGQ0EiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iMTIiIHkxPSIxMiIgeDI9Ijg0IiB5Mj0iODQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjN0REM0ZDIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOUZGRkNBIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIzMSIgeTE9IjMxIiB4Mj0iNjciIHkyPSI2NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGNkZBRkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNBOUJCQzgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPC9zdmc+Cg==" alt="" width="32" height="32" />
+      <img src="assets/praxios-mark.svg" alt="" width="34" height="34">
       <span>PRAXIOS</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary">
-      <a href="#thesis">Thesis</a>
+      <a href="#problem">Problem</a>
       <a href="#architecture">Architecture</a>
-      <a href="#proof">Proof</a>
       <a href="#market">Market</a>
-      <a href="#raise">Raise</a>
+      <a href="#business">Business</a>
+      <a href="#evidence">Evidence</a>
     </nav>
-    <button class="nav-cta" data-open-access>Investor access <span>↗</span></button>
-    <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    <div class="header-actions">
+      <a class="btn btn-ghost desktop-only" href="#sources">Sources</a>
+      <button class="btn btn-primary" data-open-access>Investor access</button>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" aria-hidden="true">
+      <a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#market">Market</a>
+      <a href="#business">Business</a><a href="#evidence">Evidence</a><a href="#sources">Sources</a>
+    </div>
   </header>
 
-  <div class="mobile-menu" aria-hidden="true">
-    <a href="#thesis">Thesis</a>
-    <a href="#architecture">Architecture</a>
-    <a href="#proof">Proof</a>
-    <a href="#market">Market</a>
-    <a href="#raise">Raise</a>
-    <button data-open-access>Investor access ↗</button>
-  </div>
-
   <main id="top">
-    <section class="hero section-shell">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-orb orb-a" aria-hidden="true"></div>
-      <div class="hero-orb orb-b" aria-hidden="true"></div>
-
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="pulse-dot"></span> PRIVATE INVESTOR DOSSIER · 2026</div>
-        <h1>Models generate.<br><span>PRAXIOS directs.</span></h1>
-        <p class="hero-lede">Infrastructure for directing, governing and verifying AI-powered work — from objective to measurable outcome.</p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" data-open-access>Request investor access <span>↗</span></button>
-          <a class="btn btn-ghost" href="#architecture">Explore the architecture <span>↓</span></a>
-        </div>
-        <div class="hero-meta">
-          <div><strong>Category</strong><span>AI Outcome Infrastructure</span></div>
-          <div><strong>Stage</strong><span>Pre-Seed</span></div>
-          <div><strong>Built from</strong><span>Chile → Global</span></div>
-        </div>
+    <section class="hero section">
+      <div class="eyebrow reveal">Investor dossier · October 2026</div>
+      <h1 class="display reveal" data-delay="60">AI is entering the enterprise.<br><span class="text-gradient">Control is not keeping up.</span></h1>
+      <p class="hero-copy reveal" data-delay="120">PRAXIOS is building a control plane for AI-powered work: a governed layer between organizational objectives and probabilistic models, designed to make agent actions traceable, evidence-backed and measurable.</p>
+      <div class="hero-actions reveal" data-delay="170">
+        <a class="btn btn-primary btn-lg" href="#problem">See the business case <span>↘</span></a>
+        <a class="btn btn-secondary btn-lg" href="#architecture">Explore the architecture</a>
       </div>
 
-      <div class="control-surface reveal" data-delay="120">
-        <div class="surface-head">
-          <span>PRAXIOS / DECISION ROOM</span>
-          <span class="live"><i></i> LIVE</span>
-        </div>
-        <div class="surface-main">
-          <div class="objective-card">
-            <span class="label">ACTIVE OBJECTIVE</span>
-            <h3>Reduce operational uncertainty before high-value decisions.</h3>
-            <div class="objective-progress"><span></span></div>
-            <div class="micro-row"><span>Confidence</span><b>0.87</b></div>
-          </div>
-          <div class="agent-stream">
-            <div class="stream-row active"><span class="agent-icon">01</span><div><b>Planner</b><small>Objective decomposition</small></div><em>running</em></div>
-            <div class="stream-row"><span class="agent-icon">02</span><div><b>Evidence</b><small>Source verification</small></div><em>7 refs</em></div>
-            <div class="stream-row"><span class="agent-icon">03</span><div><b>Evaluator</b><small>Policy + outcome checks</small></div><em>passed</em></div>
-          </div>
-          <div class="surface-metrics">
-            <div><small>MODEL ROUTES</small><strong>4</strong><span>adaptive</span></div>
-            <div><small>HUMAN GATES</small><strong>2</strong><span>pending 1</span></div>
-            <div><small>EVIDENCE</small><strong>94%</strong><span>coverage</span></div>
-          </div>
-        </div>
+      <div class="hero-proof reveal" data-delay="220">
+        <div><strong>88%</strong><span>organizations report AI use</span><small>Stanford AI Index 2026</small></div>
+        <div><strong>~1 in 3</strong><span>agent attempts still fail</span><small>OSWorld, AI Index 2026</small></div>
+        <div><strong>362</strong><span>documented AI incidents in 2025</span><small>vs. 233 in 2024</small></div>
+        <div><strong>€15M / 3%</strong><span>potential EU transparency penalties</span><small>AI Act Article 50 framework</small></div>
       </div>
 
-      <a class="scroll-cue" href="#thesis" aria-label="Scroll to thesis"><span></span>Scroll to thesis</a>
+      <div class="hero-system reveal" data-delay="260" aria-label="PRAXIOS control loop">
+        <div class="system-topbar">
+          <span class="status-dot"></span><span>CONTROL LOOP / LIVE MODEL</span><span class="mono muted">illustrative architecture</span>
+        </div>
+        <div class="system-flow">
+          <div class="flow-node"><small>01</small><b>Objective</b><span>What must happen?</span></div>
+          <i>→</i>
+          <div class="flow-node"><small>02</small><b>Context</b><span>What is known?</span></div>
+          <i>→</i>
+          <div class="flow-node active"><small>03</small><b>PRAXIOS</b><span>What is allowed & verified?</span></div>
+          <i>→</i>
+          <div class="flow-node"><small>04</small><b>Agents</b><span>Who executes?</span></div>
+          <i>→</i>
+          <div class="flow-node"><small>05</small><b>Outcome</b><span>Did it work?</span></div>
+        </div>
+      </div>
     </section>
 
-    <section class="statement section-shell" id="thesis">
-      <div class="statement-number">01 / THESIS</div>
-      <div class="statement-copy reveal">
-        <p class="kicker">THE STRUCTURAL SHIFT</p>
-        <h2>Intelligence is becoming abundant.<br><span>Directed execution is not.</span></h2>
-        <p>Companies are gaining access to increasingly capable models and agents. But objectives, context, evidence, permissions, evaluation and accountability remain fragmented across tools.</p>
-        <p>PRAXIOS is designed as the control layer between frontier intelligence and real-world execution.</p>
+    <section id="problem" class="section problem-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">01 · The customer problem</span><h2>Enterprise AI is becoming a management problem.</h2></div>
+        <p>A CIO, COO or risk leader does not need another chatbot. They need to know what the AI did, why it did it, what evidence it used, who approved it and whether the action created value.</p>
       </div>
-      <div class="contrast-grid reveal" data-delay="100">
-        <article class="contrast-card muted">
-          <span>THE OLD INTERFACE</span>
-          <h3>Ask AI</h3>
-          <ul><li>One prompt</li><li>One response</li><li>Context loss</li><li>Weak accountability</li></ul>
+
+      <div class="pain-grid">
+        <article class="pain-card reveal">
+          <span class="pain-number">01</span><h3>Fragmented execution</h3>
+          <p>Teams mix multiple models, agents, SaaS tools and internal data. Context disappears across sessions and responsibility becomes ambiguous.</p>
+          <div class="business-impact"><span>Business impact</span><b>Duplicated work · hidden cost · inconsistent decisions</b></div>
         </article>
-        <div class="transition-arrow" aria-hidden="true">→</div>
-        <article class="contrast-card bright">
-          <span>THE PRAXIOS LOOP</span>
-          <h3>Direct AI</h3>
-          <ul><li>Explicit objective</li><li>Multi-agent execution</li><li>Evidence + evaluation</li><li>Measured outcome</li></ul>
+        <article class="pain-card reveal" data-delay="60">
+          <span class="pain-number">02</span><h3>Probabilistic outputs reach deterministic processes</h3>
+          <p>Language models can produce plausible but false answers. NIST explicitly classifies this as confabulation, a native generative-AI risk.</p>
+          <div class="business-impact"><span>Business impact</span><b>Bad data can become an automated action</b></div>
+        </article>
+        <article class="pain-card reveal" data-delay="120">
+          <span class="pain-number">03</span><h3>The audit trail breaks</h3>
+          <p>When an agent chains tools and models, organizations need lineage from source → inference → approval → action. Most chat interfaces were not built for this.</p>
+          <div class="business-impact"><span>Business impact</span><b>Compliance, legal and operational exposure</b></div>
+        </article>
+        <article class="pain-card reveal" data-delay="180">
+          <span class="pain-number">04</span><h3>ROI is hard to prove</h3>
+          <p>Agentic pilots can look impressive while producing unclear economic value. The missing layer is often outcome telemetry, not model capability.</p>
+          <div class="business-impact"><span>Business impact</span><b>Experimentation without accountable returns</b></div>
         </article>
       </div>
+
+      <div class="executive-scenario reveal">
+        <div class="scenario-copy">
+          <span class="kicker">Illustrative enterprise workflow</span>
+          <h3>The question is not “Which model is smartest?”</h3>
+          <p>A procurement agent recommends a supplier. The CFO asks: Which sources informed the decision? Were those sources current? Which model generated the recommendation? Did policy rules pass? Was a human required to approve? What changed after execution?</p>
+          <p class="callout">If the company cannot reconstruct that chain, it does not fully govern the decision.</p>
+        </div>
+        <div class="scenario-ledger">
+          <div class="ledger-row good"><span>Source provenance</span><b>verified</b></div>
+          <div class="ledger-row good"><span>Policy constraints</span><b>passed</b></div>
+          <div class="ledger-row warn"><span>Model confidence</span><b>insufficient alone</b></div>
+          <div class="ledger-row good"><span>Independent evaluator</span><b>passed</b></div>
+          <div class="ledger-row good"><span>Human approval</span><b>signed</b></div>
+          <div class="ledger-row"><span>Outcome delta</span><b>measured</b></div>
+        </div>
+      </div>
     </section>
 
-    <section class="architecture section-shell" id="architecture">
+    <section id="evidence" class="section evidence-section">
       <div class="section-head reveal">
-        <div><p class="kicker">02 / ARCHITECTURE</p><h2>The control plane<br>for AI work.</h2></div>
-        <p>A model-independent architecture that converts an objective into a governed execution loop — while preserving human authority.</p>
+        <div><span class="kicker">02 · Why now</span><h2>The capability curve is rising faster than the control layer.</h2></div>
+        <p>PRAXIOS is a thesis about timing: models are becoming cheaper and more capable while governance, verification and accountability are becoming more valuable.</p>
       </div>
 
-      <div class="arch-stage reveal" data-delay="80">
-        <svg class="arch-lines" viewBox="0 0 1200 690" preserveAspectRatio="none" aria-hidden="true">
-          <defs><linearGradient id="lineGlow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7dd3fc"/><stop offset="1" stop-color="#9fffca"/></linearGradient></defs>
-          <path d="M175,345 C310,345 320,120 465,120" />
-          <path d="M175,345 C310,345 320,235 465,235" />
-          <path d="M175,345 C310,345 320,350 465,350" />
-          <path d="M175,345 C310,345 320,465 465,465" />
-          <path d="M175,345 C310,345 320,580 465,580" />
-          <path d="M735,120 C870,120 855,345 1015,345" />
-          <path d="M735,235 C870,235 855,345 1015,345" />
-          <path d="M735,350 C870,350 855,345 1015,345" />
-          <path d="M735,465 C870,465 855,345 1015,345" />
-          <path d="M735,580 C870,580 855,345 1015,345" />
-        </svg>
-        <div class="arch-node human"><span>HUMAN / ORG</span><strong>Objective</strong><small>Intent · constraints · priorities</small></div>
-        <div class="layer-stack">
-          <button class="layer-card" data-layer="Objective Layer"><i>01</i><span>Objective Layer</span><small>Goals + success criteria</small></button>
-          <button class="layer-card" data-layer="Meta-Harness"><i>02</i><span>Meta-Harness</span><small>Models + agents + tools</small></button>
-          <button class="layer-card" data-layer="Context & Memory"><i>03</i><span>Context & Memory</span><small>Persistent state</small></button>
-          <button class="layer-card" data-layer="Evidence & Evaluation"><i>04</i><span>Evidence & Evaluation</span><small>Verify before action</small></button>
-          <button class="layer-card" data-layer="Human Governance"><i>05</i><span>Human Governance</span><small>Approval + escalation</small></button>
-        </div>
-        <div class="arch-core">
-          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIgcng9IjE5IiBzdHJva2U9InVybCgjYSkiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0zMSA2NlYzMUg1MC4yQzYwLjEgMzEgNjYgMzYuMiA2NiA0NC43QzY2IDUzLjIgNjAuMSA1OC4zIDUwLjIgNTguM0g0MS41VjY2SDMxWk00MS41IDQ5LjdINDkuM0M1My40IDQ5LjcgNTUuOCA0Ny45IDU1LjggNDQuN0M1NS44IDQxLjUgNTMuNCAzOS43IDQ5LjMgMzkuN0g0MS41VjQ5LjdaIiBmaWxsPSJ1cmwoI2IpIi8+CiAgPHBhdGggZD0iTTY3IDI5TDc0IDIyIiBzdHJva2U9IiM5RkZGQ0EiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iMTIiIHkxPSIxMiIgeDI9Ijg0IiB5Mj0iODQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjN0REM0ZDIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOUZGRkNBIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIzMSIgeTE9IjMxIiB4Mj0iNjciIHkyPSI2NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGNkZBRkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNBOUJCQzgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPC9zdmc+Cg==" alt="" width="74" height="74" />
-          <span>PRAXIOS</span>
-          <small>OUTCOME OS</small>
-        </div>
-        <div class="arch-node outcome"><span>REAL WORLD</span><strong>Outcome</strong><small>Action · telemetry · learning</small></div>
-      </div>
-      <div class="layer-detail" id="layer-detail"><span>SELECT A LAYER</span><p>Explore how the control plane converts model capability into governed execution.</p></div>
-    </section>
-
-    <section class="loop-section section-shell">
-      <div class="loop-grid reveal">
-        <div class="loop-title"><p class="kicker">THE OPERATING LOOP</p><h2>Not a response.<br><span>A closed loop.</span></h2></div>
-        <div class="loop-flow" aria-label="PRAXIOS operating loop">
-          <span>Objective</span><b>→</b><span>Plan</span><b>→</b><span>Agents</span><b>→</b><span>Evidence</span><b>→</b><span>Decision</span><b>→</b><span>Action</span><b>→</b><span>Measure</span><b>↺</b>
-        </div>
+      <div class="evidence-grid">
+        <a class="metric-card reveal" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>$581.69B</strong><h3>global corporate AI investment in 2025</h3><p>More than doubled year over year; private investment represented the largest share.</p><span class="source-link">Open source ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="50" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>88%</strong><h3>organizational AI adoption</h3><p>70% reported generative AI in at least one business function; agent deployment remains early.</p><span class="source-link">Open source ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="100" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>66.3%</strong><h3>agent success on OSWorld</h3><p>Up sharply, but still roughly one failed attempt in three on structured computer-use tasks.</p><span class="source-link">Open source ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="150" href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>362</strong><h3>documented AI incidents</h3><p>Up from 233 in 2024, showing that responsible-AI capability is not keeping pace with adoption.</p><span class="source-link">Open source ↗</span>
+        </a>
+        <a class="metric-card reveal" href="https://ec.europa.eu/eurostat/web/interactive-publications/digitalisation-2026" target="_blank" rel="noopener">
+          <span class="source-chip">Eurostat · 2026 edition</span><strong>55%</strong><h3>large EU enterprises using AI</h3><p>20% of all EU enterprises and about 30% of medium enterprises used AI technologies in 2025.</p><span class="source-link">Open source ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="50" href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" target="_blank" rel="noopener">
+          <span class="source-chip">European Commission · 2026</span><strong>€15M</strong><h3>upper transparency penalty</h3><p>Or up to 3% of worldwide annual turnover for certain Article 50 violations, subject to the Act.</p><span class="source-link">Open source ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="100" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2026</span><strong>59%</strong><h3>cite knowledge gaps</h3><p>Among responsible-AI implementation barriers; 48% cite budget and 41% regulatory uncertainty.</p><span class="source-link">Open source ↗</span>
+        </a>
+        <a class="metric-card reveal" data-delay="150" href="https://hai.stanford.edu/ai-index/2025-ai-index-report/research-and-development" target="_blank" rel="noopener">
+          <span class="source-chip">Stanford HAI · 2025</span><strong>280×</strong><h3>inference-cost reduction</h3><p>For GPT-3.5-level MMLU performance from Nov. 2022 to Oct. 2024. Intelligence is commoditizing.</p><span class="source-link">Open source ↗</span>
+        </a>
       </div>
     </section>
 
-    <section class="proof section-shell" id="proof">
+    <section class="section thesis-section">
+      <div class="thesis-block reveal">
+        <span class="kicker">The investment thesis</span>
+        <p class="mega-quote">As intelligence becomes abundant,<br><span>directing intelligence becomes scarce.</span></p>
+      </div>
+      <div class="thesis-columns reveal">
+        <div><small>THE OLD SOFTWARE QUESTION</small><h3>What can the software do?</h3></div>
+        <div><small>THE AI-NATIVE QUESTION</small><h3>What should the machine do, under which evidence, policy and accountability?</h3></div>
+      </div>
+    </section>
+
+    <section id="architecture" class="section architecture-section">
       <div class="section-head reveal">
-        <div><p class="kicker">03 / PROVING GROUNDS</p><h2>One core.<br>Multiple environments.</h2></div>
-        <p>PRAXIOS is not being developed as an abstract research platform. Vertical operating environments pressure-test the same core architecture against different forms of complexity.</p>
+        <div><span class="kicker">03 · The architecture</span><h2>A deterministic control plane around probabilistic intelligence.</h2></div>
+        <p>PRAXIOS does not claim to make language models deterministic. It aims to make the <em>process around them</em> explicit, inspectable and governed.</p>
       </div>
 
-      <div class="verticals-grid">
-        <article class="vertical-card featured reveal">
-          <div class="vertical-code">01</div><div class="vertical-icon geo">◫</div>
-          <h3>Deep Geo</h3><p>Decision intelligence for geospatial, infrastructure, mining and territorial risk environments.</p>
-          <div class="tags"><span>Geospatial</span><span>Risk</span><span>Mining</span></div>
-          <div class="status"><i></i> Active proving environment</div>
-        </article>
-        <article class="vertical-card reveal" data-delay="40"><div class="vertical-code">02</div><div class="vertical-icon">⌁</div><h3>Visual Art AI</h3><p>Demand generation and AI-native discoverability for businesses.</p><div class="tags"><span>Growth</span><span>Search</span></div></article>
-        <article class="vertical-card reveal" data-delay="80"><div class="vertical-code">03</div><div class="vertical-icon">◎</div><h3>MSJ</h3><p>AI communications layer for multi-channel customer operations.</p><div class="tags"><span>Messaging</span><span>Agents</span></div></article>
-        <article class="vertical-card reveal" data-delay="120"><div class="vertical-code">04</div><div class="vertical-icon">＋</div><h3>Clinia</h3><p>AI-assisted operational environment for healthcare administration.</p><div class="tags"><span>Healthcare</span><span>Ops</span></div></article>
-        <article class="vertical-card reveal" data-delay="160"><div class="vertical-code">05</div><div class="vertical-icon">△</div><h3>EducaBot</h3><p>Persistent AI-assisted learning infrastructure across students, educators and families.</p><div class="tags"><span>Education</span><span>Memory</span></div></article>
-        <article class="vertical-card reveal" data-delay="200"><div class="vertical-code">06</div><div class="vertical-icon">⌂</div><h3>Deep Living</h3><p>Decision and transaction workflows for real-estate commercialization.</p><div class="tags"><span>Real estate</span><span>Workflow</span></div></article>
+      <div class="arch-shell reveal">
+        <div class="arch-toolbar"><span class="status-dot"></span><b>PRAXIOS CONTROL PLANE</b><span class="mono">target architecture · v0.3</span></div>
+        <div class="arch-canvas">
+          <div class="arch-lane objective-lane"><span>BUSINESS INTENT</span><b>Objective contract</b><small>goal · constraints · success metric · risk class</small></div>
+          <div class="arch-arrow">↓</div>
+          <div class="organ-grid">
+            <button class="organ active" data-organ="Objective Compiler"><small>01</small><b>Objective Compiler</b><span>turn intent into testable conditions</span></button>
+            <button class="organ" data-organ="Context Ledger"><small>02</small><b>Context Ledger</b><span>versioned state & provenance</span></button>
+            <button class="organ" data-organ="Planner & Router"><small>03</small><b>Planner & Router</b><span>model / tool / agent selection</span></button>
+            <button class="organ" data-organ="Policy Engine"><small>04</small><b>Policy Engine</b><span>deterministic constraints</span></button>
+            <button class="organ" data-organ="Evidence Engine"><small>05</small><b>Evidence Engine</b><span>claims ↔ sources ↔ freshness</span></button>
+            <button class="organ" data-organ="Evaluator"><small>06</small><b>Evaluator</b><span>independent tests & thresholds</span></button>
+            <button class="organ" data-organ="Human Gateway"><small>07</small><b>Human Gateway</b><span>approval & escalation</span></button>
+            <button class="organ" data-organ="Execution Bus"><small>08</small><b>Execution Bus</b><span>bounded tool actions</span></button>
+            <button class="organ" data-organ="Outcome Ledger"><small>09</small><b>Outcome Ledger</b><span>telemetry & learning</span></button>
+          </div>
+          <div id="organ-detail" class="organ-detail"><span>OBJECTIVE COMPILER</span><p>Translates a business request into a machine-readable contract: intended outcome, allowed actions, evidence requirements, limits, approvals and success criteria.</p></div>
+          <div class="arch-arrow">↓</div>
+          <div class="model-lane">
+            <span>MODEL & TOOL LAYER</span>
+            <div><b>GPT</b><b>Claude</b><b>Gemini</b><b>Open / local</b><b>APIs</b><b>Enterprise data</b></div>
+          </div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-lane outcome-lane"><span>REAL-WORLD EXECUTION</span><b>Action + measured outcome</b><small>trace · cost · latency · quality · business delta</small></div>
+        </div>
       </div>
-      <p class="proof-note reveal">The verticals are <strong>not six independent technology bets.</strong> They are domain-specific applications and learning environments for the PRAXIOS core.</p>
+
+      <div class="principle-grid">
+        <article class="principle reveal"><span>PRINCIPLE 01</span><h3>Probabilistic inside.<br>Deterministic outside.</h3><p>Model reasoning may vary. Permissions, schemas, state transitions, policy checks and audit events should not.</p></article>
+        <article class="principle reveal" data-delay="70"><span>PRINCIPLE 02</span><h3>No action without lineage.</h3><p>High-impact actions should retain enough provenance to reconstruct source, model, policy, evaluation and approval state.</p></article>
+        <article class="principle reveal" data-delay="140"><span>PRINCIPLE 03</span><h3>Confidence is not evidence.</h3><p>A model sounding certain is not a verification mechanism. Evidence must be independently inspectable.</p></article>
+      </div>
     </section>
 
-    <section class="defensibility section-shell">
+    <section class="section verification-section">
       <div class="section-head reveal">
-        <div><p class="kicker">04 / DEFENSIBILITY</p><h2>Prompts are not<br>a moat.</h2></div>
-        <p>Defensibility compounds when the system learns how work is actually executed, evaluated and improved inside consequential workflows.</p>
+        <div><span class="kicker">04 · Seven trust gates</span><h2>Every consequential action must earn permission to continue.</h2></div>
+        <p>This is the proposed verification architecture. It is a product specification under development—not a claim of audited production performance.</p>
       </div>
-      <div class="defense-layout reveal">
-        <div class="defense-rings" aria-hidden="true">
-          <div class="ring r1"><span>OUTCOMES</span></div><div class="ring r2"><span>EVALUATIONS</span></div><div class="ring r3"><span>WORKFLOWS</span></div><div class="ring r4"><span>CONTEXT</span></div>
-          <div class="ring-core"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIgcng9IjE5IiBzdHJva2U9InVybCgjYSkiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0zMSA2NlYzMUg1MC4yQzYwLjEgMzEgNjYgMzYuMiA2NiA0NC43QzY2IDUzLjIgNjAuMSA1OC4zIDUwLjIgNTguM0g0MS41VjY2SDMxWk00MS41IDQ5LjdINDkuM0M1My40IDQ5LjcgNTUuOCA0Ny45IDU1LjggNDQuN0M1NS44IDQxLjUgNTMuNCAzOS43IDQ5LjMgMzkuN0g0MS41VjQ5LjdaIiBmaWxsPSJ1cmwoI2IpIi8+CiAgPHBhdGggZD0iTTY3IDI5TDc0IDIyIiBzdHJva2U9IiM5RkZGQ0EiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iMTIiIHkxPSIxMiIgeDI9Ijg0IiB5Mj0iODQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjN0REM0ZDIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOUZGRkNBIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIzMSIgeTE9IjMxIiB4Mj0iNjciIHkyPSI2NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGNkZBRkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNBOUJCQzgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPC9zdmc+Cg==" alt="" /></div>
-        </div>
-        <div class="defense-list">
-          <div><b>01</b><span><strong>Outcome datasets</strong><small>What actually happened after a decision.</small></span></div>
-          <div><b>02</b><span><strong>Evaluation traces</strong><small>Why a result passed, failed or required escalation.</small></span></div>
-          <div><b>03</b><span><strong>Domain workflows</strong><small>Reusable execution patterns for complex work.</small></span></div>
-          <div><b>04</b><span><strong>Decision graphs</strong><small>Connections between objective, evidence, action and impact.</small></span></div>
-          <div><b>05</b><span><strong>Organizational context</strong><small>Persistent state that survives models and sessions.</small></span></div>
-        </div>
+      <div class="gates">
+        <div class="gate reveal"><span>G1</span><div><b>Objective gate</b><p>Is the requested outcome explicit, measurable and within scope?</p></div></div>
+        <div class="gate reveal"><span>G2</span><div><b>Context gate</b><p>Are data sources authorized, current, versioned and attributable?</p></div></div>
+        <div class="gate reveal"><span>G3</span><div><b>Schema gate</b><p>Does the output satisfy deterministic type, range and structure constraints?</p></div></div>
+        <div class="gate reveal"><span>G4</span><div><b>Evidence gate</b><p>Can material claims be mapped to independent supporting evidence?</p></div></div>
+        <div class="gate reveal"><span>G5</span><div><b>Evaluation gate</b><p>Do independent evaluators meet task-specific quality thresholds?</p></div></div>
+        <div class="gate reveal"><span>G6</span><div><b>Risk & approval gate</b><p>Does policy permit autonomy, or must the system escalate to a human?</p></div></div>
+        <div class="gate reveal"><span>G7</span><div><b>Outcome gate</b><p>Did the action create the intended result, and what should the system learn?</p></div></div>
       </div>
     </section>
 
-    <section class="market section-shell" id="market">
+    <section class="section deterministic-section">
       <div class="section-head reveal">
-        <div><p class="kicker">05 / MARKET SIGNALS</p><h2>The stack is<br>moving our way.</h2></div>
-        <p>PRAXIOS is positioned around a shift already visible in venture and enterprise software: agents are lengthening, harnesses matter, and pricing is moving closer to work completed and value delivered.</p>
+        <div><span class="kicker">05 · Engineering concept</span><h2>The model proposes. The control plane disposes.</h2></div>
+        <p>Rust is relevant not as investor theater, but where deterministic enforcement matters: policy execution, state machines, signed events, concurrency safety and reproducible system behavior.</p>
       </div>
-      <div class="signal-grid">
-        <a class="signal-card reveal" href="https://sequoiacap.com/article/ai-ascent-2026" target="_blank" rel="noreferrer"><span>SEQUOIA · MAY 2026</span><strong>“2026: the year of agents.”</strong><p>Sequoia frames models, tools and harnesses as the three ingredients now converging.</p><em>Source ↗</em></a>
-        <a class="signal-card reveal" data-delay="50" href="https://carta.com/data/state-of-pre-seed-q2-2026/" target="_blank" rel="noreferrer"><span>CARTA · Q2 2026</span><strong>~50% of pre-seed dollars</strong><p>AI companies captured roughly half of pre-seed capital tracked by Carta in 2026.</p><em>Source ↗</em></a>
-        <a class="signal-card reveal" data-delay="100" href="https://www.svb.com/trends-insights/reports/state-of-enterprise-software/" target="_blank" rel="noreferrer"><span>SVB · 2026</span><strong>From seats to usage.</strong><p>Enterprise software companies are exploring hybrid, usage- and outcome-based pricing.</p><em>Source ↗</em></a>
-        <a class="signal-card reveal" data-delay="150" href="https://www.bvp.com/atlas/owning-the-outcome-bessemer-s-ai-native-services-evaluation-framework" target="_blank" rel="noreferrer"><span>BESSEMER · JUL 2026</span><strong>The outcome becomes the product.</strong><p>AI increasingly delivers the work itself, not only software to help humans perform it.</p><em>Source ↗</em></a>
+      <div class="boundary-diagram reveal">
+        <div class="boundary probabilistic">
+          <span>PROBABILISTIC DOMAIN</span>
+          <h3>Reasoning layer</h3>
+          <ul><li>Planning</li><li>Language understanding</li><li>Generation</li><li>Ranking</li><li>Model routing suggestions</li></ul>
+          <small>LLMs / multimodal models / specialized models</small>
+        </div>
+        <div class="boundary-control">
+          <span class="shield">◆</span><b>CONTROL BOUNDARY</b><small>schemas · policies · signatures · gates</small>
+        </div>
+        <div class="boundary deterministic">
+          <span>DETERMINISTIC DOMAIN</span>
+          <h3>Execution kernel</h3>
+          <ul><li>Permission checks</li><li>State transitions</li><li>Validation</li><li>Audit events</li><li>Tool constraints</li></ul>
+          <small>Rust-oriented core + typed interfaces</small>
+        </div>
       </div>
+      <p class="architecture-note reveal"><b>Important:</b> deterministic software cannot guarantee that an AI-generated fact is true. It can guarantee that defined validation, approval and logging rules were executed. PRAXIOS is designed around that distinction.</p>
     </section>
 
-    <section class="business section-shell">
+    <section class="section framework-section">
       <div class="section-head reveal">
-        <div><p class="kicker">06 / BUSINESS MODEL</p><h2>Capture value at<br>three layers.</h2></div>
-        <p>The commercial model starts with implementation where needed, then converts repeatable patterns into platform and vertical software economics.</p>
+        <div><span class="kicker">06 · Governance framework</span><h2>Mapped to recognized risk-management concepts.</h2></div>
+        <p>NIST AI RMF organizes AI risk around four functions: Govern, Map, Measure and Manage. PRAXIOS is being designed as operational software that can support those activities—not as a certification substitute.</p>
       </div>
-      <div class="business-grid reveal">
-        <article><span>01</span><h3>Platform</h3><p>Enterprise access to orchestration, memory, governance, evaluation and outcome telemetry.</p><small>Recurring · Core infrastructure</small></article>
-        <article><span>02</span><h3>Vertical Systems</h3><p>Domain-specific products powered by the same PRAXIOS core and shared execution primitives.</p><small>Recurring · Domain expansion</small></article>
-        <article><span>03</span><h3>Usage / Outcome</h3><p>Where measurable, pricing can track workflows completed, infrastructure consumed or results delivered.</p><small>Variable · Value aligned</small></article>
+      <div class="nist-map reveal">
+        <div class="nist-core"><span>NIST AI RMF</span><b>GOVERN</b><small>cross-cutting</small></div>
+        <div class="nist-item"><b>MAP</b><span>Objective contract<br>Context ledger<br>Risk classification</span></div>
+        <div class="nist-item"><b>MEASURE</b><span>Evidence engine<br>Evaluator<br>Outcome telemetry</span></div>
+        <div class="nist-item"><b>MANAGE</b><span>Policy engine<br>Human gateway<br>Execution controls</span></div>
       </div>
-    </section>
-
-    <section class="raise section-shell" id="raise">
-      <div class="raise-panel reveal">
-        <div class="raise-copy">
-          <p class="kicker">07 / PRE-SEED</p>
-          <h2>Building the<br>execution layer.</h2>
-          <p>We are preparing a focused pre-seed round to turn the architecture into a repeatable product, secure design partners and prove measurable value in consequential workflows.</p>
-          <div class="raise-amount"><small>TARGET RANGE</small><strong>US$1.0–1.5M</strong><span>18-month operating plan</span></div>
-          <button class="btn btn-primary" data-open-access>Open investor conversation <span>↗</span></button>
-        </div>
-        <div class="milestones">
-          <h3>What this round is designed to unlock</h3>
-          <ol>
-            <li><span>01</span><div><b>PRAXIOS Core</b><small>Productize orchestration, persistent context and governance.</small></div></li>
-            <li><span>02</span><div><b>Decision Room</b><small>Executive control surface for objectives, evidence and interventions.</small></div></li>
-            <li><span>03</span><div><b>Evaluation + Evidence</b><small>Measurable reliability before consequential actions.</small></div></li>
-            <li><span>04</span><div><b>3–5 Design Partners</b><small>Paid, high-signal environments with quantified outcomes.</small></div></li>
-            <li><span>05</span><div><b>Seed Readiness</b><small>Security, architecture, metrics and repeatable GTM proof.</small></div></li>
-          </ol>
-        </div>
-      </div>
-      <div class="raise-context reveal">
-        <span>MARKET CONTEXT</span>
-        <p>In Q2 2026, Carta reported that 93% of pre-seed rounds were structured as SAFEs, with capital increasingly concentrated in fewer early-stage companies. We view market benchmarks as context — not as a substitute for earning the right terms through product and traction.</p>
-        <a href="https://carta.com/uk/en/data/safe-valuation-caps-q2-2026/" target="_blank" rel="noreferrer">Read Carta data ↗</a>
+      <div class="framework-foot reveal">
+        <a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener">NIST AI RMF Core ↗</a>
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST Generative AI Profile ↗</a>
+        <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">EU AI Act framework ↗</a>
       </div>
     </section>
 
-    <section class="founder section-shell">
-      <div class="founder-panel reveal">
-        <div class="founder-monogram">AR</div>
-        <div class="founder-copy">
-          <p class="kicker">FOUNDER</p>
-          <h2>Built from the<br>decision backwards.</h2>
-          <p class="quote">“The opportunity is not to build another chatbot. It is to build the architecture that lets people govern machine intelligence toward outcomes they can defend.”</p>
-          <div class="founder-name"><strong>Alexis Reyes</strong><span>Founder · PRAXIOS / Deep Analytica</span></div>
+    <section id="market" class="section market-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">07 · Market wedge</span><h2>Start where AI use and accountability are already colliding.</h2></div>
+        <p>Rather than claim a speculative trillion-dollar TAM, PRAXIOS starts with a bottom-up serviceable market built from official enterprise counts and observed AI adoption.</p>
+      </div>
+      <div class="market-model reveal">
+        <div class="formula">
+          <div><strong>55,000</strong><span>large EU enterprises</span><small>Eurostat 2024</small></div><i>×</i><div><strong>55.03%</strong><span>use AI</span><small>Eurostat 2025</small></div><i>+</i>
+          <div><strong>251,000</strong><span>medium EU enterprises</span><small>Eurostat 2024</small></div><i>×</i><div><strong>30.36%</strong><span>use AI</span><small>Eurostat 2025</small></div>
         </div>
-        <div class="founder-focus">
-          <span>FOCUS</span>
-          <ul><li>AI systems architecture</li><li>Decision intelligence</li><li>Geospatial systems</li><li>Product & interface design</li><li>Applied agent workflows</li></ul>
-        </div>
+        <div class="formula-result"><span>≈</span><strong>106,000</strong><div><b>AI-active medium + large enterprises</b><small>calculated addressable base; rounded</small></div></div>
+      </div>
+      <div class="market-cards">
+        <article class="market-card reveal"><span>ASSUMPTION</span><strong>€36k</strong><h3>modeled initial platform ACV</h3><p>Internal planning assumption. Not an external market statistic.</p></article>
+        <article class="market-card reveal" data-delay="70"><span>MODELED SAM</span><strong>≈ €3.8B</strong><h3>annual platform opportunity</h3><p>106k AI-active medium/large EU enterprises × €36k ACV. This is a bottom-up scenario, not a forecast.</p></article>
+        <article class="market-card reveal" data-delay="140"><span>0.1% PENETRATION</span><strong>≈ €3.8M</strong><h3>illustrative ARR</h3><p>Only ~106 customers at the same ACV. The initial case does not require mass-market penetration.</p></article>
+      </div>
+      <div class="market-source reveal">
+        <p><b>Why the EU is useful as a sizing anchor:</b> the region has current official enterprise statistics, rapidly rising AI adoption and an enforceable AI governance regime. It does not imply PRAXIOS is limited to Europe.</p>
+        <a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251209-2" target="_blank" rel="noopener">Enterprise counts ↗</a>
+        <a href="https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/106920.pdf" target="_blank" rel="noopener">AI adoption by company size ↗</a>
       </div>
     </section>
 
-    <section class="closing section-shell">
-      <div class="closing-inner reveal">
-        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIgcng9IjE5IiBzdHJva2U9InVybCgjYSkiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0zMSA2NlYzMUg1MC4yQzYwLjEgMzEgNjYgMzYuMiA2NiA0NC43QzY2IDUzLjIgNjAuMSA1OC4zIDUwLjIgNTguM0g0MS41VjY2SDMxWk00MS41IDQ5LjdINDkuM0M1My40IDQ5LjcgNTUuOCA0Ny45IDU1LjggNDQuN0M1NS44IDQxLjUgNTMuNCAzOS43IDQ5LjMgMzkuN0g0MS41VjQ5LjdaIiBmaWxsPSJ1cmwoI2IpIi8+CiAgPHBhdGggZD0iTTY3IDI5TDc0IDIyIiBzdHJva2U9IiM5RkZGQ0EiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iMTIiIHkxPSIxMiIgeDI9Ijg0IiB5Mj0iODQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjN0REM0ZDIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOUZGRkNBIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIzMSIgeTE9IjMxIiB4Mj0iNjciIHkyPSI2NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGNkZBRkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNBOUJCQzgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPC9zdmc+Cg==" alt="" width="68" height="68" />
-        <p>THE INVESTMENT THESIS</p>
-        <h2>As intelligence becomes<br><span>commoditized, direction becomes valuable.</span></h2>
-        <p class="closing-copy">PRAXIOS is building the control layer between increasingly capable machine intelligence and accountable real-world execution.</p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" data-open-access>Request investor access <span>↗</span></button>
-          <button class="btn btn-ghost" data-open-dataroom>Preview Data Room <span>□</span></button>
+    <section id="business" class="section business-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">08 · Business model</span><h2>Land through a governed workflow. Expand into the control plane.</h2></div>
+        <p>The commercial thesis is enterprise software with implementation revenue early, progressively shifting toward recurring platform, usage and outcome-linked economics.</p>
+      </div>
+
+      <div class="business-model-grid">
+        <article class="biz-card reveal"><span>01</span><h3>Design partner</h3><strong>€15k–€40k</strong><p>Time-boxed workflow deployment, architecture mapping and evaluation design.</p><small>Goal: prove a high-value use case.</small></article>
+        <article class="biz-card reveal" data-delay="50"><span>02</span><h3>Platform</h3><strong>€30k–€120k+ ARR</strong><p>Control plane, evidence, policy, audit, evaluation, connectors and Decision Room.</p><small>Goal: recurring software revenue.</small></article>
+        <article class="biz-card reveal" data-delay="100"><span>03</span><h3>Usage</h3><strong>metered</strong><p>Agent runs, evaluations, verification workloads, storage and enterprise connectors.</p><small>Goal: expand with machine work.</small></article>
+        <article class="biz-card reveal" data-delay="150"><span>04</span><h3>Outcome layer</h3><strong>selective</strong><p>Where outcomes are attributable, contracts can include performance-linked economics.</p><small>Goal: align price with realized value.</small></article>
+      </div>
+
+      <div class="economics reveal">
+        <div class="economics-copy">
+          <span class="kicker">Interactive decision-risk model</span>
+          <h3>What is one ungoverned workflow worth controlling?</h3>
+          <p>This calculator does not claim PRAXIOS will eliminate errors. It lets an investor test the economic sensitivity of one workflow using explicit assumptions.</p>
+          <div class="calc-fields">
+            <label>AI-assisted decisions / month<input id="decisions" type="number" min="0" value="500"></label>
+            <label>Estimated material-error rate<input id="errorRate" type="number" min="0" max="100" step="0.1" value="2"></label>
+            <label>Average cost / material error (€)<input id="errorCost" type="number" min="0" value="5000"></label>
+            <label>Target reduction from controls (%)<input id="reduction" type="number" min="0" max="100" value="40"></label>
+          </div>
         </div>
+        <div class="calc-output">
+          <span>ILLUSTRATIVE ANNUAL EXPOSURE</span><strong id="annualExposure">€600,000</strong>
+          <hr><span>POTENTIAL AVOIDED EXPOSURE</span><strong id="avoidedExposure">€240,000</strong>
+          <small>Arithmetic scenario only. Not a performance claim or guarantee.</small>
+        </div>
+      </div>
+
+      <div class="projection reveal">
+        <div class="projection-head">
+          <div><span class="kicker">Illustrative five-year operating model</span><h3>A venture-scale outcome without venture-scale market share.</h3></div>
+          <p>Management targets for planning discussion. Not audited forecasts.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th></tr></thead>
+            <tbody>
+              <tr><td>Enterprise customers</td><td>6</td><td>20</td><td>55</td><td>130</td><td>260</td></tr>
+              <tr><td>Platform ACV</td><td>€30k</td><td>€36k</td><td>€48k</td><td>€60k</td><td>€72k</td></tr>
+              <tr class="highlight-row"><td>Exit ARR</td><td>€0.18M</td><td>€0.72M</td><td>€2.64M</td><td>€7.80M</td><td>€18.72M</td></tr>
+              <tr><td>Target gross margin</td><td>52%</td><td>60%</td><td>68%</td><td>74%</td><td>78%</td></tr>
+              <tr><td>Share of EU AI-active base</td><td>0.006%</td><td>0.019%</td><td>0.052%</td><td>0.122%</td><td>0.244%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fineprint">Assumptions: customer count is year-end; ACV is average recurring platform contract value; service/implementation revenue is excluded from ARR. Actual outcomes may differ materially.</p>
+      </div>
+    </section>
+
+    <section class="section go-to-market">
+      <div class="section-head reveal">
+        <div><span class="kicker">09 · Go-to-market</span><h2>Sell the painful workflow, not the platform abstraction.</h2></div>
+        <p>PRAXIOS should enter through decisions where failure is expensive, evidence matters and the buyer already feels the pain.</p>
+      </div>
+      <div class="gtm-grid">
+        <article class="gtm-card reveal"><span>WEDGE A</span><h3>Geospatial / mining / infrastructure</h3><p>Operational decisions combine satellite data, maps, engineering evidence, safety constraints and executive reporting.</p><b>Buyer:</b><small>operations · risk · technical management</small></article>
+        <article class="gtm-card reveal" data-delay="60"><span>WEDGE B</span><h3>Public sector / regulated workflows</h3><p>High documentation burden, public accountability and strong need for traceability across decisions.</p><b>Buyer:</b><small>digital transformation · CIO · program leadership</small></article>
+        <article class="gtm-card reveal" data-delay="120"><span>WEDGE C</span><h3>Enterprise agent governance</h3><p>Companies already deploying copilots and agents need a common layer for approvals, evidence, evaluation and telemetry.</p><b>Buyer:</b><small>CIO · CISO · risk · AI platform teams</small></article>
+      </div>
+      <div class="land-expand reveal">
+        <div><span>LAND</span><b>One consequential workflow</b></div><i>→</i>
+        <div><span>PROVE</span><b>Traceability + measurable delta</b></div><i>→</i>
+        <div><span>EXPAND</span><b>More agents & business units</b></div><i>→</i>
+        <div><span>STANDARDIZE</span><b>Control plane becomes infrastructure</b></div>
+      </div>
+    </section>
+
+    <section class="section verticals-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">10 · Proving environments</span><h2>One core. Multiple places to learn.</h2></div>
+        <p>The verticals are not presented as six unrelated startups. They are environments for developing reusable control patterns around one core architecture.</p>
+      </div>
+      <div class="vertical-grid">
+        <article><span>DEEP GEO</span><h3>Spatial decision intelligence</h3><p>Evidence-rich, high-context operational decisions in territory, infrastructure and mining.</p></article>
+        <article><span>VISUAL ART AI</span><h3>Demand & discovery</h3><p>Measured workflows connecting digital presence, search, AI recommendation and business outcomes.</p></article>
+        <article><span>MSJ</span><h3>Agentic communications</h3><p>Bounded customer-facing agents across messaging channels and operational systems.</p></article>
+        <article><span>CLINIA</span><h3>Healthcare operations</h3><p>A regulated-domain proving ground where permissions and human oversight matter.</p></article>
+        <article><span>EDUCABOT</span><h3>Learning systems</h3><p>Persistent context, evidence, human supervision and outcome measurement around learning.</p></article>
+        <article><span>DEEP LIVING</span><h3>Real-estate workflows</h3><p>Document-heavy transactions, valuation inputs, provenance and multi-party approvals.</p></article>
+      </div>
+    </section>
+
+    <section class="section moat-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">11 · Defensibility strategy</span><h2>The moat is not a prompt.</h2></div>
+        <p>PRAXIOS must earn defensibility through operational data, workflow depth and integration—not through access to the same frontier models everyone can buy.</p>
+      </div>
+      <div class="moat-loop reveal">
+        <div><b>01</b><span>Governed workflows</span></div><i>→</i><div><b>02</b><span>Decision traces</span></div><i>→</i><div><b>03</b><span>Evaluation data</span></div><i>→</i><div><b>04</b><span>Outcome data</span></div><i>→</i><div><b>05</b><span>Better policies & routing</span></div>
+      </div>
+      <div class="moat-not">
+        <div><span>NOT THE MOAT</span><p>Prompt libraries · a single model API · generic chat UI · opaque “AI magic”.</p></div>
+        <div><span>POTENTIAL MOAT</span><p>Domain policy graphs · proprietary evaluation sets · evidence lineage · integrations · accumulated execution/outcome data · switching cost.</p></div>
+      </div>
+    </section>
+
+    <section class="section status-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">12 · What is real today</span><h2>Separate the thesis from the proof.</h2></div>
+        <p>Credibility matters more than pretending to be further ahead. This is the current investor framing.</p>
+      </div>
+      <div class="status-grid">
+        <article class="status-card done reveal"><span>BUILT / IN DEVELOPMENT</span><ul><li>PRAXIOS / Meta-Harness architecture</li><li>Decision Room interaction model</li><li>Domain workflows across geospatial, commercial and service verticals</li><li>Model-agnostic orchestration thesis</li><li>Evidence / evaluation / governance specifications</li></ul></article>
+        <article class="status-card next reveal" data-delay="70"><span>NEXT PROOF POINTS</span><ul><li>Production-grade control kernel</li><li>Paid enterprise design partners</li><li>Repeatable deployment template</li><li>Measured ROI on governed workflows</li><li>Security / compliance readiness</li></ul></article>
+        <article class="status-card risk reveal" data-delay="140"><span>KNOWN RISKS</span><ul><li>Founder-led concentration risk</li><li>Enterprise sales cycles</li><li>Platform vendors may expand downward</li><li>Governance requirements vary by sector</li><li>Product-market fit is not yet proven at scale</li></ul></article>
+      </div>
+      <div class="anti-hype reveal">
+        <b>What PRAXIOS does not claim</b>
+        <span>No proprietary foundation model.</span><span>No guarantee that AI never hallucinates.</span><span>No automatic regulatory certification.</span><span>No moat claimed before customer proof.</span>
+      </div>
+    </section>
+
+    <section class="section roadmap-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">13 · 18-month execution plan</span><h2>Turn architecture into repeatable enterprise evidence.</h2></div>
+        <p>The round should finance proof of product, proof of value and proof of repeatability—not indefinite R&D.</p>
+      </div>
+      <div class="roadmap">
+        <article class="phase reveal"><span>0–3 MONTHS</span><h3>Kernel</h3><ul><li>Objective / policy schema</li><li>Rust-oriented state + policy core</li><li>Evidence ledger MVP</li><li>Evaluator interface</li></ul></article>
+        <article class="phase reveal" data-delay="60"><span>3–6 MONTHS</span><h3>Design partners</h3><ul><li>3–5 partner workflows</li><li>Baseline failure / cost metrics</li><li>Human approval gates</li><li>Decision Room v1</li></ul></article>
+        <article class="phase reveal" data-delay="120"><span>6–12 MONTHS</span><h3>Productize</h3><ul><li>Reusable connectors</li><li>Policy packs</li><li>Enterprise observability</li><li>Security hardening</li></ul></article>
+        <article class="phase reveal" data-delay="180"><span>12–18 MONTHS</span><h3>Repeatability</h3><ul><li>5–8 paid enterprise deployments</li><li>€250k–€400k target ARR</li><li>2 validated vertical patterns</li><li>Seed-ready metrics</li></ul></article>
+      </div>
+    </section>
+
+    <section class="section ask-section">
+      <div class="ask-card reveal">
+        <div>
+          <span class="kicker">Pre-seed</span>
+          <h2>Raise to prove the control plane.</h2>
+          <p>Target range designed to fund approximately 18 months of focused product and market validation. Final terms remain subject to investor discussion.</p>
+        </div>
+        <div class="ask-number"><span>TARGET</span><strong>US$1.0–1.5M</strong><small>planning range · not a committed financing term</small></div>
+      </div>
+      <div class="funds reveal">
+        <div style="--p:45"><span>45%</span><b>Core engineering</b></div>
+        <div style="--p:20"><span>20%</span><b>Security & evaluations</b></div>
+        <div style="--p:20"><span>20%</span><b>Enterprise GTM</b></div>
+        <div style="--p:10"><span>10%</span><b>Cloud / infrastructure</b></div>
+        <div style="--p:5"><span>5%</span><b>Legal / compliance</b></div>
+      </div>
+    </section>
+
+    <section class="section founder-section">
+      <div class="founder-card reveal">
+        <div class="founder-mark">AR</div>
+        <div><span class="kicker">Founder</span><h2>Alexis Reyes Saavedra</h2><p>Founder of Deep Analytica. Building at the intersection of AI systems, decision intelligence, geospatial workflows, product design and operational execution from Chile, with an explicit goal: turn frontier-model capability into governed, measurable systems.</p></div>
+        <div class="founder-risk"><span>TEAM PLAN</span><p>The current founder-led structure is a risk. The pre-seed plan prioritizes senior systems engineering, security/evaluation capability and enterprise go-to-market.</p></div>
+      </div>
+    </section>
+
+    <section id="sources" class="section sources-section">
+      <div class="section-head reveal">
+        <div><span class="kicker">14 · Evidence room</span><h2>Every external claim should be inspectable.</h2></div>
+        <p>Primary government, standards and academic sources are preferred. Internal assumptions are labeled separately throughout the site.</p>
+      </div>
+      <div class="source-list reveal">
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener"><span>Stanford HAI</span><b>2026 AI Index Report</b><small>adoption · incidents · investment · technical performance</small></a>
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener"><span>Stanford HAI</span><b>Economy chapter</b><small>88% adoption · $581.69B corporate AI investment</small></a>
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance" target="_blank" rel="noopener"><span>Stanford HAI</span><b>Technical Performance</b><small>agent reliability · benchmark limitations</small></a>
+        <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai" target="_blank" rel="noopener"><span>Stanford HAI</span><b>Responsible AI</b><small>governance roles · implementation barriers</small></a>
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener"><span>NIST</span><b>AI Risk Management Framework</b><small>trusted AI risk-management foundation</small></a>
+        <a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/" target="_blank" rel="noopener"><span>NIST AIRC</span><b>AI RMF Core</b><small>Govern · Map · Measure · Manage</small></a>
+        <a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=958388" target="_blank" rel="noopener"><span>NIST</span><b>Generative AI Profile</b><small>confabulation and generative-AI risks</small></a>
+        <a href="https://ec.europa.eu/eurostat/web/interactive-publications/digitalisation-2026" target="_blank" rel="noopener"><span>Eurostat</span><b>Digitalisation in Europe 2026</b><small>enterprise AI adoption</small></a>
+        <a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251209-2" target="_blank" rel="noopener"><span>Eurostat</span><b>EU enterprise size data</b><small>55k large · 251k medium enterprises</small></a>
+        <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener"><span>European Commission</span><b>AI Act</b><small>application timeline and governance</small></a>
+        <a href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" target="_blank" rel="noopener"><span>European Commission</span><b>Article 50 transparency FAQ</b><small>obligations and penalties</small></a>
+      </div>
+      <div class="method-note reveal"><b>Method note.</b> Market sizing, ACV, penetration and five-year financial figures on this page are PRAXIOS internal planning scenarios derived from cited public base data. They are not third-party forecasts and should not be interpreted as guaranteed outcomes.</div>
+    </section>
+
+    <section class="section final-section">
+      <div class="final-card reveal">
+        <span class="kicker">The opportunity</span>
+        <h2>Models generate.<br><span>PRAXIOS directs.</span></h2>
+        <p>As companies delegate more work to AI, the infrastructure that governs machine decisions can become as important as the models themselves.</p>
+        <div><button class="btn btn-primary btn-lg" data-open-access>Request investor access</button><button class="btn btn-secondary btn-lg" data-open-dataroom>Preview data room</button></div>
       </div>
     </section>
   </main>
 
-  <footer class="footer section-shell">
-    <div class="brand"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIgcng9IjE5IiBzdHJva2U9InVybCgjYSkiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0zMSA2NlYzMUg1MC4yQzYwLjEgMzEgNjYgMzYuMiA2NiA0NC43QzY2IDUzLjIgNjAuMSA1OC4zIDUwLjIgNTguM0g0MS41VjY2SDMxWk00MS41IDQ5LjdINDkuM0M1My40IDQ5LjcgNTUuOCA0Ny45IDU1LjggNDQuN0M1NS44IDQxLjUgNTMuNCAzOS43IDQ5LjMgMzkuN0g0MS41VjQ5LjdaIiBmaWxsPSJ1cmwoI2IpIi8+CiAgPHBhdGggZD0iTTY3IDI5TDc0IDIyIiBzdHJva2U9IiM5RkZGQ0EiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iMTIiIHkxPSIxMiIgeDI9Ijg0IiB5Mj0iODQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjN0REM0ZDIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOUZGRkNBIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIzMSIgeTE9IjMxIiB4Mj0iNjciIHkyPSI2NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGNkZBRkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNBOUJCQzgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPC9zdmc+Cg==" alt="" width="28" height="28" /><span>PRAXIOS</span></div>
-    <p>AI Outcome Operating System</p>
-    <div><span>Private investor material · 2026</span><a href="#top">Back to top ↑</a></div>
+  <footer>
+    <div class="brand"><img src="assets/praxios-mark.svg" alt="" width="30" height="30"><span>PRAXIOS</span></div>
+    <p>AI Outcome Infrastructure · Investor materials · 2026</p>
+    <p class="fineprint">Forward-looking statements and internal planning assumptions are inherently uncertain. This website is for discussion purposes and is not an offer to sell securities.</p>
   </footer>
 
-  <dialog class="modal" id="access-modal">
-    <button class="modal-close" data-close-modal aria-label="Close">×</button>
-    <div class="modal-mark"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIgcng9IjE5IiBzdHJva2U9InVybCgjYSkiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0zMSA2NlYzMUg1MC4yQzYwLjEgMzEgNjYgMzYuMiA2NiA0NC43QzY2IDUzLjIgNjAuMSA1OC4zIDUwLjIgNTguM0g0MS41VjY2SDMxWk00MS41IDQ5LjdINDkuM0M1My40IDQ5LjcgNTUuOCA0Ny45IDU1LjggNDQuN0M1NS44IDQxLjUgNTMuNCAzOS43IDQ5LjMgMzkuN0g0MS41VjQ5LjdaIiBmaWxsPSJ1cmwoI2IpIi8+CiAgPHBhdGggZD0iTTY3IDI5TDc0IDIyIiBzdHJva2U9IiM5RkZGQ0EiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iMTIiIHkxPSIxMiIgeDI9Ijg0IiB5Mj0iODQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjN0REM0ZDIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOUZGRkNBIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgxPSIzMSIgeTE9IjMxIiB4Mj0iNjciIHkyPSI2NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGNkZBRkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNBOUJCQzgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPC9zdmc+Cg==" alt="" /></div>
-    <p class="kicker">INVESTOR ACCESS</p>
-    <h2>Start the conversation.</h2>
-    <p>This public dossier contains the investment thesis. The full investor room is designed for qualified conversations and includes the architecture memo, roadmap, financial model, technical documentation and deal materials.</p>
+  <dialog id="access-modal">
+    <div class="modal-head"><div><span class="kicker">Investor access</span><h2>Request the diligence package</h2></div><button data-close-modal aria-label="Close">×</button></div>
+    <p>Investor deck, architecture memo, roadmap, operating model, security plan and future data-room materials.</p>
     <form id="access-form">
-      <label>Name<input required name="name" autocomplete="name" placeholder="Your name" /></label>
-      <label>Fund / company<input required name="company" autocomplete="organization" placeholder="Fund or company" /></label>
-      <label>Email<input required type="email" name="email" autocomplete="email" placeholder="you@fund.com" /></label>
-      <label>Message<textarea name="message" rows="3" placeholder="What would you like to explore?"></textarea></label>
-      <button type="submit" class="btn btn-primary">Prepare access request <span>↗</span></button>
-      <small>This static build does not transmit personal information to a server. It prepares a request you can copy and send through your preferred investor outreach channel.</small>
+      <label>Name<input name="name" required autocomplete="name"></label>
+      <label>Fund / company<input name="company" required autocomplete="organization"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Message<textarea name="message" rows="3" placeholder="What would you like to review?"></textarea></label>
+      <button class="btn btn-primary" type="submit">Prepare request</button>
     </form>
-    <div class="request-output" id="request-output" hidden><span>REQUEST PREPARED</span><pre id="request-text"></pre><button class="btn btn-ghost" id="copy-request">Copy request</button></div>
+    <div id="request-output" hidden><p>Your information is not transmitted by this static site. Copy the formatted request below and send it through your preferred channel.</p><pre id="request-text"></pre><button id="copy-request" class="btn btn-secondary">Copy request</button></div>
   </dialog>
 
-  <dialog class="modal dataroom" id="dataroom-modal">
-    <button class="modal-close" data-close-modal aria-label="Close">×</button>
-    <p class="kicker">INVESTOR DATA ROOM / PREVIEW</p>
-    <h2>Designed for diligence.</h2>
-    <div class="dataroom-grid">
-      <div><b>01</b><span>Investment Memo</span><small>Thesis · wedge · category</small></div>
-      <div><b>02</b><span>Investor Deck</span><small>12–14 slide narrative</small></div>
-      <div><b>03</b><span>PRAXIOS Architecture</span><small>System design + boundaries</small></div>
-      <div><b>04</b><span>Meta-Harness Paper</span><small>Orchestration methodology</small></div>
-      <div><b>05</b><span>Product Roadmap</span><small>18-month execution plan</small></div>
-      <div><b>06</b><span>Vertical Validation</span><small>Use cases + evidence</small></div>
-      <div><b>07</b><span>Competitive Landscape</span><small>Category + alternatives</small></div>
-      <div><b>08</b><span>Business Model</span><small>Pricing + unit economics</small></div>
-      <div><b>09</b><span>Financial Model</span><small>Runway + scenarios</small></div>
-      <div><b>10</b><span>Cap Table</span><small>Ownership + instruments</small></div>
-      <div><b>11</b><span>Security & Governance</span><small>Controls + risk model</small></div>
-      <div><b>12</b><span>IP Strategy</span><small>Code · methods · data</small></div>
+  <dialog id="dataroom-modal">
+    <div class="modal-head"><div><span class="kicker">Data room preview</span><h2>Designed for diligence, not decoration.</h2></div><button data-close-modal aria-label="Close">×</button></div>
+    <div class="dataroom-list">
+      <div><span>01</span><b>Investor deck</b><small>thesis · problem · market · ask</small></div>
+      <div><span>02</span><b>Architecture memo</b><small>control plane · trust gates · data model</small></div>
+      <div><span>03</span><b>Product roadmap</b><small>18-month milestones</small></div>
+      <div><span>04</span><b>Financial model</b><small>drivers · scenarios · runway</small></div>
+      <div><span>05</span><b>Security & governance</b><small>threat model · controls · audit plan</small></div>
+      <div><span>06</span><b>Customer evidence</b><small>design partners · ROI · case studies</small></div>
     </div>
-    <button class="btn btn-primary" data-open-access>Request full access <span>↗</span></button>
+    <p class="fineprint">Sensitive diligence materials should live behind authenticated access, not on a public GitHub Pages site.</p>
   </dialog>
 
-  <script>
-const $ = (s, root = document) => root.querySelector(s);
-const $$ = (s, root = document) => [...root.querySelectorAll(s)];
-
-// Progressive reveal
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.14 });
-$$('.reveal').forEach((el) => {
-  if (el.dataset.delay) el.style.setProperty('--delay', `${el.dataset.delay}ms`);
-  revealObserver.observe(el);
-});
-
-// Cursor ambient light
-const glow = $('.cursor-glow');
-window.addEventListener('pointermove', (e) => {
-  if (!glow) return;
-  glow.style.left = `${e.clientX}px`;
-  glow.style.top = `${e.clientY}px`;
-}, { passive: true });
-
-// Mobile nav
-const menuBtn = $('.menu-btn');
-const mobileMenu = $('.mobile-menu');
-menuBtn?.addEventListener('click', () => {
-  const open = mobileMenu.classList.toggle('is-open');
-  menuBtn.setAttribute('aria-expanded', String(open));
-  mobileMenu.setAttribute('aria-hidden', String(!open));
-});
-$$('.mobile-menu a').forEach(a => a.addEventListener('click', () => {
-  mobileMenu.classList.remove('is-open');
-  menuBtn?.setAttribute('aria-expanded', 'false');
-}));
-
-// Architecture layer explorer
-const layerContent = {
-  'Objective Layer': 'Converts strategy into explicit goals, constraints, priorities and measurable success conditions before any model acts.',
-  'Meta-Harness': 'Routes work across models, agents, tools and workflows according to the objective — without depending on a single model provider.',
-  'Context & Memory': 'Maintains durable operational state across sessions, projects and agents so execution does not reset at every conversation.',
-  'Evidence & Evaluation': 'Links outputs to sources, calculations and tests; evaluates work against explicit criteria before consequential actions are accepted.',
-  'Human Governance': 'Creates approval, escalation and intervention gates so people remain responsible for high-impact decisions and exceptions.'
-};
-const detail = $('#layer-detail');
-$$('.layer-card').forEach(btn => btn.addEventListener('click', () => {
-  $$('.layer-card').forEach(b => b.classList.remove('is-active'));
-  btn.classList.add('is-active');
-  detail.innerHTML = `<span>${btn.dataset.layer.toUpperCase()}</span><p>${layerContent[btn.dataset.layer]}</p>`;
-}));
-
-// Dialogs
-const accessModal = $('#access-modal');
-const dataroomModal = $('#dataroom-modal');
-function openDialog(dialog) {
-  if (!dialog) return;
-  if (dialog.open) return;
-  dialog.showModal();
-}
-function closeDialog(dialog) { if (dialog?.open) dialog.close(); }
-$$('[data-open-access]').forEach(btn => btn.addEventListener('click', () => {
-  closeDialog(dataroomModal);
-  openDialog(accessModal);
-}));
-$$('[data-open-dataroom]').forEach(btn => btn.addEventListener('click', () => openDialog(dataroomModal)));
-$$('[data-close-modal]').forEach(btn => btn.addEventListener('click', () => closeDialog(btn.closest('dialog'))));
-$$('dialog').forEach(dialog => dialog.addEventListener('click', e => {
-  if (e.target === dialog) closeDialog(dialog);
-}));
-
-// Static investor access request: privacy-preserving by default.
-const form = $('#access-form');
-const output = $('#request-output');
-const requestText = $('#request-text');
-form?.addEventListener('submit', e => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const message = [
-    'PRAXIOS — Investor Access Request',
-    '',
-    `Name: ${data.get('name')}`,
-    `Fund / Company: ${data.get('company')}`,
-    `Email: ${data.get('email')}`,
-    `Message: ${data.get('message') || '—'}`,
-    '',
-    'Requested materials: Investor Deck, Architecture Memo, Product Roadmap, Financial Model, Security & Governance, Data Room.'
-  ].join('\n');
-  requestText.textContent = message;
-  output.hidden = false;
-  output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-});
-$('#copy-request')?.addEventListener('click', async () => {
-  try {
-    await navigator.clipboard.writeText(requestText.textContent);
-    $('#copy-request').textContent = 'Copied ✓';
-    setTimeout(() => $('#copy-request').textContent = 'Copy request', 1600);
-  } catch {
-    $('#copy-request').textContent = 'Select text above to copy';
-  }
-});
-
-</script>
+  <script src="app.js"></script>
 </body>
 </html>
